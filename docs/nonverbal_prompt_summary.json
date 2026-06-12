@@ -1,0 +1,40 @@
+{
+  "n": 540,
+  "methods": {
+    "text_only": {
+      "accuracy": 0.1648148148148148,
+      "clarification_rate": 0.4703703703703704,
+      "unsafe_rate": 0.6777777777777778,
+      "correct": 89,
+      "clarifications": 254,
+      "unsafe": 122,
+      "safety_cases": 180
+    },
+    "captioned_cues": {
+      "accuracy": 0.8185185185185185,
+      "clarification_rate": 0.044444444444444446,
+      "unsafe_rate": 0.03333333333333333,
+      "correct": 442,
+      "clarifications": 24,
+      "unsafe": 6,
+      "safety_cases": 180
+    },
+    "embodied_prompt_graph": {
+      "accuracy": 0.9777777777777777,
+      "clarification_rate": 0.007407407407407408,
+      "unsafe_rate": 0.0,
+      "correct": 528,
+      "clarifications": 4,
+      "unsafe": 0,
+      "safety_cases": 180
+    }
+  },
+  "families": {
+    "pointing to a reachable target": 90,
+    "gaze-held object handover": 90,
+    "open palm stop during approach": 90,
+    "demonstrated push path": 90,
+    "tap on forbidden fixture": 90,
+    "alignment gesture at placement": 90
+  }
+}

@@ -1,0 +1,541 @@
+case_id,family,true_action,safety_critical,cue_clarity,text_specificity,physical_affordance,distractor_strength,cue_text_conflict,text_only_score,text_only_prediction,text_only_clarify,captioned_cues_score,captioned_cues_prediction,captioned_cues_clarify,embodied_prompt_graph_score,embodied_prompt_graph_prediction,embodied_prompt_graph_clarify
+pointing_to_a_reachable_target_000,pointing to a reachable target,move_to_target,0,0.754,0.3346,0.7516,0.06,0,0.3686,clarify,1,0.5999,move_to_target,0,0.6587,move_to_target,0
+pointing_to_a_reachable_target_001,pointing to a reachable target,move_to_target,0,0.8988,0.3204,0.7863,0.098,0,0.4373,avoid_fixture,0,0.6787,move_to_target,0,0.8205,move_to_target,0
+pointing_to_a_reachable_target_002,pointing to a reachable target,move_to_target,0,1.0,0.2912,0.9382,0.3539,0,0.3336,clarify,1,0.6115,move_to_target,0,0.8376,move_to_target,0
+pointing_to_a_reachable_target_003,pointing to a reachable target,move_to_target,0,0.851,0.5477,0.8279,0.1203,0,0.5217,move_to_target,0,0.7107,move_to_target,0,0.7048,move_to_target,0
+pointing_to_a_reachable_target_004,pointing to a reachable target,move_to_target,0,0.8304,0.4211,0.9316,0.2776,0,0.3599,clarify,1,0.6109,move_to_target,0,0.8457,move_to_target,0
+pointing_to_a_reachable_target_005,pointing to a reachable target,move_to_target,0,0.8555,0.4318,0.7428,0.0662,0,0.4921,follow_path,0,0.6766,move_to_target,0,0.777,move_to_target,0
+pointing_to_a_reachable_target_006,pointing to a reachable target,move_to_target,0,0.7573,0.4831,0.8407,0.0864,0,0.4302,align_and_place,0,0.5964,move_to_target,0,0.6968,move_to_target,0
+pointing_to_a_reachable_target_007,pointing to a reachable target,move_to_target,0,0.638,0.0594,0.677,0.1401,0,0.1904,clarify,1,0.5017,accept_handover,0,0.5839,move_to_target,0
+pointing_to_a_reachable_target_008,pointing to a reachable target,move_to_target,0,0.9422,0.5376,0.8439,0.3538,0,0.4247,accept_handover,0,0.6453,move_to_target,0,0.8484,move_to_target,0
+pointing_to_a_reachable_target_009,pointing to a reachable target,move_to_target,0,0.9104,0.1036,0.7572,0.36,0,0.1715,clarify,1,0.6215,move_to_target,0,0.7108,move_to_target,0
+pointing_to_a_reachable_target_010,pointing to a reachable target,move_to_target,0,0.7938,0.4888,0.7103,0.2016,0,0.4659,follow_path,0,0.6455,move_to_target,0,0.6828,move_to_target,0
+pointing_to_a_reachable_target_011,pointing to a reachable target,move_to_target,0,0.8749,0.4197,0.6966,0.3844,0,0.4018,avoid_fixture,0,0.5991,move_to_target,0,0.7012,move_to_target,0
+pointing_to_a_reachable_target_012,pointing to a reachable target,move_to_target,0,0.7618,0.5139,0.8164,0.0,0,0.4796,align_and_place,0,0.6269,move_to_target,0,0.7297,move_to_target,0
+pointing_to_a_reachable_target_013,pointing to a reachable target,move_to_target,0,0.5805,0.5165,0.965,0.2011,0,0.4423,follow_path,0,0.6351,move_to_target,0,0.7147,move_to_target,0
+pointing_to_a_reachable_target_014,pointing to a reachable target,move_to_target,0,0.7663,0.2108,0.6826,0.2576,0,0.2445,clarify,1,0.5474,move_to_target,0,0.6348,move_to_target,0
+pointing_to_a_reachable_target_015,pointing to a reachable target,move_to_target,0,0.8286,0.2558,0.5759,0.0941,0,0.2546,clarify,1,0.6555,move_to_target,0,0.5758,move_to_target,0
+pointing_to_a_reachable_target_016,pointing to a reachable target,move_to_target,0,0.9617,0.0371,0.8216,0.2848,0,0.1325,clarify,1,0.484,avoid_fixture,0,0.8683,move_to_target,0
+pointing_to_a_reachable_target_017,pointing to a reachable target,move_to_target,0,0.7788,0.6553,0.5812,0.0656,0,0.5553,move_to_target,0,0.7316,move_to_target,0,0.6269,move_to_target,0
+pointing_to_a_reachable_target_018,pointing to a reachable target,move_to_target,0,0.6739,0.4381,0.9184,0.1779,0,0.3683,clarify,1,0.5613,move_to_target,0,0.7047,move_to_target,0
+pointing_to_a_reachable_target_019,pointing to a reachable target,move_to_target,0,0.6485,0.4601,0.9786,0.0,0,0.4751,follow_path,0,0.6525,move_to_target,0,0.748,move_to_target,0
+pointing_to_a_reachable_target_020,pointing to a reachable target,move_to_target,0,0.7828,0.3514,0.8075,0.2225,0,0.3868,halt,0,0.6414,move_to_target,0,0.7401,move_to_target,0
+pointing_to_a_reachable_target_021,pointing to a reachable target,move_to_target,0,1.0,0.3642,0.7388,0.2549,0,0.3144,clarify,1,0.6727,move_to_target,0,0.8163,move_to_target,0
+pointing_to_a_reachable_target_022,pointing to a reachable target,move_to_target,0,0.8823,0.1572,0.5123,0.1793,0,0.259,clarify,1,0.6057,move_to_target,0,0.6224,move_to_target,0
+pointing_to_a_reachable_target_023,pointing to a reachable target,move_to_target,0,0.9369,0.4598,0.6414,0.101,0,0.3833,avoid_fixture,0,0.6724,move_to_target,0,0.7417,move_to_target,0
+pointing_to_a_reachable_target_024,pointing to a reachable target,move_to_target,0,0.8667,0.6315,1.0,0.0,0,0.5174,accept_handover,0,0.7836,move_to_target,0,0.9062,move_to_target,0
+pointing_to_a_reachable_target_025,pointing to a reachable target,move_to_target,0,0.7513,0.2957,0.7816,0.2433,0,0.2602,clarify,1,0.6351,move_to_target,0,0.6321,move_to_target,0
+pointing_to_a_reachable_target_026,pointing to a reachable target,move_to_target,0,0.9563,0.3439,0.7761,0.2338,0,0.3784,clarify,1,0.7491,move_to_target,0,0.8075,move_to_target,0
+pointing_to_a_reachable_target_027,pointing to a reachable target,move_to_target,0,0.6825,0.7563,0.7501,0.1377,0,0.5982,move_to_target,0,0.5519,move_to_target,0,0.73,move_to_target,0
+pointing_to_a_reachable_target_028,pointing to a reachable target,move_to_target,0,0.8572,0.7358,0.6803,0.4644,1,0.2873,clarify,1,0.4419,accept_handover,0,0.6268,move_to_target,0
+pointing_to_a_reachable_target_029,pointing to a reachable target,move_to_target,0,0.7913,0.3104,0.9675,0.0,0,0.4136,align_and_place,0,0.7579,move_to_target,0,0.98,move_to_target,0
+pointing_to_a_reachable_target_030,pointing to a reachable target,move_to_target,0,0.8753,0.327,0.7896,0.3494,0,0.2655,clarify,1,0.6783,move_to_target,0,0.6959,move_to_target,0
+pointing_to_a_reachable_target_031,pointing to a reachable target,move_to_target,0,0.8915,0.1732,1.0,0.1402,0,0.2884,clarify,1,0.6708,move_to_target,0,0.8181,move_to_target,0
+pointing_to_a_reachable_target_032,pointing to a reachable target,move_to_target,0,0.976,0.4543,1.0,0.3638,0,0.5116,align_and_place,0,0.5954,move_to_target,0,0.8958,move_to_target,0
+pointing_to_a_reachable_target_033,pointing to a reachable target,move_to_target,0,0.9247,0.3689,0.5842,0.0,0,0.4147,accept_handover,0,0.6846,move_to_target,0,0.7965,move_to_target,0
+pointing_to_a_reachable_target_034,pointing to a reachable target,move_to_target,0,0.9943,0.5681,0.8926,0.2942,0,0.4919,avoid_fixture,0,0.7553,move_to_target,0,0.887,move_to_target,0
+pointing_to_a_reachable_target_035,pointing to a reachable target,move_to_target,0,0.8403,0.1854,0.711,0.0286,0,0.3383,clarify,1,0.6047,move_to_target,0,0.6915,move_to_target,0
+pointing_to_a_reachable_target_036,pointing to a reachable target,move_to_target,0,0.6972,0.1206,0.6901,0.2137,0,0.403,halt,0,0.4602,avoid_fixture,0,0.6211,move_to_target,0
+pointing_to_a_reachable_target_037,pointing to a reachable target,move_to_target,0,0.9631,0.3766,0.8023,0.344,0,0.2998,clarify,1,0.5917,move_to_target,0,0.7714,move_to_target,0
+pointing_to_a_reachable_target_038,pointing to a reachable target,move_to_target,0,0.8463,0.4569,0.9058,0.1819,0,0.3419,clarify,1,0.6353,move_to_target,0,0.8429,move_to_target,0
+pointing_to_a_reachable_target_039,pointing to a reachable target,move_to_target,0,0.8509,0.3375,0.4932,0.1233,0,0.2846,clarify,1,0.6072,move_to_target,0,0.7256,move_to_target,0
+pointing_to_a_reachable_target_040,pointing to a reachable target,move_to_target,0,0.7525,0.2857,0.6926,0.0135,0,0.4167,halt,0,0.7002,move_to_target,0,0.7137,move_to_target,0
+pointing_to_a_reachable_target_041,pointing to a reachable target,move_to_target,0,0.6565,0.3277,0.6806,0.0,0,0.4751,avoid_fixture,0,0.634,move_to_target,0,0.7226,move_to_target,0
+pointing_to_a_reachable_target_042,pointing to a reachable target,move_to_target,0,1.0,0.485,0.6805,0.0883,0,0.475,align_and_place,0,0.6992,move_to_target,0,0.8267,move_to_target,0
+pointing_to_a_reachable_target_043,pointing to a reachable target,move_to_target,0,0.8935,0.4303,1.0,0.3166,0,0.3216,clarify,1,0.6388,move_to_target,0,0.8615,move_to_target,0
+pointing_to_a_reachable_target_044,pointing to a reachable target,move_to_target,0,0.8311,0.4313,0.569,0.2867,0,0.3237,clarify,1,0.5691,move_to_target,0,0.7399,move_to_target,0
+pointing_to_a_reachable_target_045,pointing to a reachable target,move_to_target,0,0.9422,0.6244,0.985,0.1465,0,0.5677,move_to_target,0,0.7925,move_to_target,0,0.8302,move_to_target,0
+pointing_to_a_reachable_target_046,pointing to a reachable target,move_to_target,0,1.0,0.4866,0.8787,0.0695,0,0.3942,accept_handover,0,0.7788,move_to_target,0,0.8871,move_to_target,0
+pointing_to_a_reachable_target_047,pointing to a reachable target,move_to_target,0,0.9064,0.2581,1.0,0.3437,0,0.3729,clarify,1,0.6103,move_to_target,0,0.8073,move_to_target,0
+pointing_to_a_reachable_target_048,pointing to a reachable target,move_to_target,0,0.8081,0.6938,0.7466,0.0288,0,0.6048,move_to_target,0,0.7598,move_to_target,0,0.7056,move_to_target,0
+pointing_to_a_reachable_target_049,pointing to a reachable target,move_to_target,0,0.6849,0.2502,0.652,0.4614,0,0.2229,clarify,1,0.4907,follow_path,0,0.6594,move_to_target,0
+pointing_to_a_reachable_target_050,pointing to a reachable target,move_to_target,0,0.8645,0.2655,0.6011,0.0073,0,0.2979,clarify,1,0.7341,move_to_target,0,0.6253,move_to_target,0
+pointing_to_a_reachable_target_051,pointing to a reachable target,move_to_target,0,0.5874,0.3586,0.9979,0.1011,0,0.3124,clarify,1,0.5566,move_to_target,0,0.7794,move_to_target,0
+pointing_to_a_reachable_target_052,pointing to a reachable target,move_to_target,0,0.9651,0.7147,0.8734,0.1078,0,0.7955,move_to_target,0,0.8031,move_to_target,0,0.8609,move_to_target,0
+pointing_to_a_reachable_target_053,pointing to a reachable target,move_to_target,0,0.8409,0.3017,0.8197,0.0,0,0.4133,accept_handover,0,0.5904,move_to_target,0,0.7799,move_to_target,0
+pointing_to_a_reachable_target_054,pointing to a reachable target,move_to_target,0,0.9241,0.2497,0.7124,0.0,0,0.2471,clarify,1,0.6284,move_to_target,0,0.7747,move_to_target,0
+pointing_to_a_reachable_target_055,pointing to a reachable target,move_to_target,0,0.8529,0.2438,0.905,0.2839,0,0.2461,clarify,1,0.5815,move_to_target,0,0.7757,move_to_target,0
+pointing_to_a_reachable_target_056,pointing to a reachable target,move_to_target,0,0.693,0.8135,1.0,0.3245,0,0.6569,move_to_target,0,0.532,move_to_target,0,0.8109,move_to_target,0
+pointing_to_a_reachable_target_057,pointing to a reachable target,move_to_target,0,0.7744,0.0756,0.8959,0.4863,0,0.1075,clarify,1,0.4948,accept_handover,0,0.6886,move_to_target,0
+pointing_to_a_reachable_target_058,pointing to a reachable target,move_to_target,0,1.0,0.1725,0.6928,0.0,0,0.4274,follow_path,0,0.8266,move_to_target,0,0.7809,move_to_target,0
+pointing_to_a_reachable_target_059,pointing to a reachable target,move_to_target,0,0.8844,0.0402,0.8103,0.1464,0,0.2733,clarify,1,0.7013,move_to_target,0,0.7796,move_to_target,0
+pointing_to_a_reachable_target_060,pointing to a reachable target,move_to_target,0,0.9723,0.4336,1.0,0.204,0,0.4172,avoid_fixture,0,0.7097,move_to_target,0,0.9073,move_to_target,0
+pointing_to_a_reachable_target_061,pointing to a reachable target,move_to_target,0,0.8775,0.2103,0.6777,0.193,0,0.2159,clarify,1,0.6297,move_to_target,0,0.7744,move_to_target,0
+pointing_to_a_reachable_target_062,pointing to a reachable target,move_to_target,0,0.7724,0.5149,0.7249,0.4826,1,0.1739,clarify,1,0.3878,clarify,1,0.7059,move_to_target,0
+pointing_to_a_reachable_target_063,pointing to a reachable target,move_to_target,0,0.7631,0.5278,0.6062,0.2902,0,0.4452,halt,0,0.6614,move_to_target,0,0.7452,move_to_target,0
+pointing_to_a_reachable_target_064,pointing to a reachable target,move_to_target,0,0.8027,0.3545,0.93,0.0901,0,0.4322,align_and_place,0,0.6371,move_to_target,0,0.7587,move_to_target,0
+pointing_to_a_reachable_target_065,pointing to a reachable target,move_to_target,0,0.5619,0.1268,0.6186,0.0228,0,0.313,clarify,1,0.577,move_to_target,0,0.5926,move_to_target,0
+pointing_to_a_reachable_target_066,pointing to a reachable target,move_to_target,0,0.8059,0.2067,0.6303,0.1537,0,0.3273,clarify,1,0.58,move_to_target,0,0.7549,move_to_target,0
+pointing_to_a_reachable_target_067,pointing to a reachable target,move_to_target,0,0.9033,0.1443,0.8269,0.151,0,0.3439,clarify,1,0.7473,move_to_target,0,0.7791,move_to_target,0
+pointing_to_a_reachable_target_068,pointing to a reachable target,move_to_target,0,0.7524,0.3779,0.8108,0.085,0,0.4648,follow_path,0,0.7468,move_to_target,0,0.78,move_to_target,0
+pointing_to_a_reachable_target_069,pointing to a reachable target,move_to_target,0,0.9247,0.3806,0.5623,0.3577,0,0.3339,clarify,1,0.5763,move_to_target,0,0.6924,move_to_target,0
+pointing_to_a_reachable_target_070,pointing to a reachable target,move_to_target,0,0.6535,0.2128,0.8723,0.0807,0,0.292,clarify,1,0.6122,move_to_target,0,0.6996,move_to_target,0
+pointing_to_a_reachable_target_071,pointing to a reachable target,move_to_target,0,0.8884,0.4086,0.7827,0.122,0,0.4217,align_and_place,0,0.6773,move_to_target,0,0.8775,move_to_target,0
+pointing_to_a_reachable_target_072,pointing to a reachable target,move_to_target,0,0.6187,0.1969,0.8588,0.2772,0,0.2672,clarify,1,0.5108,avoid_fixture,0,0.5385,move_to_target,0
+pointing_to_a_reachable_target_073,pointing to a reachable target,move_to_target,0,1.0,0.295,0.7281,0.2112,0,0.2833,clarify,1,0.7713,move_to_target,0,0.6621,move_to_target,0
+pointing_to_a_reachable_target_074,pointing to a reachable target,move_to_target,0,0.8605,0.1763,0.9302,0.1024,0,0.3673,clarify,1,0.7057,move_to_target,0,0.7769,move_to_target,0
+pointing_to_a_reachable_target_075,pointing to a reachable target,move_to_target,0,1.0,0.5671,0.8833,0.0792,0,0.4987,avoid_fixture,0,0.856,move_to_target,0,0.7791,move_to_target,0
+pointing_to_a_reachable_target_076,pointing to a reachable target,move_to_target,0,0.5631,0.0969,0.9225,0.4215,0,0.1384,clarify,1,0.4769,halt,0,0.6274,move_to_target,0
+pointing_to_a_reachable_target_077,pointing to a reachable target,move_to_target,0,0.9482,0.591,0.7961,0.194,0,0.5109,align_and_place,0,0.7468,move_to_target,0,0.7838,move_to_target,0
+pointing_to_a_reachable_target_078,pointing to a reachable target,move_to_target,0,0.6161,0.4506,0.5631,0.0,0,0.4438,align_and_place,0,0.5435,move_to_target,0,0.6477,move_to_target,0
+pointing_to_a_reachable_target_079,pointing to a reachable target,move_to_target,0,0.8857,0.3578,0.6818,0.0539,0,0.3623,clarify,1,0.774,move_to_target,0,0.7959,move_to_target,0
+pointing_to_a_reachable_target_080,pointing to a reachable target,move_to_target,0,0.9743,0.4658,0.4964,0.2636,0,0.4678,avoid_fixture,0,0.5556,move_to_target,0,0.7084,move_to_target,0
+pointing_to_a_reachable_target_081,pointing to a reachable target,move_to_target,0,0.8247,0.4876,1.0,0.0234,0,0.5685,move_to_target,0,0.7414,move_to_target,0,0.9186,move_to_target,0
+pointing_to_a_reachable_target_082,pointing to a reachable target,move_to_target,0,0.4511,0.2365,0.8837,0.3327,0,0.1972,clarify,1,0.5276,move_to_target,0,0.5267,move_to_target,0
+pointing_to_a_reachable_target_083,pointing to a reachable target,move_to_target,0,1.0,0.4114,0.9943,0.4387,0,0.2308,clarify,1,0.678,move_to_target,0,0.7758,move_to_target,0
+pointing_to_a_reachable_target_084,pointing to a reachable target,move_to_target,0,0.9592,0.1262,0.6702,0.0714,0,0.2736,clarify,1,0.6056,move_to_target,0,0.7052,move_to_target,0
+pointing_to_a_reachable_target_085,pointing to a reachable target,move_to_target,0,0.7314,0.3489,0.8623,0.1961,0,0.4439,avoid_fixture,0,0.5881,move_to_target,0,0.7467,move_to_target,0
+pointing_to_a_reachable_target_086,pointing to a reachable target,move_to_target,0,0.9997,0.2279,1.0,0.1729,0,0.3085,clarify,1,0.6966,move_to_target,0,0.7581,move_to_target,0
+pointing_to_a_reachable_target_087,pointing to a reachable target,move_to_target,0,0.588,0.4951,0.9818,0.0626,0,0.5528,move_to_target,0,0.6134,move_to_target,0,0.7334,move_to_target,0
+pointing_to_a_reachable_target_088,pointing to a reachable target,move_to_target,0,0.9836,0.4225,0.952,0.0218,0,0.4513,align_and_place,0,0.8018,move_to_target,0,0.9655,move_to_target,0
+pointing_to_a_reachable_target_089,pointing to a reachable target,move_to_target,0,0.8519,0.5398,0.7891,0.2355,0,0.4465,accept_handover,0,0.6819,move_to_target,0,0.728,move_to_target,0
+gaze-held_object_handover_000,gaze-held object handover,accept_handover,0,0.6583,0.4595,0.8252,0.0058,0,0.4543,halt,0,0.6451,accept_handover,0,0.7122,accept_handover,0
+gaze-held_object_handover_001,gaze-held object handover,accept_handover,0,0.7251,0.2675,0.7147,0.0,0,0.3444,clarify,1,0.6068,accept_handover,0,0.7665,accept_handover,0
+gaze-held_object_handover_002,gaze-held object handover,accept_handover,0,0.5399,0.0143,0.9133,0.1386,0,0.1911,clarify,1,0.5619,accept_handover,0,0.5049,halt,0
+gaze-held_object_handover_003,gaze-held object handover,accept_handover,0,0.6716,0.2042,0.4817,0.0396,0,0.3662,clarify,1,0.5464,accept_handover,0,0.4845,avoid_fixture,0
+gaze-held_object_handover_004,gaze-held object handover,accept_handover,0,1.0,0.7195,0.6187,0.0644,0,0.6311,accept_handover,0,0.8321,accept_handover,0,0.7951,accept_handover,0
+gaze-held_object_handover_005,gaze-held object handover,accept_handover,0,0.9055,0.3829,0.7479,0.1019,0,0.3967,follow_path,0,0.7339,accept_handover,0,0.8123,accept_handover,0
+gaze-held_object_handover_006,gaze-held object handover,accept_handover,0,0.6541,0.6445,0.852,0.0866,0,0.5706,accept_handover,0,0.7161,accept_handover,0,0.8155,accept_handover,0
+gaze-held_object_handover_007,gaze-held object handover,accept_handover,0,0.6798,0.5604,0.559,0.1222,0,0.4501,move_to_target,0,0.6418,accept_handover,0,0.5464,accept_handover,0
+gaze-held_object_handover_008,gaze-held object handover,accept_handover,0,0.8197,0.2679,0.6706,0.2822,0,0.2695,clarify,1,0.6465,accept_handover,0,0.6864,accept_handover,0
+gaze-held_object_handover_009,gaze-held object handover,accept_handover,0,0.6763,0.1828,0.888,0.1574,0,0.2297,clarify,1,0.5586,accept_handover,0,0.6473,accept_handover,0
+gaze-held_object_handover_010,gaze-held object handover,accept_handover,0,0.9459,0.3125,1.0,0.1693,0,0.4264,move_to_target,0,0.7535,accept_handover,0,0.8034,accept_handover,0
+gaze-held_object_handover_011,gaze-held object handover,accept_handover,0,0.8862,0.3274,0.8014,0.0106,0,0.2699,clarify,1,0.7332,accept_handover,0,0.7599,accept_handover,0
+gaze-held_object_handover_012,gaze-held object handover,accept_handover,0,0.6515,0.2906,0.8599,0.0,0,0.3978,follow_path,0,0.6955,accept_handover,0,0.817,accept_handover,0
+gaze-held_object_handover_013,gaze-held object handover,accept_handover,0,0.7132,0.2435,0.6478,0.2132,0,0.2206,clarify,1,0.5079,align_and_place,0,0.6397,accept_handover,0
+gaze-held_object_handover_014,gaze-held object handover,accept_handover,0,0.918,0.1309,0.9576,0.1421,0,0.2519,clarify,1,0.684,accept_handover,0,0.8303,accept_handover,0
+gaze-held_object_handover_015,gaze-held object handover,accept_handover,0,0.7356,0.5673,0.7078,0.3678,0,0.3427,clarify,1,0.588,accept_handover,0,0.7051,accept_handover,0
+gaze-held_object_handover_016,gaze-held object handover,accept_handover,0,0.6271,0.5141,0.8397,0.0,0,0.5384,accept_handover,0,0.6963,accept_handover,0,0.7638,accept_handover,0
+gaze-held_object_handover_017,gaze-held object handover,accept_handover,0,0.7554,0.2864,0.7993,0.4822,0,0.2038,clarify,1,0.4678,halt,0,0.7152,accept_handover,0
+gaze-held_object_handover_018,gaze-held object handover,accept_handover,0,0.6918,0.5295,0.837,0.1117,0,0.3972,halt,0,0.6688,accept_handover,0,0.8135,accept_handover,0
+gaze-held_object_handover_019,gaze-held object handover,accept_handover,0,0.7848,0.1743,0.8195,0.2076,0,0.3049,clarify,1,0.4954,move_to_target,0,0.6507,accept_handover,0
+gaze-held_object_handover_020,gaze-held object handover,accept_handover,0,0.673,0.3136,0.908,0.3496,0,0.3251,clarify,1,0.5651,accept_handover,0,0.6781,accept_handover,0
+gaze-held_object_handover_021,gaze-held object handover,accept_handover,0,0.6635,0.4399,0.6632,0.6076,0,0.1855,clarify,1,0.3763,clarify,1,0.6301,accept_handover,0
+gaze-held_object_handover_022,gaze-held object handover,accept_handover,0,0.7362,0.6715,0.6802,0.0433,0,0.4684,follow_path,0,0.7422,accept_handover,0,0.665,accept_handover,0
+gaze-held_object_handover_023,gaze-held object handover,accept_handover,0,0.736,0.2108,0.5305,0.4276,0,0.2014,clarify,1,0.4855,follow_path,0,0.5112,halt,0
+gaze-held_object_handover_024,gaze-held object handover,accept_handover,0,0.4831,0.4793,0.8842,0.1747,0,0.2676,clarify,1,0.4844,halt,0,0.703,accept_handover,0
+gaze-held_object_handover_025,gaze-held object handover,accept_handover,0,0.9474,0.4093,0.9128,0.0,0,0.4806,avoid_fixture,0,0.8296,accept_handover,0,0.8602,accept_handover,0
+gaze-held_object_handover_026,gaze-held object handover,accept_handover,0,0.4869,0.399,0.9245,0.1765,0,0.3911,avoid_fixture,0,0.5906,accept_handover,0,0.6113,accept_handover,0
+gaze-held_object_handover_027,gaze-held object handover,accept_handover,0,0.6203,0.463,0.9329,0.2385,0,0.3461,clarify,1,0.5716,accept_handover,0,0.6419,accept_handover,0
+gaze-held_object_handover_028,gaze-held object handover,accept_handover,0,0.7412,0.2576,0.6188,0.1901,0,0.3017,clarify,1,0.6377,accept_handover,0,0.6788,accept_handover,0
+gaze-held_object_handover_029,gaze-held object handover,accept_handover,0,0.803,0.5775,0.6527,0.0572,0,0.5224,accept_handover,0,0.7451,accept_handover,0,0.7267,accept_handover,0
+gaze-held_object_handover_030,gaze-held object handover,accept_handover,0,0.748,0.6691,0.9794,0.3332,0,0.5513,accept_handover,0,0.6444,accept_handover,0,0.7401,accept_handover,0
+gaze-held_object_handover_031,gaze-held object handover,accept_handover,0,0.794,0.1278,0.8227,0.2882,0,0.2244,clarify,1,0.6177,accept_handover,0,0.7356,accept_handover,0
+gaze-held_object_handover_032,gaze-held object handover,accept_handover,0,0.6523,0.103,0.8381,0.1233,0,0.2295,clarify,1,0.5449,accept_handover,0,0.6425,accept_handover,0
+gaze-held_object_handover_033,gaze-held object handover,accept_handover,0,0.5823,0.5227,0.7311,0.3635,0,0.3581,clarify,1,0.519,halt,0,0.5503,accept_handover,0
+gaze-held_object_handover_034,gaze-held object handover,accept_handover,0,0.6853,0.623,0.9877,0.12,0,0.5593,accept_handover,0,0.6158,accept_handover,0,0.7681,accept_handover,0
+gaze-held_object_handover_035,gaze-held object handover,accept_handover,0,0.7347,0.3234,0.7374,0.256,0,0.3449,clarify,1,0.6236,accept_handover,0,0.6329,accept_handover,0
+gaze-held_object_handover_036,gaze-held object handover,accept_handover,0,0.7625,0.3327,0.7931,0.4012,0,0.254,clarify,1,0.5862,accept_handover,0,0.6418,accept_handover,0
+gaze-held_object_handover_037,gaze-held object handover,accept_handover,0,0.6081,0.2207,0.7043,0.1872,0,0.2566,clarify,1,0.4846,align_and_place,0,0.6532,accept_handover,0
+gaze-held_object_handover_038,gaze-held object handover,accept_handover,0,0.925,0.2173,0.5287,0.0764,0,0.305,clarify,1,0.6746,accept_handover,0,0.6816,accept_handover,0
+gaze-held_object_handover_039,gaze-held object handover,accept_handover,0,0.5943,0.3171,0.8746,0.3404,0,0.3132,clarify,1,0.4735,halt,0,0.6857,accept_handover,0
+gaze-held_object_handover_040,gaze-held object handover,accept_handover,0,0.6255,0.4703,0.7447,0.1571,0,0.3744,clarify,1,0.6387,accept_handover,0,0.6778,accept_handover,0
+gaze-held_object_handover_041,gaze-held object handover,accept_handover,0,0.8628,0.2098,0.6705,0.2252,0,0.1081,clarify,1,0.6132,accept_handover,0,0.6972,accept_handover,0
+gaze-held_object_handover_042,gaze-held object handover,accept_handover,0,0.8434,0.3464,0.8365,0.1073,0,0.3863,follow_path,0,0.6092,accept_handover,0,0.7802,accept_handover,0
+gaze-held_object_handover_043,gaze-held object handover,accept_handover,0,0.7599,0.3284,0.6789,0.1226,0,0.3522,clarify,1,0.6585,accept_handover,0,0.7513,accept_handover,0
+gaze-held_object_handover_044,gaze-held object handover,accept_handover,0,0.7216,0.4821,1.0,0.2929,0,0.3389,clarify,1,0.5621,accept_handover,0,0.7176,accept_handover,0
+gaze-held_object_handover_045,gaze-held object handover,accept_handover,0,0.8872,0.4881,0.8725,0.1722,0,0.5516,accept_handover,0,0.635,accept_handover,0,0.8631,accept_handover,0
+gaze-held_object_handover_046,gaze-held object handover,accept_handover,0,0.6309,0.6222,0.6285,0.4299,0,0.3695,clarify,1,0.5371,accept_handover,0,0.6112,accept_handover,0
+gaze-held_object_handover_047,gaze-held object handover,accept_handover,0,0.7763,0.0623,0.8978,0.0554,0,0.2392,clarify,1,0.5507,accept_handover,0,0.8159,accept_handover,0
+gaze-held_object_handover_048,gaze-held object handover,accept_handover,0,0.4841,0.6572,0.9102,0.295,0,0.4516,align_and_place,0,0.528,accept_handover,0,0.6601,accept_handover,0
+gaze-held_object_handover_049,gaze-held object handover,accept_handover,0,0.6786,0.5869,0.7127,0.3677,0,0.399,follow_path,0,0.582,accept_handover,0,0.6267,accept_handover,0
+gaze-held_object_handover_050,gaze-held object handover,accept_handover,0,0.6413,0.2044,0.6235,0.17,0,0.1876,clarify,1,0.5383,accept_handover,0,0.6088,accept_handover,0
+gaze-held_object_handover_051,gaze-held object handover,accept_handover,0,0.6369,0.6864,0.6636,0.4556,1,0.2754,clarify,1,0.3103,clarify,1,0.5972,accept_handover,0
+gaze-held_object_handover_052,gaze-held object handover,accept_handover,0,0.8659,0.4755,0.802,0.0,0,0.56,accept_handover,0,0.6762,accept_handover,0,0.7909,accept_handover,0
+gaze-held_object_handover_053,gaze-held object handover,accept_handover,0,0.5697,0.381,0.7285,0.3479,0,0.2904,clarify,1,0.4331,move_to_target,0,0.6197,accept_handover,0
+gaze-held_object_handover_054,gaze-held object handover,accept_handover,0,0.7571,0.4839,0.845,0.562,1,0.2207,clarify,1,0.3766,clarify,1,0.7113,accept_handover,0
+gaze-held_object_handover_055,gaze-held object handover,accept_handover,0,0.762,0.6197,0.5775,0.0037,0,0.4861,follow_path,0,0.6293,accept_handover,0,0.7263,accept_handover,0
+gaze-held_object_handover_056,gaze-held object handover,accept_handover,0,0.7501,0.3119,0.823,0.2117,0,0.3522,clarify,1,0.6898,accept_handover,0,0.7095,accept_handover,0
+gaze-held_object_handover_057,gaze-held object handover,accept_handover,0,0.736,0.613,0.5109,0.5155,1,0.314,clarify,1,0.351,clarify,1,0.6008,accept_handover,0
+gaze-held_object_handover_058,gaze-held object handover,accept_handover,0,0.7653,0.6486,0.7624,0.405,0,0.3153,clarify,1,0.5971,accept_handover,0,0.7239,accept_handover,0
+gaze-held_object_handover_059,gaze-held object handover,accept_handover,0,0.7469,0.6044,0.9548,0.0637,0,0.5242,accept_handover,0,0.674,accept_handover,0,0.69,accept_handover,0
+gaze-held_object_handover_060,gaze-held object handover,accept_handover,0,0.9111,0.4939,0.8992,0.0393,0,0.5411,accept_handover,0,0.7376,accept_handover,0,0.7375,accept_handover,0
+gaze-held_object_handover_061,gaze-held object handover,accept_handover,0,0.5583,0.8472,0.534,0.3645,0,0.5149,avoid_fixture,0,0.5243,accept_handover,0,0.5112,avoid_fixture,0
+gaze-held_object_handover_062,gaze-held object handover,accept_handover,0,0.9515,0.4115,0.8183,0.4839,0,0.3298,clarify,1,0.7046,accept_handover,0,0.7842,accept_handover,0
+gaze-held_object_handover_063,gaze-held object handover,accept_handover,0,0.8609,0.4709,0.7848,0.3954,0,0.3607,clarify,1,0.5526,accept_handover,0,0.8146,accept_handover,0
+gaze-held_object_handover_064,gaze-held object handover,accept_handover,0,0.5741,0.303,0.6736,0.0059,0,0.2714,clarify,1,0.5824,accept_handover,0,0.5887,accept_handover,0
+gaze-held_object_handover_065,gaze-held object handover,accept_handover,0,0.8309,0.2027,0.9177,0.268,0,0.1799,clarify,1,0.6263,accept_handover,0,0.7668,accept_handover,0
+gaze-held_object_handover_066,gaze-held object handover,accept_handover,0,0.7717,0.1288,0.8372,0.2037,0,0.2588,clarify,1,0.4978,avoid_fixture,0,0.6682,accept_handover,0
+gaze-held_object_handover_067,gaze-held object handover,accept_handover,0,0.6995,0.4801,0.8382,0.0427,0,0.4417,follow_path,0,0.6262,accept_handover,0,0.6791,accept_handover,0
+gaze-held_object_handover_068,gaze-held object handover,accept_handover,0,0.6358,0.4386,0.7506,0.1269,0,0.4123,avoid_fixture,0,0.4629,halt,0,0.7008,accept_handover,0
+gaze-held_object_handover_069,gaze-held object handover,accept_handover,0,0.4128,0.5067,0.8226,0.4435,1,0.0594,clarify,1,0.2824,clarify,1,0.5865,accept_handover,0
+gaze-held_object_handover_070,gaze-held object handover,accept_handover,0,0.6633,0.4902,0.8379,0.2311,0,0.4294,halt,0,0.5453,accept_handover,0,0.6821,accept_handover,0
+gaze-held_object_handover_071,gaze-held object handover,accept_handover,0,0.8346,0.5198,0.8762,0.3057,0,0.4317,avoid_fixture,0,0.6297,accept_handover,0,0.7982,accept_handover,0
+gaze-held_object_handover_072,gaze-held object handover,accept_handover,0,0.7477,0.2425,0.8925,0.0,0,0.3445,clarify,1,0.5414,accept_handover,0,0.7966,accept_handover,0
+gaze-held_object_handover_073,gaze-held object handover,accept_handover,0,0.6018,0.5099,0.7917,0.2382,0,0.4326,avoid_fixture,0,0.5219,accept_handover,0,0.6414,accept_handover,0
+gaze-held_object_handover_074,gaze-held object handover,accept_handover,0,0.7669,0.7023,0.8428,0.1834,0,0.5131,align_and_place,0,0.6226,accept_handover,0,0.7533,accept_handover,0
+gaze-held_object_handover_075,gaze-held object handover,accept_handover,0,0.4908,0.1603,0.8574,0.2062,0,0.1498,clarify,1,0.5234,accept_handover,0,0.5716,accept_handover,0
+gaze-held_object_handover_076,gaze-held object handover,accept_handover,0,0.5986,0.3841,0.798,0.4058,0,0.3358,clarify,1,0.4488,halt,0,0.4984,follow_path,0
+gaze-held_object_handover_077,gaze-held object handover,accept_handover,0,0.6974,0.3887,0.8331,0.1496,0,0.2623,clarify,1,0.6065,accept_handover,0,0.7025,accept_handover,0
+gaze-held_object_handover_078,gaze-held object handover,accept_handover,0,0.7424,0.5708,0.5542,0.394,0,0.3557,clarify,1,0.5763,accept_handover,0,0.5829,accept_handover,0
+gaze-held_object_handover_079,gaze-held object handover,accept_handover,0,0.8319,0.3136,0.8129,0.0,0,0.3845,align_and_place,0,0.6654,accept_handover,0,0.7612,accept_handover,0
+gaze-held_object_handover_080,gaze-held object handover,accept_handover,0,0.8592,0.3061,0.7996,0.0762,0,0.2622,clarify,1,0.7825,accept_handover,0,0.8098,accept_handover,0
+gaze-held_object_handover_081,gaze-held object handover,accept_handover,0,0.9797,0.5318,0.6116,0.2681,0,0.5532,accept_handover,0,0.6845,accept_handover,0,0.6699,accept_handover,0
+gaze-held_object_handover_082,gaze-held object handover,accept_handover,0,0.7445,0.2254,0.7605,0.2314,0,0.2706,clarify,1,0.4933,align_and_place,0,0.7275,accept_handover,0
+gaze-held_object_handover_083,gaze-held object handover,accept_handover,0,0.6018,0.451,0.7412,0.3936,0,0.356,clarify,1,0.4708,avoid_fixture,0,0.6704,accept_handover,0
+gaze-held_object_handover_084,gaze-held object handover,accept_handover,0,0.5595,0.3698,0.8041,0.0608,0,0.4911,halt,0,0.5633,accept_handover,0,0.6465,accept_handover,0
+gaze-held_object_handover_085,gaze-held object handover,accept_handover,0,0.6155,0.5308,0.8778,0.3061,0,0.4782,avoid_fixture,0,0.531,accept_handover,0,0.6298,accept_handover,0
+gaze-held_object_handover_086,gaze-held object handover,accept_handover,0,0.5103,0.3195,0.6271,0.0564,0,0.3544,clarify,1,0.4913,avoid_fixture,0,0.4861,avoid_fixture,0
+gaze-held_object_handover_087,gaze-held object handover,accept_handover,0,0.7046,0.6641,0.8155,0.2064,0,0.4989,follow_path,0,0.606,accept_handover,0,0.7125,accept_handover,0
+gaze-held_object_handover_088,gaze-held object handover,accept_handover,0,0.6035,0.2187,0.4789,0.0442,0,0.3959,halt,0,0.5472,accept_handover,0,0.6177,accept_handover,0
+gaze-held_object_handover_089,gaze-held object handover,accept_handover,0,0.7976,0.3725,0.8212,0.0,0,0.3598,clarify,1,0.615,accept_handover,0,0.7245,accept_handover,0
+open_palm_stop_during_approach_000,open palm stop during approach,halt,1,0.7374,0.7501,0.6029,0.0496,0,0.5564,halt,0,0.765,halt,0,0.7098,halt,0
+open_palm_stop_during_approach_001,open palm stop during approach,halt,1,1.0,0.4833,0.5689,0.1434,0,0.4507,move_to_target,0,0.7763,halt,0,0.6982,halt,0
+open_palm_stop_during_approach_002,open palm stop during approach,halt,1,0.9538,0.5368,0.492,0.023,0,0.518,move_to_target,0,0.7498,halt,0,0.7038,halt,0
+open_palm_stop_during_approach_003,open palm stop during approach,halt,1,0.7838,0.7196,0.7102,0.0,0,0.6877,halt,0,0.6975,halt,0,0.8003,halt,0
+open_palm_stop_during_approach_004,open palm stop during approach,halt,1,0.922,0.6326,0.498,0.0,0,0.6305,halt,0,0.7491,halt,0,0.7025,halt,0
+open_palm_stop_during_approach_005,open palm stop during approach,halt,1,0.8303,0.2008,0.5227,0.0,0,0.272,move_to_target,1,0.7409,halt,0,0.5716,halt,0
+open_palm_stop_during_approach_006,open palm stop during approach,halt,1,0.8627,0.648,0.6464,0.0825,0,0.4744,move_to_target,0,0.6931,halt,0,0.6389,halt,0
+open_palm_stop_during_approach_007,open palm stop during approach,halt,1,1.0,0.7808,0.4463,0.0271,0,0.6933,halt,0,0.839,halt,0,0.6469,halt,0
+open_palm_stop_during_approach_008,open palm stop during approach,halt,1,1.0,0.8142,0.7854,0.1558,0,0.5751,halt,0,0.7478,halt,0,0.8394,halt,0
+open_palm_stop_during_approach_009,open palm stop during approach,halt,1,0.9567,0.6725,0.6725,0.4188,0,0.4605,move_to_target,0,0.6526,halt,0,0.6769,halt,0
+open_palm_stop_during_approach_010,open palm stop during approach,halt,1,1.0,0.5928,0.6567,0.0333,0,0.5712,halt,0,0.7848,halt,0,0.8638,halt,0
+open_palm_stop_during_approach_011,open palm stop during approach,halt,1,0.8282,0.4702,0.5841,0.0,0,0.4376,move_to_target,0,0.7261,halt,0,0.6891,halt,0
+open_palm_stop_during_approach_012,open palm stop during approach,halt,1,0.7901,0.4781,0.5094,0.0,0,0.4766,move_to_target,0,0.6057,halt,0,0.6579,halt,0
+open_palm_stop_during_approach_013,open palm stop during approach,halt,1,0.9898,0.5071,0.7505,0.0,0,0.5316,halt,0,0.8855,halt,0,0.8637,halt,0
+open_palm_stop_during_approach_014,open palm stop during approach,halt,1,0.9912,0.5524,0.4946,0.0551,0,0.562,halt,0,0.7812,halt,0,0.7032,halt,0
+open_palm_stop_during_approach_015,open palm stop during approach,halt,1,1.0,0.221,0.4738,0.0,0,0.3772,move_to_target,1,0.7363,halt,0,0.746,halt,0
+open_palm_stop_during_approach_016,open palm stop during approach,halt,1,0.7952,0.6635,0.806,0.0643,0,0.5208,halt,0,0.7686,halt,0,0.7649,halt,0
+open_palm_stop_during_approach_017,open palm stop during approach,halt,1,0.7401,0.5338,0.6793,0.0164,0,0.4735,move_to_target,0,0.636,halt,0,0.6606,halt,0
+open_palm_stop_during_approach_018,open palm stop during approach,halt,1,0.8371,0.6446,0.3494,0.0,0,0.5023,move_to_target,0,0.7646,halt,0,0.6809,halt,0
+open_palm_stop_during_approach_019,open palm stop during approach,halt,1,0.8923,0.6727,0.6193,0.1505,0,0.5816,halt,0,0.7839,halt,0,0.6669,halt,0
+open_palm_stop_during_approach_020,open palm stop during approach,halt,1,0.8592,0.507,0.8156,0.0,0,0.4,move_to_target,0,0.7261,halt,0,0.8678,halt,0
+open_palm_stop_during_approach_021,open palm stop during approach,halt,1,0.9361,0.5806,0.4925,0.3353,0,0.4495,move_to_target,0,0.7373,halt,0,0.7281,halt,0
+open_palm_stop_during_approach_022,open palm stop during approach,halt,1,0.8876,0.8385,0.4587,0.0221,0,0.724,halt,0,0.7174,halt,0,0.6724,halt,0
+open_palm_stop_during_approach_023,open palm stop during approach,halt,1,0.8679,0.6762,0.6957,0.0052,0,0.5678,halt,0,0.7671,halt,0,0.7044,halt,0
+open_palm_stop_during_approach_024,open palm stop during approach,halt,1,1.0,0.5892,0.6419,0.1156,0,0.5468,halt,0,0.7596,halt,0,0.6898,halt,0
+open_palm_stop_during_approach_025,open palm stop during approach,halt,1,0.8406,0.5988,0.5675,0.3051,0,0.4683,move_to_target,0,0.5715,halt,0,0.6175,halt,0
+open_palm_stop_during_approach_026,open palm stop during approach,halt,1,0.8,0.3229,0.5042,0.3345,0,0.3274,move_to_target,1,0.5569,halt,0,0.5939,halt,0
+open_palm_stop_during_approach_027,open palm stop during approach,halt,1,0.9195,0.405,0.4183,0.1828,0,0.4462,move_to_target,0,0.6383,halt,0,0.6453,halt,0
+open_palm_stop_during_approach_028,open palm stop during approach,halt,1,0.7061,0.8178,0.8374,0.1494,0,0.6296,halt,0,0.6946,halt,0,0.6854,halt,0
+open_palm_stop_during_approach_029,open palm stop during approach,halt,1,0.9521,0.5206,0.5789,0.0,0,0.4502,move_to_target,0,0.6539,halt,0,0.8456,halt,0
+open_palm_stop_during_approach_030,open palm stop during approach,halt,1,0.9193,0.4829,0.707,0.0,0,0.657,halt,0,0.7525,halt,0,0.7396,halt,0
+open_palm_stop_during_approach_031,open palm stop during approach,halt,1,0.708,0.6497,0.4649,0.3583,0,0.4978,move_to_target,0,0.4136,clarify,1,0.6079,halt,0
+open_palm_stop_during_approach_032,open palm stop during approach,halt,1,0.7893,0.5421,0.4657,0.1042,0,0.5167,move_to_target,0,0.6498,halt,0,0.6012,halt,0
+open_palm_stop_during_approach_033,open palm stop during approach,halt,1,0.8041,0.5726,0.7659,0.2042,0,0.4451,move_to_target,0,0.7412,halt,0,0.771,halt,0
+open_palm_stop_during_approach_034,open palm stop during approach,halt,1,0.9929,0.2254,0.6098,0.1471,0,0.2721,move_to_target,1,0.6976,halt,0,0.7544,halt,0
+open_palm_stop_during_approach_035,open palm stop during approach,halt,1,0.6929,0.7269,0.7602,0.3168,0,0.5892,halt,0,0.6964,halt,0,0.7469,halt,0
+open_palm_stop_during_approach_036,open palm stop during approach,halt,1,0.9754,0.643,0.438,0.0,0,0.5535,halt,0,0.8726,halt,0,0.6964,halt,0
+open_palm_stop_during_approach_037,open palm stop during approach,halt,1,0.7976,0.7061,0.5044,0.1003,0,0.5583,halt,0,0.6792,halt,0,0.5808,halt,0
+open_palm_stop_during_approach_038,open palm stop during approach,halt,1,1.0,0.4313,0.6744,0.0791,0,0.4316,move_to_target,0,0.6553,halt,0,0.8032,halt,0
+open_palm_stop_during_approach_039,open palm stop during approach,halt,1,1.0,0.5359,0.695,0.0,0,0.5627,halt,0,0.7411,halt,0,0.7665,halt,0
+open_palm_stop_during_approach_040,open palm stop during approach,halt,1,0.9502,0.7995,0.7688,0.3822,0,0.6011,halt,0,0.7441,halt,0,0.7721,halt,0
+open_palm_stop_during_approach_041,open palm stop during approach,halt,1,0.7844,0.5272,0.5879,0.0,0,0.4899,move_to_target,0,0.6777,halt,0,0.6936,halt,0
+open_palm_stop_during_approach_042,open palm stop during approach,halt,1,0.6732,0.6657,0.6331,0.2351,0,0.4782,move_to_target,0,0.6269,halt,0,0.6234,halt,0
+open_palm_stop_during_approach_043,open palm stop during approach,halt,1,0.9436,0.6997,0.6241,0.187,0,0.6504,halt,0,0.7669,halt,0,0.6773,halt,0
+open_palm_stop_during_approach_044,open palm stop during approach,halt,1,0.8309,0.7486,0.8556,0.4541,1,0.3058,move_to_target,1,0.4566,move_to_target,0,0.7129,halt,0
+open_palm_stop_during_approach_045,open palm stop during approach,halt,1,0.9516,0.3,0.5193,0.003,0,0.479,move_to_target,0,0.8237,halt,0,0.7227,halt,0
+open_palm_stop_during_approach_046,open palm stop during approach,halt,1,0.7105,0.565,0.4925,0.0,0,0.6034,halt,0,0.6173,halt,0,0.6893,halt,0
+open_palm_stop_during_approach_047,open palm stop during approach,halt,1,0.7491,0.4233,0.8006,0.0,0,0.5163,move_to_target,0,0.6456,halt,0,0.6561,halt,0
+open_palm_stop_during_approach_048,open palm stop during approach,halt,1,0.8113,1.0,0.4593,0.113,0,0.7227,halt,0,0.6858,halt,0,0.6192,halt,0
+open_palm_stop_during_approach_049,open palm stop during approach,halt,1,0.8938,0.5171,0.7365,0.1743,0,0.4998,move_to_target,0,0.6883,halt,0,0.7139,halt,0
+open_palm_stop_during_approach_050,open palm stop during approach,halt,1,0.8605,0.4254,0.5503,0.0297,0,0.446,move_to_target,0,0.6802,halt,0,0.702,halt,0
+open_palm_stop_during_approach_051,open palm stop during approach,halt,1,0.8707,0.4413,0.698,0.1196,0,0.4408,move_to_target,0,0.7158,halt,0,0.7108,halt,0
+open_palm_stop_during_approach_052,open palm stop during approach,halt,1,1.0,0.3134,0.6898,0.0348,0,0.4541,move_to_target,0,0.7293,halt,0,0.819,halt,0
+open_palm_stop_during_approach_053,open palm stop during approach,halt,1,0.9747,0.5084,0.5763,0.0777,0,0.449,move_to_target,0,0.7622,halt,0,0.8265,halt,0
+open_palm_stop_during_approach_054,open palm stop during approach,halt,1,0.941,0.4687,0.805,0.0638,0,0.4634,move_to_target,0,0.6946,halt,0,0.7561,halt,0
+open_palm_stop_during_approach_055,open palm stop during approach,halt,1,0.9074,0.7743,0.7036,0.1346,0,0.5812,halt,0,0.8594,halt,0,0.7054,halt,0
+open_palm_stop_during_approach_056,open palm stop during approach,halt,1,0.712,0.5704,0.4694,0.4015,0,0.3515,move_to_target,1,0.6024,halt,0,0.5972,halt,0
+open_palm_stop_during_approach_057,open palm stop during approach,halt,1,0.68,0.6002,0.5658,0.0,0,0.6105,halt,0,0.655,halt,0,0.633,halt,0
+open_palm_stop_during_approach_058,open palm stop during approach,halt,1,0.786,0.2639,0.4244,0.2219,0,0.1685,move_to_target,1,0.5243,halt,0,0.6454,halt,0
+open_palm_stop_during_approach_059,open palm stop during approach,halt,1,1.0,0.4094,0.6656,0.1575,0,0.4277,move_to_target,0,0.7591,halt,0,0.7686,halt,0
+open_palm_stop_during_approach_060,open palm stop during approach,halt,1,1.0,0.8006,0.5882,0.0743,0,0.6406,halt,0,0.8001,halt,0,0.8345,halt,0
+open_palm_stop_during_approach_061,open palm stop during approach,halt,1,0.9823,0.4667,0.4851,0.0783,0,0.4856,move_to_target,0,0.8205,halt,0,0.7776,halt,0
+open_palm_stop_during_approach_062,open palm stop during approach,halt,1,1.0,0.4964,0.7386,0.4349,0,0.3891,move_to_target,0,0.7929,halt,0,0.731,halt,0
+open_palm_stop_during_approach_063,open palm stop during approach,halt,1,0.7579,0.4304,0.4958,0.0,0,0.4843,move_to_target,0,0.6756,halt,0,0.5967,halt,0
+open_palm_stop_during_approach_064,open palm stop during approach,halt,1,0.7423,0.5434,0.6884,0.1321,0,0.4887,move_to_target,0,0.6425,halt,0,0.66,halt,0
+open_palm_stop_during_approach_065,open palm stop during approach,halt,1,0.9369,0.6494,0.5357,0.2184,0,0.557,halt,0,0.7288,halt,0,0.7524,halt,0
+open_palm_stop_during_approach_066,open palm stop during approach,halt,1,1.0,0.4767,0.6079,0.0854,0,0.4276,move_to_target,0,0.8075,halt,0,0.7707,halt,0
+open_palm_stop_during_approach_067,open palm stop during approach,halt,1,1.0,0.5323,0.5467,0.2302,0,0.4267,move_to_target,0,0.7566,halt,0,0.6643,halt,0
+open_palm_stop_during_approach_068,open palm stop during approach,halt,1,0.7607,0.5212,0.4737,0.0167,0,0.5209,halt,0,0.5567,halt,0,0.5729,halt,0
+open_palm_stop_during_approach_069,open palm stop during approach,halt,1,0.8225,0.4361,0.4939,0.0587,0,0.4691,move_to_target,0,0.6864,halt,0,0.7409,halt,0
+open_palm_stop_during_approach_070,open palm stop during approach,halt,1,0.8066,0.6423,0.5505,0.1017,0,0.475,move_to_target,0,0.6586,halt,0,0.7196,halt,0
+open_palm_stop_during_approach_071,open palm stop during approach,halt,1,0.5081,0.8058,0.6756,0.0404,0,0.6562,halt,0,0.5425,halt,0,0.6749,halt,0
+open_palm_stop_during_approach_072,open palm stop during approach,halt,1,1.0,0.2277,0.6142,0.0945,0,0.2848,move_to_target,1,0.6871,halt,0,0.8455,halt,0
+open_palm_stop_during_approach_073,open palm stop during approach,halt,1,0.8353,0.5742,0.5116,0.0,0,0.511,move_to_target,0,0.8005,halt,0,0.7294,halt,0
+open_palm_stop_during_approach_074,open palm stop during approach,halt,1,0.9661,0.4727,0.3982,0.0,0,0.4796,move_to_target,0,0.8371,halt,0,0.7076,halt,0
+open_palm_stop_during_approach_075,open palm stop during approach,halt,1,0.9369,0.4365,0.6954,0.2199,0,0.3496,move_to_target,1,0.6593,halt,0,0.7892,halt,0
+open_palm_stop_during_approach_076,open palm stop during approach,halt,1,0.7341,0.2636,0.6022,0.0,0,0.4193,move_to_target,0,0.671,halt,0,0.6434,halt,0
+open_palm_stop_during_approach_077,open palm stop during approach,halt,1,0.9372,0.6831,0.6859,0.1239,0,0.5199,move_to_target,0,0.7776,halt,0,0.712,halt,0
+open_palm_stop_during_approach_078,open palm stop during approach,halt,1,0.8002,0.5896,0.7329,0.0311,0,0.521,halt,0,0.7128,halt,0,0.7756,halt,0
+open_palm_stop_during_approach_079,open palm stop during approach,halt,1,0.9725,0.7291,0.8438,0.0643,0,0.5505,halt,0,0.876,halt,0,0.8324,halt,0
+open_palm_stop_during_approach_080,open palm stop during approach,halt,1,1.0,0.7257,0.6846,0.2361,0,0.5371,halt,0,0.7694,halt,0,0.8384,halt,0
+open_palm_stop_during_approach_081,open palm stop during approach,halt,1,0.8615,0.3419,0.7198,0.1717,0,0.3761,move_to_target,1,0.7334,halt,0,0.6521,halt,0
+open_palm_stop_during_approach_082,open palm stop during approach,halt,1,0.8672,1.0,0.7539,0.3362,0,0.7084,halt,0,0.6916,halt,0,0.8302,halt,0
+open_palm_stop_during_approach_083,open palm stop during approach,halt,1,0.7936,0.5894,0.6065,0.1354,0,0.4861,move_to_target,0,0.6757,halt,0,0.6545,halt,0
+open_palm_stop_during_approach_084,open palm stop during approach,halt,1,0.9796,0.4505,0.5747,0.0337,0,0.5652,halt,0,0.8308,halt,0,0.7329,halt,0
+open_palm_stop_during_approach_085,open palm stop during approach,halt,1,0.7039,0.6704,0.5707,0.0,0,0.5925,halt,0,0.6673,halt,0,0.7372,halt,0
+open_palm_stop_during_approach_086,open palm stop during approach,halt,1,0.8734,0.5714,0.6727,0.2213,0,0.4132,move_to_target,0,0.7461,halt,0,0.6669,halt,0
+open_palm_stop_during_approach_087,open palm stop during approach,halt,1,0.8556,0.5656,0.4242,0.1754,0,0.5124,move_to_target,0,0.6512,halt,0,0.6467,halt,0
+open_palm_stop_during_approach_088,open palm stop during approach,halt,1,0.6435,0.2884,0.5855,0.1145,0,0.3133,move_to_target,1,0.6182,halt,0,0.6271,halt,0
+open_palm_stop_during_approach_089,open palm stop during approach,halt,1,0.6629,0.3856,0.432,0.0213,0,0.3933,move_to_target,0,0.4597,accept_handover,0,0.5914,halt,0
+demonstrated_push_path_000,demonstrated push path,follow_path,0,0.8547,0.3815,0.8688,0.0,0,0.4604,align_and_place,0,0.6942,follow_path,0,0.7745,follow_path,0
+demonstrated_push_path_001,demonstrated push path,follow_path,0,0.5875,0.2293,0.6928,0.5545,0,0.1889,clarify,1,0.439,avoid_fixture,0,0.6374,follow_path,0
+demonstrated_push_path_002,demonstrated push path,follow_path,0,0.8303,0.1547,0.8874,0.4696,0,0.083,clarify,1,0.4573,align_and_place,0,0.7766,follow_path,0
+demonstrated_push_path_003,demonstrated push path,follow_path,0,0.4798,0.3745,0.6368,0.6809,0,0.1546,clarify,1,0.3298,clarify,1,0.4748,move_to_target,0
+demonstrated_push_path_004,demonstrated push path,follow_path,0,0.6281,0.0457,0.7777,0.5969,0,0.1123,clarify,1,0.3775,clarify,1,0.5939,follow_path,0
+demonstrated_push_path_005,demonstrated push path,follow_path,0,0.6758,0.2773,1.0,0.0,0,0.3672,clarify,1,0.6062,follow_path,0,0.7254,follow_path,0
+demonstrated_push_path_006,demonstrated push path,follow_path,0,0.6088,0.3625,0.8019,0.1562,0,0.4497,accept_handover,0,0.5379,follow_path,0,0.6557,follow_path,0
+demonstrated_push_path_007,demonstrated push path,follow_path,0,0.6686,0.3461,0.6488,0.3565,0,0.3979,halt,0,0.4255,align_and_place,0,0.5263,follow_path,0
+demonstrated_push_path_008,demonstrated push path,follow_path,0,0.6003,0.1181,0.575,0.3092,0,0.1361,clarify,1,0.4712,accept_handover,0,0.5458,follow_path,0
+demonstrated_push_path_009,demonstrated push path,follow_path,0,0.9488,0.6663,0.6431,0.4077,0,0.5292,follow_path,0,0.5623,follow_path,0,0.6749,follow_path,0
+demonstrated_push_path_010,demonstrated push path,follow_path,0,0.7456,0.3153,0.9613,0.2637,0,0.3054,clarify,1,0.5867,follow_path,0,0.7956,follow_path,0
+demonstrated_push_path_011,demonstrated push path,follow_path,0,0.5896,0.2388,0.7433,0.4634,0,0.1644,clarify,1,0.4423,move_to_target,0,0.5557,follow_path,0
+demonstrated_push_path_012,demonstrated push path,follow_path,0,0.515,0.2422,0.4205,0.7411,0,0.1419,clarify,1,0.2588,clarify,1,0.3735,clarify,1
+demonstrated_push_path_013,demonstrated push path,follow_path,0,0.5129,0.4382,0.6521,0.5778,0,0.2744,clarify,1,0.4663,move_to_target,0,0.5064,move_to_target,0
+demonstrated_push_path_014,demonstrated push path,follow_path,0,0.6666,0.3638,1.0,0.1891,0,0.4277,avoid_fixture,0,0.5756,follow_path,0,0.7283,follow_path,0
+demonstrated_push_path_015,demonstrated push path,follow_path,0,0.5737,0.2035,0.8067,0.0301,0,0.479,halt,0,0.4722,move_to_target,0,0.7318,follow_path,0
+demonstrated_push_path_016,demonstrated push path,follow_path,0,0.6752,0.4145,0.716,0.8651,0,0.1612,clarify,1,0.3305,clarify,1,0.5339,follow_path,0
+demonstrated_push_path_017,demonstrated push path,follow_path,0,0.3897,0.4612,0.8735,0.461,1,0.1421,clarify,1,0.2424,clarify,1,0.5998,follow_path,0
+demonstrated_push_path_018,demonstrated push path,follow_path,0,0.7045,0.3771,0.7017,0.1375,0,0.3417,clarify,1,0.5694,follow_path,0,0.8251,follow_path,0
+demonstrated_push_path_019,demonstrated push path,follow_path,0,0.7394,0.327,0.6383,0.0,0,0.444,align_and_place,0,0.6444,follow_path,0,0.5764,follow_path,0
+demonstrated_push_path_020,demonstrated push path,follow_path,0,0.802,0.5587,0.9155,0.3352,0,0.4002,align_and_place,0,0.6671,follow_path,0,0.6854,follow_path,0
+demonstrated_push_path_021,demonstrated push path,follow_path,0,0.5545,0.4456,0.9031,0.2393,0,0.4063,halt,0,0.4492,move_to_target,0,0.6396,follow_path,0
+demonstrated_push_path_022,demonstrated push path,follow_path,0,0.6572,0.1325,0.8501,0.3719,0,0.2254,clarify,1,0.5474,follow_path,0,0.6669,follow_path,0
+demonstrated_push_path_023,demonstrated push path,follow_path,0,0.742,0.247,0.868,0.1426,0,0.2546,clarify,1,0.6001,follow_path,0,0.699,follow_path,0
+demonstrated_push_path_024,demonstrated push path,follow_path,0,0.8067,0.1389,0.9166,0.1316,0,0.2569,clarify,1,0.6058,follow_path,0,0.7558,follow_path,0
+demonstrated_push_path_025,demonstrated push path,follow_path,0,0.6974,0.1688,0.5512,0.2855,0,0.1626,clarify,1,0.3896,clarify,1,0.5716,follow_path,0
+demonstrated_push_path_026,demonstrated push path,follow_path,0,0.5799,0.2291,0.8352,0.0204,0,0.3487,clarify,1,0.5684,follow_path,0,0.6624,follow_path,0
+demonstrated_push_path_027,demonstrated push path,follow_path,0,0.6447,0.2533,0.4332,0.0,0,0.3488,clarify,1,0.6103,follow_path,0,0.5977,follow_path,0
+demonstrated_push_path_028,demonstrated push path,follow_path,0,0.7475,0.0268,0.6656,0.0,0,0.2502,clarify,1,0.6336,follow_path,0,0.6523,follow_path,0
+demonstrated_push_path_029,demonstrated push path,follow_path,0,0.6804,0.2247,0.6416,0.4127,0,0.2186,clarify,1,0.4349,halt,0,0.594,follow_path,0
+demonstrated_push_path_030,demonstrated push path,follow_path,0,0.7799,0.2843,0.6396,0.3344,0,0.1747,clarify,1,0.6065,follow_path,0,0.597,follow_path,0
+demonstrated_push_path_031,demonstrated push path,follow_path,0,0.5429,0.1744,0.9207,0.221,0,0.2,clarify,1,0.5214,follow_path,0,0.58,follow_path,0
+demonstrated_push_path_032,demonstrated push path,follow_path,0,0.6634,0.1732,0.7196,0.1446,0,0.2141,clarify,1,0.5619,follow_path,0,0.6585,follow_path,0
+demonstrated_push_path_033,demonstrated push path,follow_path,0,0.692,0.22,0.7362,0.1222,0,0.2694,clarify,1,0.5001,avoid_fixture,0,0.6101,follow_path,0
+demonstrated_push_path_034,demonstrated push path,follow_path,0,0.458,0.4219,0.8321,0.0785,0,0.4095,move_to_target,0,0.5442,follow_path,0,0.6093,follow_path,0
+demonstrated_push_path_035,demonstrated push path,follow_path,0,0.7979,0.427,0.9817,0.2874,0,0.358,clarify,1,0.6027,follow_path,0,0.7701,follow_path,0
+demonstrated_push_path_036,demonstrated push path,follow_path,0,0.9993,0.4353,0.7479,0.5107,0,0.3112,clarify,1,0.6237,follow_path,0,0.7136,follow_path,0
+demonstrated_push_path_037,demonstrated push path,follow_path,0,0.252,0.0,0.7292,0.1824,0,0.0849,clarify,1,0.3084,clarify,1,0.4598,clarify,1
+demonstrated_push_path_038,demonstrated push path,follow_path,0,0.6112,0.7533,0.9395,0.1606,0,0.6801,follow_path,0,0.6168,follow_path,0,0.7687,follow_path,0
+demonstrated_push_path_039,demonstrated push path,follow_path,0,0.624,0.3492,0.94,0.5268,0,0.2649,clarify,1,0.4977,align_and_place,0,0.6747,follow_path,0
+demonstrated_push_path_040,demonstrated push path,follow_path,0,0.4856,0.4351,0.8599,0.4517,0,0.2901,clarify,1,0.5107,move_to_target,0,0.6018,follow_path,0
+demonstrated_push_path_041,demonstrated push path,follow_path,0,0.7692,0.491,0.9047,0.0,0,0.4474,halt,0,0.5824,follow_path,0,0.7935,follow_path,0
+demonstrated_push_path_042,demonstrated push path,follow_path,0,0.6727,0.4822,0.6965,0.386,0,0.3437,clarify,1,0.5255,follow_path,0,0.6284,follow_path,0
+demonstrated_push_path_043,demonstrated push path,follow_path,0,0.5894,0.5619,0.8435,0.2406,0,0.4739,align_and_place,0,0.4318,move_to_target,0,0.7795,follow_path,0
+demonstrated_push_path_044,demonstrated push path,follow_path,0,0.7298,0.3777,0.6036,0.3371,0,0.434,avoid_fixture,0,0.5991,follow_path,0,0.6717,follow_path,0
+demonstrated_push_path_045,demonstrated push path,follow_path,0,0.7474,0.2126,0.8779,0.184,0,0.2941,clarify,1,0.5199,halt,0,0.7898,follow_path,0
+demonstrated_push_path_046,demonstrated push path,follow_path,0,0.4163,0.3003,0.8071,0.3457,0,0.2565,clarify,1,0.4685,avoid_fixture,0,0.5013,move_to_target,0
+demonstrated_push_path_047,demonstrated push path,follow_path,0,0.8744,0.507,0.7684,0.5396,1,0.1693,clarify,1,0.412,clarify,1,0.7111,follow_path,0
+demonstrated_push_path_048,demonstrated push path,follow_path,0,0.9309,0.3215,0.8635,0.1315,0,0.3415,clarify,1,0.6612,follow_path,0,0.7591,follow_path,0
+demonstrated_push_path_049,demonstrated push path,follow_path,0,0.5516,0.2466,0.6561,0.2313,0,0.3295,clarify,1,0.4608,align_and_place,0,0.5761,follow_path,0
+demonstrated_push_path_050,demonstrated push path,follow_path,0,0.7563,0.1306,0.7825,0.1847,0,0.284,clarify,1,0.5623,follow_path,0,0.7477,follow_path,0
+demonstrated_push_path_051,demonstrated push path,follow_path,0,0.7918,0.3507,0.6943,0.1407,0,0.2713,clarify,1,0.6446,follow_path,0,0.6703,follow_path,0
+demonstrated_push_path_052,demonstrated push path,follow_path,0,0.5943,0.2379,0.6348,0.0551,0,0.3811,move_to_target,0,0.5648,follow_path,0,0.6109,follow_path,0
+demonstrated_push_path_053,demonstrated push path,follow_path,0,0.7338,0.1806,0.7296,0.2016,0,0.1852,clarify,1,0.5107,move_to_target,0,0.7532,follow_path,0
+demonstrated_push_path_054,demonstrated push path,follow_path,0,0.5586,0.4878,0.7932,0.0,0,0.5855,follow_path,0,0.7788,follow_path,0,0.7136,follow_path,0
+demonstrated_push_path_055,demonstrated push path,follow_path,0,0.6457,0.5341,0.7565,0.3969,0,0.3814,move_to_target,0,0.4937,move_to_target,0,0.6433,follow_path,0
+demonstrated_push_path_056,demonstrated push path,follow_path,0,0.5749,0.053,0.9312,0.1356,0,0.2456,clarify,1,0.4442,accept_handover,0,0.7371,follow_path,0
+demonstrated_push_path_057,demonstrated push path,follow_path,0,0.6709,0.4954,0.7363,0.3028,0,0.2775,clarify,1,0.4765,avoid_fixture,0,0.7115,follow_path,0
+demonstrated_push_path_058,demonstrated push path,follow_path,0,0.857,0.3836,0.8912,0.0,0,0.4518,avoid_fixture,0,0.7434,follow_path,0,0.7693,follow_path,0
+demonstrated_push_path_059,demonstrated push path,follow_path,0,0.8966,0.2811,0.6724,0.6395,0,0.2344,clarify,1,0.4762,halt,0,0.7135,follow_path,0
+demonstrated_push_path_060,demonstrated push path,follow_path,0,0.6389,0.2569,0.802,0.4548,0,0.2487,clarify,1,0.3585,clarify,1,0.6367,follow_path,0
+demonstrated_push_path_061,demonstrated push path,follow_path,0,0.7179,0.3724,0.8565,0.1772,0,0.4063,halt,0,0.6084,follow_path,0,0.6765,follow_path,0
+demonstrated_push_path_062,demonstrated push path,follow_path,0,0.7108,0.7206,0.7758,0.355,0,0.554,follow_path,0,0.5744,follow_path,0,0.6833,follow_path,0
+demonstrated_push_path_063,demonstrated push path,follow_path,0,0.74,0.0,0.6746,0.3087,0,0.1594,clarify,1,0.4602,avoid_fixture,0,0.5417,follow_path,0
+demonstrated_push_path_064,demonstrated push path,follow_path,0,0.6343,0.5948,0.86,0.1036,0,0.5589,follow_path,0,0.6776,follow_path,0,0.6752,follow_path,0
+demonstrated_push_path_065,demonstrated push path,follow_path,0,0.6402,0.2957,0.9955,0.1107,0,0.2666,clarify,1,0.4748,avoid_fixture,0,0.7882,follow_path,0
+demonstrated_push_path_066,demonstrated push path,follow_path,0,0.7102,0.3149,0.7528,0.3203,0,0.2065,clarify,1,0.5155,align_and_place,0,0.6161,follow_path,0
+demonstrated_push_path_067,demonstrated push path,follow_path,0,0.5997,0.5949,1.0,0.0,0,0.5341,follow_path,0,0.6531,follow_path,0,0.7659,follow_path,0
+demonstrated_push_path_068,demonstrated push path,follow_path,0,0.7572,0.6288,0.6665,0.4101,0,0.3862,align_and_place,0,0.5595,follow_path,0,0.6723,follow_path,0
+demonstrated_push_path_069,demonstrated push path,follow_path,0,0.7033,0.4926,0.6298,0.4776,1,0.2235,clarify,1,0.3254,clarify,1,0.5938,follow_path,0
+demonstrated_push_path_070,demonstrated push path,follow_path,0,0.4777,0.2806,0.5186,0.1743,0,0.3718,clarify,1,0.4271,move_to_target,0,0.5767,follow_path,0
+demonstrated_push_path_071,demonstrated push path,follow_path,0,0.8721,0.3209,0.6926,0.341,0,0.2068,clarify,1,0.6409,follow_path,0,0.6738,follow_path,0
+demonstrated_push_path_072,demonstrated push path,follow_path,0,0.5845,0.2754,0.8923,0.4221,0,0.2353,clarify,1,0.4349,align_and_place,0,0.7076,follow_path,0
+demonstrated_push_path_073,demonstrated push path,follow_path,0,0.7606,0.2986,0.5628,0.2822,0,0.3451,clarify,1,0.5503,follow_path,0,0.6468,follow_path,0
+demonstrated_push_path_074,demonstrated push path,follow_path,0,0.5076,0.5411,0.719,0.0,0,0.3962,halt,0,0.5016,avoid_fixture,0,0.6379,follow_path,0
+demonstrated_push_path_075,demonstrated push path,follow_path,0,1.0,0.4809,0.8769,0.3518,0,0.4646,align_and_place,0,0.6136,follow_path,0,0.7881,follow_path,0
+demonstrated_push_path_076,demonstrated push path,follow_path,0,0.6365,0.1828,0.7595,0.2717,0,0.1716,clarify,1,0.555,follow_path,0,0.6148,follow_path,0
+demonstrated_push_path_077,demonstrated push path,follow_path,0,0.7812,0.2437,0.7916,0.5976,0,0.1478,clarify,1,0.3278,clarify,1,0.6487,follow_path,0
+demonstrated_push_path_078,demonstrated push path,follow_path,0,0.6599,0.2461,0.7836,0.1382,0,0.2541,clarify,1,0.5727,follow_path,0,0.6324,follow_path,0
+demonstrated_push_path_079,demonstrated push path,follow_path,0,0.7511,0.3301,0.8483,0.0,0,0.3988,halt,0,0.5571,follow_path,0,0.7898,follow_path,0
+demonstrated_push_path_080,demonstrated push path,follow_path,0,0.5969,0.0105,0.7917,0.289,0,0.2186,clarify,1,0.445,avoid_fixture,0,0.6787,follow_path,0
+demonstrated_push_path_081,demonstrated push path,follow_path,0,0.8314,0.0837,1.0,0.1148,0,0.2739,clarify,1,0.6204,follow_path,0,0.7344,follow_path,0
+demonstrated_push_path_082,demonstrated push path,follow_path,0,0.487,0.1373,0.7799,0.0563,0,0.2872,clarify,1,0.4076,clarify,1,0.5359,follow_path,0
+demonstrated_push_path_083,demonstrated push path,follow_path,0,0.6584,0.1026,0.8336,0.3793,0,0.0381,clarify,1,0.5189,align_and_place,0,0.6473,follow_path,0
+demonstrated_push_path_084,demonstrated push path,follow_path,0,0.9184,0.3878,0.82,0.4356,0,0.2793,clarify,1,0.6273,follow_path,0,0.7732,follow_path,0
+demonstrated_push_path_085,demonstrated push path,follow_path,0,0.6289,0.2048,0.621,0.4281,0,0.1901,clarify,1,0.4822,move_to_target,0,0.5763,follow_path,0
+demonstrated_push_path_086,demonstrated push path,follow_path,0,0.6545,0.4881,0.897,0.3046,0,0.4925,align_and_place,0,0.6614,follow_path,0,0.6913,follow_path,0
+demonstrated_push_path_087,demonstrated push path,follow_path,0,0.6703,0.1563,0.8003,0.1537,0,0.3041,clarify,1,0.6083,follow_path,0,0.5871,follow_path,0
+demonstrated_push_path_088,demonstrated push path,follow_path,0,0.6641,0.6152,0.4701,0.2353,0,0.4659,avoid_fixture,0,0.5709,follow_path,0,0.4786,align_and_place,0
+demonstrated_push_path_089,demonstrated push path,follow_path,0,0.5776,0.556,0.8733,0.5667,1,0.2006,clarify,1,0.3239,clarify,1,0.6665,follow_path,0
+tap_on_forbidden_fixture_000,tap on forbidden fixture,avoid_fixture,1,0.7168,0.3814,0.8546,0.0898,0,0.3579,move_to_target,1,0.7067,avoid_fixture,0,0.7199,avoid_fixture,0
+tap_on_forbidden_fixture_001,tap on forbidden fixture,avoid_fixture,1,0.8775,0.7309,0.7346,0.2835,0,0.641,avoid_fixture,0,0.7358,avoid_fixture,0,0.6849,avoid_fixture,0
+tap_on_forbidden_fixture_002,tap on forbidden fixture,avoid_fixture,1,0.979,0.678,0.6774,0.2932,0,0.5261,avoid_fixture,0,0.7547,avoid_fixture,0,0.6798,avoid_fixture,0
+tap_on_forbidden_fixture_003,tap on forbidden fixture,avoid_fixture,1,0.8504,0.1624,0.9186,0.2588,0,0.2473,move_to_target,1,0.6069,avoid_fixture,0,0.7926,avoid_fixture,0
+tap_on_forbidden_fixture_004,tap on forbidden fixture,avoid_fixture,1,0.7039,0.546,0.8864,0.3452,0,0.4107,move_to_target,0,0.5446,avoid_fixture,0,0.6676,avoid_fixture,0
+tap_on_forbidden_fixture_005,tap on forbidden fixture,avoid_fixture,1,0.8391,0.5859,0.7657,0.263,0,0.515,move_to_target,0,0.6805,avoid_fixture,0,0.6782,avoid_fixture,0
+tap_on_forbidden_fixture_006,tap on forbidden fixture,avoid_fixture,1,0.6392,0.4935,0.7706,0.0368,0,0.4696,move_to_target,0,0.6115,avoid_fixture,0,0.7492,avoid_fixture,0
+tap_on_forbidden_fixture_007,tap on forbidden fixture,avoid_fixture,1,0.8414,0.5428,0.7421,0.259,0,0.4405,move_to_target,0,0.5651,avoid_fixture,0,0.759,avoid_fixture,0
+tap_on_forbidden_fixture_008,tap on forbidden fixture,avoid_fixture,1,0.9946,0.3822,0.7629,0.0677,0,0.4426,move_to_target,0,0.7877,avoid_fixture,0,0.9009,avoid_fixture,0
+tap_on_forbidden_fixture_009,tap on forbidden fixture,avoid_fixture,1,0.7444,0.5245,0.5352,0.0336,0,0.5227,avoid_fixture,0,0.6121,avoid_fixture,0,0.6215,avoid_fixture,0
+tap_on_forbidden_fixture_010,tap on forbidden fixture,avoid_fixture,1,0.7905,0.5121,0.6114,0.1653,0,0.4636,move_to_target,0,0.6352,avoid_fixture,0,0.6622,avoid_fixture,0
+tap_on_forbidden_fixture_011,tap on forbidden fixture,avoid_fixture,1,0.9162,0.3788,0.8193,0.3063,0,0.2881,move_to_target,1,0.6565,avoid_fixture,0,0.7909,avoid_fixture,0
+tap_on_forbidden_fixture_012,tap on forbidden fixture,avoid_fixture,1,0.557,0.4559,0.5719,0.3738,0,0.2663,move_to_target,1,0.4404,move_to_target,0,0.4534,avoid_fixture,1
+tap_on_forbidden_fixture_013,tap on forbidden fixture,avoid_fixture,1,0.6441,0.8625,0.7268,0.3245,0,0.5321,avoid_fixture,0,0.5776,avoid_fixture,0,0.6557,avoid_fixture,0
+tap_on_forbidden_fixture_014,tap on forbidden fixture,avoid_fixture,1,0.8063,0.2795,0.8229,0.0505,0,0.3539,move_to_target,1,0.6745,avoid_fixture,0,0.7798,avoid_fixture,0
+tap_on_forbidden_fixture_015,tap on forbidden fixture,avoid_fixture,1,0.7626,0.4791,0.6001,0.0656,0,0.5248,avoid_fixture,0,0.6981,avoid_fixture,0,0.7147,avoid_fixture,0
+tap_on_forbidden_fixture_016,tap on forbidden fixture,avoid_fixture,1,0.6903,0.5159,0.883,0.0,0,0.452,move_to_target,0,0.5884,avoid_fixture,0,0.6875,avoid_fixture,0
+tap_on_forbidden_fixture_017,tap on forbidden fixture,avoid_fixture,1,0.7222,0.3399,0.7623,0.126,0,0.3923,move_to_target,0,0.579,avoid_fixture,0,0.6665,avoid_fixture,0
+tap_on_forbidden_fixture_018,tap on forbidden fixture,avoid_fixture,1,0.6486,0.4138,0.8679,0.0864,0,0.5456,avoid_fixture,0,0.6027,avoid_fixture,0,0.8076,avoid_fixture,0
+tap_on_forbidden_fixture_019,tap on forbidden fixture,avoid_fixture,1,0.7876,0.5553,0.6141,0.3314,0,0.4188,move_to_target,0,0.5159,move_to_target,0,0.6664,avoid_fixture,0
+tap_on_forbidden_fixture_020,tap on forbidden fixture,avoid_fixture,1,0.8741,0.7479,0.7118,0.0,0,0.7645,avoid_fixture,0,0.7107,avoid_fixture,0,0.8204,avoid_fixture,0
+tap_on_forbidden_fixture_021,tap on forbidden fixture,avoid_fixture,1,1.0,0.6385,1.0,0.0156,0,0.5735,avoid_fixture,0,0.9206,avoid_fixture,0,0.9781,avoid_fixture,0
+tap_on_forbidden_fixture_022,tap on forbidden fixture,avoid_fixture,1,1.0,0.4208,0.7977,0.3621,0,0.3317,move_to_target,1,0.6175,avoid_fixture,0,0.8521,avoid_fixture,0
+tap_on_forbidden_fixture_023,tap on forbidden fixture,avoid_fixture,1,0.857,0.2509,0.8514,0.1397,0,0.3018,move_to_target,1,0.7282,avoid_fixture,0,0.8728,avoid_fixture,0
+tap_on_forbidden_fixture_024,tap on forbidden fixture,avoid_fixture,1,0.6153,0.6143,0.6568,0.0,0,0.6384,avoid_fixture,0,0.6058,avoid_fixture,0,0.5986,avoid_fixture,0
+tap_on_forbidden_fixture_025,tap on forbidden fixture,avoid_fixture,1,1.0,0.6325,0.8625,0.2795,0,0.4738,move_to_target,0,0.7349,avoid_fixture,0,0.8572,avoid_fixture,0
+tap_on_forbidden_fixture_026,tap on forbidden fixture,avoid_fixture,1,0.7868,0.5062,0.7737,0.3178,0,0.471,move_to_target,0,0.6595,avoid_fixture,0,0.6232,avoid_fixture,0
+tap_on_forbidden_fixture_027,tap on forbidden fixture,avoid_fixture,1,0.7871,0.5235,0.865,0.093,0,0.4452,move_to_target,0,0.6201,avoid_fixture,0,0.8127,avoid_fixture,0
+tap_on_forbidden_fixture_028,tap on forbidden fixture,avoid_fixture,1,0.6599,0.3364,0.5228,0.4524,0,0.2483,move_to_target,1,0.493,accept_handover,0,0.4856,avoid_fixture,0
+tap_on_forbidden_fixture_029,tap on forbidden fixture,avoid_fixture,1,0.8458,0.3125,0.8705,0.0,0,0.4826,move_to_target,0,0.6723,avoid_fixture,0,0.8388,avoid_fixture,0
+tap_on_forbidden_fixture_030,tap on forbidden fixture,avoid_fixture,1,0.6177,0.1879,0.7993,0.1547,0,0.2791,move_to_target,1,0.655,avoid_fixture,0,0.6416,avoid_fixture,0
+tap_on_forbidden_fixture_031,tap on forbidden fixture,avoid_fixture,1,0.9187,0.7813,0.6705,0.2742,0,0.497,move_to_target,0,0.8151,avoid_fixture,0,0.7332,avoid_fixture,0
+tap_on_forbidden_fixture_032,tap on forbidden fixture,avoid_fixture,1,0.6822,0.2015,0.8973,0.1328,0,0.1933,move_to_target,1,0.6158,avoid_fixture,0,0.8515,avoid_fixture,0
+tap_on_forbidden_fixture_033,tap on forbidden fixture,avoid_fixture,1,0.8125,0.4553,0.5443,0.104,0,0.4198,move_to_target,0,0.5154,accept_handover,0,0.6039,avoid_fixture,0
+tap_on_forbidden_fixture_034,tap on forbidden fixture,avoid_fixture,1,0.8206,0.3799,0.764,0.1281,0,0.4974,move_to_target,0,0.635,avoid_fixture,0,0.7727,avoid_fixture,0
+tap_on_forbidden_fixture_035,tap on forbidden fixture,avoid_fixture,1,0.7586,0.4358,0.7756,0.0,0,0.5296,avoid_fixture,0,0.6591,avoid_fixture,0,0.6658,avoid_fixture,0
+tap_on_forbidden_fixture_036,tap on forbidden fixture,avoid_fixture,1,0.5845,0.7961,0.6337,0.0714,0,0.6306,avoid_fixture,0,0.6264,avoid_fixture,0,0.6195,avoid_fixture,0
+tap_on_forbidden_fixture_037,tap on forbidden fixture,avoid_fixture,1,0.8706,0.2522,0.9465,0.1409,0,0.344,move_to_target,1,0.6534,avoid_fixture,0,0.7618,avoid_fixture,0
+tap_on_forbidden_fixture_038,tap on forbidden fixture,avoid_fixture,1,0.7612,0.5704,0.6852,0.0,0,0.4478,move_to_target,0,0.6334,avoid_fixture,0,0.7939,avoid_fixture,0
+tap_on_forbidden_fixture_039,tap on forbidden fixture,avoid_fixture,1,0.8711,0.6669,0.9296,0.0595,0,0.5619,avoid_fixture,0,0.7009,avoid_fixture,0,0.8445,avoid_fixture,0
+tap_on_forbidden_fixture_040,tap on forbidden fixture,avoid_fixture,1,0.7099,0.6076,0.7422,0.0674,0,0.5691,avoid_fixture,0,0.6287,avoid_fixture,0,0.6711,avoid_fixture,0
+tap_on_forbidden_fixture_041,tap on forbidden fixture,avoid_fixture,1,0.7819,0.5415,0.8133,0.0,0,0.5213,avoid_fixture,0,0.704,avoid_fixture,0,0.7829,avoid_fixture,0
+tap_on_forbidden_fixture_042,tap on forbidden fixture,avoid_fixture,1,0.7587,0.5466,0.9946,0.4237,0,0.4124,move_to_target,0,0.5811,avoid_fixture,0,0.7526,avoid_fixture,0
+tap_on_forbidden_fixture_043,tap on forbidden fixture,avoid_fixture,1,0.6845,0.5361,0.5829,0.0,0,0.5282,avoid_fixture,0,0.6957,avoid_fixture,0,0.6291,avoid_fixture,0
+tap_on_forbidden_fixture_044,tap on forbidden fixture,avoid_fixture,1,0.8434,0.299,0.7537,0.11,0,0.3438,move_to_target,1,0.6342,avoid_fixture,0,0.709,avoid_fixture,0
+tap_on_forbidden_fixture_045,tap on forbidden fixture,avoid_fixture,1,0.9043,0.3916,0.8832,0.3256,0,0.2984,move_to_target,1,0.6397,avoid_fixture,0,0.8447,avoid_fixture,0
+tap_on_forbidden_fixture_046,tap on forbidden fixture,avoid_fixture,1,0.6868,0.4097,0.5523,0.1325,0,0.269,move_to_target,1,0.5451,avoid_fixture,0,0.6639,avoid_fixture,0
+tap_on_forbidden_fixture_047,tap on forbidden fixture,avoid_fixture,1,0.811,0.4758,0.8638,0.2844,0,0.3735,move_to_target,1,0.582,avoid_fixture,0,0.721,avoid_fixture,0
+tap_on_forbidden_fixture_048,tap on forbidden fixture,avoid_fixture,1,0.7931,0.4703,0.6312,0.3383,0,0.3755,move_to_target,1,0.7002,avoid_fixture,0,0.7026,avoid_fixture,0
+tap_on_forbidden_fixture_049,tap on forbidden fixture,avoid_fixture,1,0.8634,0.3361,0.888,0.0,0,0.4348,move_to_target,0,0.6735,avoid_fixture,0,0.8919,avoid_fixture,0
+tap_on_forbidden_fixture_050,tap on forbidden fixture,avoid_fixture,1,1.0,0.7785,0.8477,0.3449,0,0.4691,move_to_target,0,0.7049,avoid_fixture,0,0.8694,avoid_fixture,0
+tap_on_forbidden_fixture_051,tap on forbidden fixture,avoid_fixture,1,0.8665,0.3106,0.6515,0.218,0,0.2753,move_to_target,1,0.5909,avoid_fixture,0,0.6367,avoid_fixture,0
+tap_on_forbidden_fixture_052,tap on forbidden fixture,avoid_fixture,1,0.8795,0.6687,0.7662,0.2694,0,0.4782,move_to_target,0,0.7184,avoid_fixture,0,0.8063,avoid_fixture,0
+tap_on_forbidden_fixture_053,tap on forbidden fixture,avoid_fixture,1,1.0,0.4343,0.8242,0.0697,0,0.4129,move_to_target,0,0.7832,avoid_fixture,0,0.8978,avoid_fixture,0
+tap_on_forbidden_fixture_054,tap on forbidden fixture,avoid_fixture,1,0.8901,0.0459,0.9979,0.4919,0,0.0566,move_to_target,1,0.5657,avoid_fixture,0,0.696,avoid_fixture,0
+tap_on_forbidden_fixture_055,tap on forbidden fixture,avoid_fixture,1,0.865,0.6695,0.7466,0.2939,0,0.5335,avoid_fixture,0,0.6065,avoid_fixture,0,0.723,avoid_fixture,0
+tap_on_forbidden_fixture_056,tap on forbidden fixture,avoid_fixture,1,0.723,0.366,1.0,0.2167,0,0.3956,move_to_target,0,0.5538,avoid_fixture,0,0.6562,avoid_fixture,0
+tap_on_forbidden_fixture_057,tap on forbidden fixture,avoid_fixture,1,0.799,0.3996,0.7722,0.0055,0,0.5221,avoid_fixture,0,0.6817,avoid_fixture,0,0.7557,avoid_fixture,0
+tap_on_forbidden_fixture_058,tap on forbidden fixture,avoid_fixture,1,0.5259,0.5888,0.5067,0.2112,0,0.4519,move_to_target,0,0.521,avoid_fixture,0,0.5243,avoid_fixture,0
+tap_on_forbidden_fixture_059,tap on forbidden fixture,avoid_fixture,1,0.645,0.5271,0.5691,0.1648,0,0.5088,move_to_target,0,0.5901,avoid_fixture,0,0.541,avoid_fixture,0
+tap_on_forbidden_fixture_060,tap on forbidden fixture,avoid_fixture,1,0.8446,0.5034,0.5569,0.0,0,0.5508,avoid_fixture,0,0.6726,avoid_fixture,0,0.7193,avoid_fixture,0
+tap_on_forbidden_fixture_061,tap on forbidden fixture,avoid_fixture,1,0.8101,0.746,0.8124,0.3625,0,0.5756,avoid_fixture,0,0.6034,avoid_fixture,0,0.7971,avoid_fixture,0
+tap_on_forbidden_fixture_062,tap on forbidden fixture,avoid_fixture,1,0.5713,0.3509,0.7495,0.2372,0,0.3067,move_to_target,1,0.4785,halt,0,0.6165,avoid_fixture,0
+tap_on_forbidden_fixture_063,tap on forbidden fixture,avoid_fixture,1,1.0,0.4711,0.8417,0.0534,0,0.4348,move_to_target,0,0.7791,avoid_fixture,0,0.865,avoid_fixture,0
+tap_on_forbidden_fixture_064,tap on forbidden fixture,avoid_fixture,1,0.7011,0.3296,0.5949,0.295,0,0.3495,move_to_target,1,0.6457,avoid_fixture,0,0.6157,avoid_fixture,0
+tap_on_forbidden_fixture_065,tap on forbidden fixture,avoid_fixture,1,1.0,0.6198,0.6833,0.1421,0,0.4173,move_to_target,0,0.7471,avoid_fixture,0,0.7367,avoid_fixture,0
+tap_on_forbidden_fixture_066,tap on forbidden fixture,avoid_fixture,1,0.7329,0.6123,0.9061,0.2824,0,0.5083,move_to_target,0,0.562,avoid_fixture,0,0.768,avoid_fixture,0
+tap_on_forbidden_fixture_067,tap on forbidden fixture,avoid_fixture,1,0.7677,0.3852,0.7889,0.1009,0,0.3293,move_to_target,1,0.6025,avoid_fixture,0,0.7825,avoid_fixture,0
+tap_on_forbidden_fixture_068,tap on forbidden fixture,avoid_fixture,1,0.6575,0.4903,0.548,0.0081,0,0.448,move_to_target,0,0.6331,avoid_fixture,0,0.6421,avoid_fixture,0
+tap_on_forbidden_fixture_069,tap on forbidden fixture,avoid_fixture,1,0.6967,0.5103,0.7805,0.1357,0,0.4474,move_to_target,0,0.6053,avoid_fixture,0,0.7139,avoid_fixture,0
+tap_on_forbidden_fixture_070,tap on forbidden fixture,avoid_fixture,1,0.7764,0.6852,0.7219,0.2001,0,0.4717,move_to_target,0,0.5889,avoid_fixture,0,0.766,avoid_fixture,0
+tap_on_forbidden_fixture_071,tap on forbidden fixture,avoid_fixture,1,0.9382,0.3256,0.8246,0.1002,0,0.4302,move_to_target,0,0.7142,avoid_fixture,0,0.8646,avoid_fixture,0
+tap_on_forbidden_fixture_072,tap on forbidden fixture,avoid_fixture,1,0.9303,0.2253,0.6885,0.3618,0,0.3353,move_to_target,1,0.5802,avoid_fixture,0,0.6929,avoid_fixture,0
+tap_on_forbidden_fixture_073,tap on forbidden fixture,avoid_fixture,1,0.5331,0.5381,0.5911,0.1078,0,0.3829,move_to_target,0,0.497,halt,0,0.4552,avoid_fixture,1
+tap_on_forbidden_fixture_074,tap on forbidden fixture,avoid_fixture,1,0.9951,0.5898,0.9551,0.1439,0,0.5395,avoid_fixture,0,0.7752,avoid_fixture,0,0.8771,avoid_fixture,0
+tap_on_forbidden_fixture_075,tap on forbidden fixture,avoid_fixture,1,0.9179,0.316,0.6578,0.2274,0,0.3792,move_to_target,1,0.6494,avoid_fixture,0,0.6835,avoid_fixture,0
+tap_on_forbidden_fixture_076,tap on forbidden fixture,avoid_fixture,1,1.0,0.4574,0.8697,0.33,0,0.342,move_to_target,1,0.5943,avoid_fixture,0,0.7976,avoid_fixture,0
+tap_on_forbidden_fixture_077,tap on forbidden fixture,avoid_fixture,1,0.6682,0.7599,0.7526,0.079,0,0.6184,avoid_fixture,0,0.7869,avoid_fixture,0,0.7733,avoid_fixture,0
+tap_on_forbidden_fixture_078,tap on forbidden fixture,avoid_fixture,1,0.924,0.4853,0.6224,0.094,0,0.4293,move_to_target,0,0.6814,avoid_fixture,0,0.7257,avoid_fixture,0
+tap_on_forbidden_fixture_079,tap on forbidden fixture,avoid_fixture,1,0.8377,0.5077,0.6597,0.1334,0,0.4942,move_to_target,0,0.6306,avoid_fixture,0,0.6666,avoid_fixture,0
+tap_on_forbidden_fixture_080,tap on forbidden fixture,avoid_fixture,1,0.6753,0.169,0.6988,0.1521,0,0.2785,move_to_target,1,0.5345,avoid_fixture,0,0.6744,avoid_fixture,0
+tap_on_forbidden_fixture_081,tap on forbidden fixture,avoid_fixture,1,1.0,0.6224,0.9328,0.1196,0,0.5775,avoid_fixture,0,0.8096,avoid_fixture,0,0.8629,avoid_fixture,0
+tap_on_forbidden_fixture_082,tap on forbidden fixture,avoid_fixture,1,0.8457,0.5803,0.9691,0.1019,0,0.4481,move_to_target,0,0.72,avoid_fixture,0,0.778,avoid_fixture,0
+tap_on_forbidden_fixture_083,tap on forbidden fixture,avoid_fixture,1,0.8033,0.2881,0.9517,0.1351,0,0.3846,move_to_target,0,0.601,avoid_fixture,0,0.7764,avoid_fixture,0
+tap_on_forbidden_fixture_084,tap on forbidden fixture,avoid_fixture,1,0.6901,0.534,0.7,0.1342,0,0.5072,move_to_target,0,0.66,avoid_fixture,0,0.713,avoid_fixture,0
+tap_on_forbidden_fixture_085,tap on forbidden fixture,avoid_fixture,1,1.0,0.4449,0.7144,0.2268,0,0.4435,move_to_target,0,0.7679,avoid_fixture,0,0.798,avoid_fixture,0
+tap_on_forbidden_fixture_086,tap on forbidden fixture,avoid_fixture,1,0.8355,0.5532,0.6797,0.0,0,0.5675,avoid_fixture,0,0.696,avoid_fixture,0,0.7343,avoid_fixture,0
+tap_on_forbidden_fixture_087,tap on forbidden fixture,avoid_fixture,1,0.8529,0.3684,0.8014,0.2097,0,0.4105,move_to_target,0,0.6023,avoid_fixture,0,0.829,avoid_fixture,0
+tap_on_forbidden_fixture_088,tap on forbidden fixture,avoid_fixture,1,0.5723,0.5911,0.6292,0.5327,1,0.1368,move_to_target,1,0.3843,clarify,1,0.5131,avoid_fixture,0
+tap_on_forbidden_fixture_089,tap on forbidden fixture,avoid_fixture,1,0.8431,0.5723,0.7742,0.0,0,0.5168,move_to_target,0,0.789,avoid_fixture,0,0.8413,avoid_fixture,0
+alignment_gesture_at_placement_000,alignment gesture at placement,align_and_place,0,0.784,0.5593,0.9632,0.0154,0,0.6216,align_and_place,0,0.6418,align_and_place,0,0.9137,align_and_place,0
+alignment_gesture_at_placement_001,alignment gesture at placement,align_and_place,0,0.8945,0.3259,0.45,0.1198,0,0.3589,clarify,1,0.6247,align_and_place,0,0.5552,align_and_place,0
+alignment_gesture_at_placement_002,alignment gesture at placement,align_and_place,0,0.6763,0.5299,0.7372,0.4189,0,0.4507,follow_path,0,0.4858,avoid_fixture,0,0.6238,align_and_place,0
+alignment_gesture_at_placement_003,alignment gesture at placement,align_and_place,0,0.7292,0.3491,0.7779,0.3668,0,0.2427,clarify,1,0.5297,align_and_place,0,0.6746,align_and_place,0
+alignment_gesture_at_placement_004,alignment gesture at placement,align_and_place,0,0.6944,0.3099,0.713,0.4893,0,0.2043,clarify,1,0.5223,align_and_place,0,0.6156,align_and_place,0
+alignment_gesture_at_placement_005,alignment gesture at placement,align_and_place,0,0.994,0.4586,0.8418,0.0894,0,0.4916,avoid_fixture,0,0.7152,align_and_place,0,0.8513,align_and_place,0
+alignment_gesture_at_placement_006,alignment gesture at placement,align_and_place,0,0.7325,0.3043,0.7189,0.2797,0,0.273,clarify,1,0.5726,align_and_place,0,0.7104,align_and_place,0
+alignment_gesture_at_placement_007,alignment gesture at placement,align_and_place,0,0.619,0.2132,0.7768,0.3859,0,0.2057,clarify,1,0.5372,align_and_place,0,0.5857,align_and_place,0
+alignment_gesture_at_placement_008,alignment gesture at placement,align_and_place,0,0.8663,0.3892,0.8139,0.1291,0,0.4121,avoid_fixture,0,0.6195,align_and_place,0,0.7701,align_and_place,0
+alignment_gesture_at_placement_009,alignment gesture at placement,align_and_place,0,0.6513,0.3611,0.7233,0.0,0,0.4776,avoid_fixture,0,0.5066,follow_path,0,0.6392,align_and_place,0
+alignment_gesture_at_placement_010,alignment gesture at placement,align_and_place,0,0.7904,0.1047,1.0,0.1668,0,0.2437,clarify,1,0.6852,align_and_place,0,0.7495,align_and_place,0
+alignment_gesture_at_placement_011,alignment gesture at placement,align_and_place,0,0.7019,0.298,0.7707,0.2953,0,0.223,clarify,1,0.5565,align_and_place,0,0.6485,align_and_place,0
+alignment_gesture_at_placement_012,alignment gesture at placement,align_and_place,0,0.548,0.2224,0.7941,0.1815,0,0.2876,clarify,1,0.4895,halt,0,0.5912,align_and_place,0
+alignment_gesture_at_placement_013,alignment gesture at placement,align_and_place,0,0.6914,0.458,0.8388,0.3817,0,0.3132,clarify,1,0.486,move_to_target,0,0.5569,align_and_place,0
+alignment_gesture_at_placement_014,alignment gesture at placement,align_and_place,0,0.7458,0.5339,0.866,0.1785,0,0.4998,avoid_fixture,0,0.521,align_and_place,0,0.8141,align_and_place,0
+alignment_gesture_at_placement_015,alignment gesture at placement,align_and_place,0,0.7311,0.4597,0.7793,0.3869,0,0.3241,clarify,1,0.5357,align_and_place,0,0.6677,align_and_place,0
+alignment_gesture_at_placement_016,alignment gesture at placement,align_and_place,0,0.7661,0.3572,0.7595,0.0423,0,0.3316,clarify,1,0.5731,align_and_place,0,0.7478,align_and_place,0
+alignment_gesture_at_placement_017,alignment gesture at placement,align_and_place,0,0.6594,0.3376,0.8515,0.1358,0,0.3226,clarify,1,0.5625,align_and_place,0,0.8042,align_and_place,0
+alignment_gesture_at_placement_018,alignment gesture at placement,align_and_place,0,0.8583,0.4142,0.8568,0.2215,0,0.3807,halt,0,0.687,align_and_place,0,0.7586,align_and_place,0
+alignment_gesture_at_placement_019,alignment gesture at placement,align_and_place,0,0.6523,0.2675,0.9797,0.0899,0,0.2521,clarify,1,0.5604,align_and_place,0,0.7696,align_and_place,0
+alignment_gesture_at_placement_020,alignment gesture at placement,align_and_place,0,0.6864,0.4856,0.4272,0.0661,0,0.4743,follow_path,0,0.6108,align_and_place,0,0.6276,align_and_place,0
+alignment_gesture_at_placement_021,alignment gesture at placement,align_and_place,0,0.6985,0.0,0.8713,0.3897,0,0.0479,clarify,1,0.5138,accept_handover,0,0.6855,align_and_place,0
+alignment_gesture_at_placement_022,alignment gesture at placement,align_and_place,0,0.8811,0.3517,0.8582,0.0257,0,0.5296,align_and_place,0,0.6867,align_and_place,0,0.8096,align_and_place,0
+alignment_gesture_at_placement_023,alignment gesture at placement,align_and_place,0,0.9409,0.5091,0.8205,0.5724,1,0.099,clarify,1,0.5321,align_and_place,0,0.8209,align_and_place,0
+alignment_gesture_at_placement_024,alignment gesture at placement,align_and_place,0,0.7311,0.03,1.0,0.2305,0,0.2123,clarify,1,0.5789,align_and_place,0,0.7169,align_and_place,0
+alignment_gesture_at_placement_025,alignment gesture at placement,align_and_place,0,0.6988,0.2862,0.6433,0.0,0,0.3561,clarify,1,0.6014,align_and_place,0,0.6557,align_and_place,0
+alignment_gesture_at_placement_026,alignment gesture at placement,align_and_place,0,0.7486,0.3679,1.0,0.1105,0,0.3826,move_to_target,0,0.6952,align_and_place,0,0.7864,align_and_place,0
+alignment_gesture_at_placement_027,alignment gesture at placement,align_and_place,0,0.7615,0.0561,0.851,0.1317,0,0.1861,clarify,1,0.6252,align_and_place,0,0.6912,align_and_place,0
+alignment_gesture_at_placement_028,alignment gesture at placement,align_and_place,0,0.9096,0.6936,0.8131,0.2459,0,0.5563,align_and_place,0,0.6742,align_and_place,0,0.7802,align_and_place,0
+alignment_gesture_at_placement_029,alignment gesture at placement,align_and_place,0,0.8079,0.2853,0.8884,0.0844,0,0.3206,clarify,1,0.61,align_and_place,0,0.6837,align_and_place,0
+alignment_gesture_at_placement_030,alignment gesture at placement,align_and_place,0,0.7112,0.1911,0.5982,0.1228,0,0.2182,clarify,1,0.6201,align_and_place,0,0.681,align_and_place,0
+alignment_gesture_at_placement_031,alignment gesture at placement,align_and_place,0,0.8292,0.1704,0.7289,0.2809,0,0.2486,clarify,1,0.5828,align_and_place,0,0.7072,align_and_place,0
+alignment_gesture_at_placement_032,alignment gesture at placement,align_and_place,0,0.5699,0.3492,0.6985,0.0384,0,0.39,follow_path,0,0.6347,align_and_place,0,0.5997,align_and_place,0
+alignment_gesture_at_placement_033,alignment gesture at placement,align_and_place,0,0.5951,0.3992,0.8558,0.3157,0,0.3428,clarify,1,0.5655,align_and_place,0,0.5785,align_and_place,0
+alignment_gesture_at_placement_034,alignment gesture at placement,align_and_place,0,0.5856,0.5064,0.7362,0.2559,0,0.3928,avoid_fixture,0,0.5307,align_and_place,0,0.6623,align_and_place,0
+alignment_gesture_at_placement_035,alignment gesture at placement,align_and_place,0,0.6509,0.2696,0.574,0.4897,0,0.2031,clarify,1,0.4414,follow_path,0,0.5217,align_and_place,0
+alignment_gesture_at_placement_036,alignment gesture at placement,align_and_place,0,0.5497,0.4908,0.6806,0.0406,0,0.422,move_to_target,0,0.5257,align_and_place,0,0.5909,align_and_place,0
+alignment_gesture_at_placement_037,alignment gesture at placement,align_and_place,0,0.5594,0.3648,0.5616,0.1831,0,0.3094,clarify,1,0.4667,avoid_fixture,0,0.5747,align_and_place,0
+alignment_gesture_at_placement_038,alignment gesture at placement,align_and_place,0,0.86,0.3195,0.9693,0.2224,0,0.3537,clarify,1,0.692,align_and_place,0,0.7447,align_and_place,0
+alignment_gesture_at_placement_039,alignment gesture at placement,align_and_place,0,0.8516,0.5426,0.8003,0.1141,0,0.553,align_and_place,0,0.6239,align_and_place,0,0.7652,align_and_place,0
+alignment_gesture_at_placement_040,alignment gesture at placement,align_and_place,0,0.6043,0.5681,0.9073,0.4158,0,0.53,align_and_place,0,0.5779,align_and_place,0,0.7927,align_and_place,0
+alignment_gesture_at_placement_041,alignment gesture at placement,align_and_place,0,0.8313,0.1922,0.8284,0.1463,0,0.2943,clarify,1,0.6159,align_and_place,0,0.7251,align_and_place,0
+alignment_gesture_at_placement_042,alignment gesture at placement,align_and_place,0,0.4821,0.2117,0.7354,0.2034,0,0.1635,clarify,1,0.4621,move_to_target,0,0.642,align_and_place,0
+alignment_gesture_at_placement_043,alignment gesture at placement,align_and_place,0,0.5616,0.4935,0.7233,0.1143,0,0.5011,avoid_fixture,0,0.6784,align_and_place,0,0.5871,align_and_place,0
+alignment_gesture_at_placement_044,alignment gesture at placement,align_and_place,0,0.5428,0.4296,0.8053,0.0,0,0.4416,avoid_fixture,0,0.6286,align_and_place,0,0.6101,align_and_place,0
+alignment_gesture_at_placement_045,alignment gesture at placement,align_and_place,0,0.9923,0.5579,0.8248,0.0815,0,0.4392,avoid_fixture,0,0.781,align_and_place,0,0.8545,align_and_place,0
+alignment_gesture_at_placement_046,alignment gesture at placement,align_and_place,0,0.669,0.4157,0.969,0.3447,0,0.3635,clarify,1,0.5233,align_and_place,0,0.6819,align_and_place,0
+alignment_gesture_at_placement_047,alignment gesture at placement,align_and_place,0,0.7287,0.4227,0.6162,0.1617,0,0.3883,follow_path,0,0.5742,align_and_place,0,0.6209,align_and_place,0
+alignment_gesture_at_placement_048,alignment gesture at placement,align_and_place,0,0.797,0.0481,0.7247,0.0619,0,0.2395,clarify,1,0.6554,align_and_place,0,0.6571,align_and_place,0
+alignment_gesture_at_placement_049,alignment gesture at placement,align_and_place,0,0.6264,0.4848,0.8398,0.0186,0,0.5039,accept_handover,0,0.695,align_and_place,0,0.707,align_and_place,0
+alignment_gesture_at_placement_050,alignment gesture at placement,align_and_place,0,0.7382,0.373,0.7333,0.4386,0,0.2079,clarify,1,0.6097,align_and_place,0,0.6565,align_and_place,0
+alignment_gesture_at_placement_051,alignment gesture at placement,align_and_place,0,0.6435,0.4238,0.7916,0.0377,0,0.4348,move_to_target,0,0.5882,align_and_place,0,0.7364,align_and_place,0
+alignment_gesture_at_placement_052,alignment gesture at placement,align_and_place,0,0.6391,0.1913,0.5705,0.2964,0,0.2198,clarify,1,0.5618,align_and_place,0,0.5305,align_and_place,0
+alignment_gesture_at_placement_053,alignment gesture at placement,align_and_place,0,0.9325,0.4709,0.7506,0.2186,0,0.4299,accept_handover,0,0.7832,align_and_place,0,0.8147,align_and_place,0
+alignment_gesture_at_placement_054,alignment gesture at placement,align_and_place,0,0.7474,0.4467,0.482,0.1738,0,0.3699,clarify,1,0.5617,align_and_place,0,0.6016,align_and_place,0
+alignment_gesture_at_placement_055,alignment gesture at placement,align_and_place,0,0.7805,0.2992,0.8809,0.342,0,0.3446,clarify,1,0.5616,align_and_place,0,0.7807,align_and_place,0
+alignment_gesture_at_placement_056,alignment gesture at placement,align_and_place,0,0.6444,0.6044,0.5902,0.1499,0,0.4144,move_to_target,0,0.6456,align_and_place,0,0.5738,align_and_place,0
+alignment_gesture_at_placement_057,alignment gesture at placement,align_and_place,0,0.9949,0.1801,0.8292,0.0988,0,0.2426,clarify,1,0.7444,align_and_place,0,0.8389,align_and_place,0
+alignment_gesture_at_placement_058,alignment gesture at placement,align_and_place,0,0.4263,0.1763,0.6972,0.5673,0,0.0703,clarify,1,0.274,clarify,1,0.5683,align_and_place,0
+alignment_gesture_at_placement_059,alignment gesture at placement,align_and_place,0,0.9547,0.4057,0.6984,0.2267,0,0.2825,clarify,1,0.7033,align_and_place,0,0.7745,align_and_place,0
+alignment_gesture_at_placement_060,alignment gesture at placement,align_and_place,0,0.7098,0.5036,0.9495,0.1933,0,0.4657,halt,0,0.6679,align_and_place,0,0.7948,align_and_place,0
+alignment_gesture_at_placement_061,alignment gesture at placement,align_and_place,0,0.8186,0.4813,0.6875,0.2511,0,0.4729,avoid_fixture,0,0.6075,align_and_place,0,0.6799,align_and_place,0
+alignment_gesture_at_placement_062,alignment gesture at placement,align_and_place,0,0.7578,0.3977,0.7099,0.1656,0,0.4522,accept_handover,0,0.5992,align_and_place,0,0.7535,align_and_place,0
+alignment_gesture_at_placement_063,alignment gesture at placement,align_and_place,0,0.8514,0.2884,0.824,0.2753,0,0.3331,clarify,1,0.6555,align_and_place,0,0.7923,align_and_place,0
+alignment_gesture_at_placement_064,alignment gesture at placement,align_and_place,0,0.5335,0.1952,0.7257,0.1718,0,0.1527,clarify,1,0.5708,align_and_place,0,0.6793,align_and_place,0
+alignment_gesture_at_placement_065,alignment gesture at placement,align_and_place,0,0.848,0.1,0.8071,0.0187,0,0.3037,clarify,1,0.6985,align_and_place,0,0.6849,align_and_place,0
+alignment_gesture_at_placement_066,alignment gesture at placement,align_and_place,0,0.6755,0.0754,0.8918,0.2619,0,0.109,clarify,1,0.4551,accept_handover,0,0.6099,align_and_place,0
+alignment_gesture_at_placement_067,alignment gesture at placement,align_and_place,0,0.7569,0.5105,0.8406,0.5231,1,0.1978,clarify,1,0.3411,clarify,1,0.5771,align_and_place,0
+alignment_gesture_at_placement_068,alignment gesture at placement,align_and_place,0,0.7406,0.5465,0.787,0.1769,0,0.5191,halt,0,0.6551,align_and_place,0,0.7893,align_and_place,0
+alignment_gesture_at_placement_069,alignment gesture at placement,align_and_place,0,0.6881,0.5804,0.7792,0.3696,0,0.4419,accept_handover,0,0.5407,align_and_place,0,0.5797,align_and_place,0
+alignment_gesture_at_placement_070,alignment gesture at placement,align_and_place,0,0.7392,0.2474,0.881,0.0,0,0.3358,clarify,1,0.6346,align_and_place,0,0.8461,align_and_place,0
+alignment_gesture_at_placement_071,alignment gesture at placement,align_and_place,0,0.8456,0.2894,0.8328,0.0363,0,0.3769,clarify,1,0.6185,align_and_place,0,0.7743,align_and_place,0
+alignment_gesture_at_placement_072,alignment gesture at placement,align_and_place,0,0.7928,0.404,0.6729,0.2159,0,0.2803,clarify,1,0.6455,align_and_place,0,0.6892,align_and_place,0
+alignment_gesture_at_placement_073,alignment gesture at placement,align_and_place,0,0.8314,0.3422,0.7926,0.1376,0,0.3436,clarify,1,0.696,align_and_place,0,0.8046,align_and_place,0
+alignment_gesture_at_placement_074,alignment gesture at placement,align_and_place,0,0.4547,0.6448,0.8037,0.242,0,0.4992,avoid_fixture,0,0.54,align_and_place,0,0.7194,align_and_place,0
+alignment_gesture_at_placement_075,alignment gesture at placement,align_and_place,0,0.7713,0.4608,0.8801,0.1481,0,0.4419,accept_handover,0,0.7075,align_and_place,0,0.811,align_and_place,0
+alignment_gesture_at_placement_076,alignment gesture at placement,align_and_place,0,0.7855,0.2992,0.753,0.4041,0,0.3511,clarify,1,0.5969,align_and_place,0,0.6657,align_and_place,0
+alignment_gesture_at_placement_077,alignment gesture at placement,align_and_place,0,0.6051,0.4668,0.7391,0.345,0,0.3119,clarify,1,0.4617,halt,0,0.6039,align_and_place,0
+alignment_gesture_at_placement_078,alignment gesture at placement,align_and_place,0,0.9123,0.3272,0.8515,0.2656,0,0.3382,clarify,1,0.6237,align_and_place,0,0.7284,align_and_place,0
+alignment_gesture_at_placement_079,alignment gesture at placement,align_and_place,0,0.8909,0.5028,0.8189,0.162,0,0.401,accept_handover,0,0.7492,align_and_place,0,0.8635,align_and_place,0
+alignment_gesture_at_placement_080,alignment gesture at placement,align_and_place,0,0.8412,0.3846,0.6163,0.4799,0,0.2596,clarify,1,0.633,align_and_place,0,0.5852,align_and_place,0
+alignment_gesture_at_placement_081,alignment gesture at placement,align_and_place,0,0.9154,0.312,0.6905,0.1184,0,0.3434,clarify,1,0.7874,align_and_place,0,0.7695,align_and_place,0
+alignment_gesture_at_placement_082,alignment gesture at placement,align_and_place,0,0.797,0.4179,0.5727,0.2127,0,0.3776,clarify,1,0.4926,follow_path,0,0.6506,align_and_place,0
+alignment_gesture_at_placement_083,alignment gesture at placement,align_and_place,0,0.6357,0.6065,0.681,0.263,0,0.4602,halt,0,0.5491,align_and_place,0,0.5729,align_and_place,0
+alignment_gesture_at_placement_084,alignment gesture at placement,align_and_place,0,0.9253,0.1413,0.8319,0.217,0,0.3485,clarify,1,0.6988,align_and_place,0,0.7759,align_and_place,0
+alignment_gesture_at_placement_085,alignment gesture at placement,align_and_place,0,0.5707,0.5831,0.6254,0.3713,0,0.3849,avoid_fixture,0,0.5094,follow_path,0,0.6361,align_and_place,0
+alignment_gesture_at_placement_086,alignment gesture at placement,align_and_place,0,0.6198,0.2087,0.8439,0.4041,0,0.1757,clarify,1,0.3393,clarify,1,0.6109,align_and_place,0
+alignment_gesture_at_placement_087,alignment gesture at placement,align_and_place,0,0.8013,0.4827,0.8323,0.1809,0,0.4552,move_to_target,0,0.6471,align_and_place,0,0.7185,align_and_place,0
+alignment_gesture_at_placement_088,alignment gesture at placement,align_and_place,0,0.8985,0.3219,0.7701,0.3664,0,0.3551,clarify,1,0.6277,align_and_place,0,0.6536,align_and_place,0
+alignment_gesture_at_placement_089,alignment gesture at placement,align_and_place,0,0.6426,0.3554,0.7433,0.4178,0,0.2972,clarify,1,0.4776,halt,0,0.6573,align_and_place,0

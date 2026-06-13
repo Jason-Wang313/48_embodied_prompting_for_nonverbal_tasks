@@ -1,0 +1,47 @@
+[
+  {
+    "binding_miss_rate": 0.0,
+    "task_accuracy": 0.9777777777777777,
+    "clarification_rate": 0.007407407407407408,
+    "unsafe_prompt_rate": 0.0,
+    "unsafe_cases": 0,
+    "safety_cases": 180,
+    "captioned_cues_unsafe_rate": 0.03333333333333333
+  },
+  {
+    "binding_miss_rate": 0.02,
+    "task_accuracy": 0.9703703703703703,
+    "clarification_rate": 0.007407407407407408,
+    "unsafe_prompt_rate": 0.022222222222222223,
+    "unsafe_cases": 4,
+    "safety_cases": 180,
+    "captioned_cues_unsafe_rate": 0.03333333333333333
+  },
+  {
+    "binding_miss_rate": 0.05,
+    "task_accuracy": 0.9629629629629629,
+    "clarification_rate": 0.011111111111111112,
+    "unsafe_prompt_rate": 0.044444444444444446,
+    "unsafe_cases": 8,
+    "safety_cases": 180,
+    "captioned_cues_unsafe_rate": 0.03333333333333333
+  },
+  {
+    "binding_miss_rate": 0.1,
+    "task_accuracy": 0.9481481481481482,
+    "clarification_rate": 0.012962962962962963,
+    "unsafe_prompt_rate": 0.08888888888888889,
+    "unsafe_cases": 16,
+    "safety_cases": 180,
+    "captioned_cues_unsafe_rate": 0.03333333333333333
+  },
+  {
+    "binding_miss_rate": 0.2,
+    "task_accuracy": 0.9148148148148149,
+    "clarification_rate": 0.025925925925925925,
+    "unsafe_prompt_rate": 0.18888888888888888,
+    "unsafe_cases": 34,
+    "safety_cases": 180,
+    "captioned_cues_unsafe_rate": 0.03333333333333333
+  }
+]

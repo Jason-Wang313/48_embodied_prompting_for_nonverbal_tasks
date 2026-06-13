@@ -6,7 +6,7 @@
 \usepackage{hyperref}
 \iclrfinalcopy
 
-\title{Embodied Prompting for Nonverbal Robot Tasks}
+\title{Embodied Prompting\\for Nonverbal Robot Tasks}
 
 \author{Anonymous Authors}
 
@@ -14,8 +14,13 @@
 \maketitle
 
 \begin{abstract}
-Robot prompting is usually treated as text plus pixels: the user says what to do, an image supplies context, and a model chooses an action. Many practical robot instructions are not spoken or written. A person points, holds an object out, taps a fixture, blocks a motion with an open palm, or demonstrates a short path. We propose embodied prompting: representing nonverbal cues as typed physical state that can bind to objects, affordances, and safety-critical action commitments. The recovery sweep for this paper produced 240 structured related-work rows and narrowed the contribution away from generic multimodal prompting. On 540 synthetic nonverbal instruction cases, text-only prompting reaches 0.165 task accuracy, captioned cues reach 0.819, and an embodied prompt graph reaches 0.978 while reducing unsafe prompt execution from 0.678 to 0.000. The contribution is a mechanism and diagnostic benchmark, not a claim of real-world deployment.
+Robot prompting is usually treated as text plus pixels: the user says what to do, an image supplies context, and a model chooses an action. Many practical robot instructions are not spoken or written. A person points, holds an object out, taps a fixture, blocks a motion with an open palm, or demonstrates a short path. We propose embodied prompting: representing nonverbal cues as typed physical state that can bind to objects, affordances, and safety-critical action commitments. The recovery sweep for this paper produced 240 structured related-work rows and narrowed the contribution away from generic multimodal prompting. On 540 synthetic nonverbal instruction cases, text-only prompting reaches 0.165 task accuracy, captioned cues reach 0.819, and an embodied prompt graph reaches 0.978 while reducing unsafe prompt execution from 0.678 to 0.000. A v2 safety-cue binding stress narrows the claim: at a 5\% binding-miss rate, graph unsafe execution rises to 0.044, worse than captioned cues at 0.033. The contribution is a mechanism and diagnostic benchmark, not a claim of real-world deployment.
 \end{abstract}
+
+\paragraph{V2 hardening note.}
+Submission-hardening version: v2. Decision: workshop-only. The binding-miss
+stress shows that embodied prompting depends on reliable safety-cue binding;
+the zero-unsafe result does not survive even modest binding failures.
 
 \section{Motivation}
 
@@ -62,6 +67,14 @@ Embodied prompt graph & 0.978 & 0.007 & 0.000 \\
 \label{tab:diagnostic}
 \end{table}
 
+\begin{table}[t]
+\centering
+\small
+\input{v2_binding_miss_table.tex}
+\caption{V2 safety-cue binding stress. When a safety cue is missed, the graph falls back to the text channel for that case.}
+\label{tab:v2-binding}
+\end{table}
+
 \begin{figure}[t]
 \centering
 \IfFileExists{figures/nonverbal_prompt_metrics.png}{\includegraphics[width=0.82\linewidth]{figures/nonverbal_prompt_metrics.png}}{\fbox{\parbox{0.78\linewidth}{Metric figure unavailable.}}}
@@ -71,9 +84,11 @@ Embodied prompt graph & 0.978 & 0.007 & 0.000 \\
 
 Table~\ref{tab:diagnostic} and Figure~\ref{fig:metrics} show the intended behavior. Text-only prompting often guesses when the text channel is absent or generic. Captioned cues improve action choice, but still fail when an isolated cue conflicts with object affordance. The embodied prompt graph keeps cue geometry and affordance together, so it can treat open palms and fixture taps as action boundaries rather than optional descriptive tokens.
 
+Table~\ref{tab:v2-binding} stress-tests the safety premise. We keep the original cases and predictions, but on a fraction of safety-critical examples the graph misses the physical safety binding and falls back to the text-only channel. A 2\% binding-miss rate already creates 4 unsafe executions out of 180 safety cases. A 5\% miss rate creates 8 unsafe executions and an unsafe rate of 0.044, worse than the captioned-cue unsafe rate of 0.033. At 20\% binding misses, unsafe execution rises to 0.189. The graph representation is therefore useful only if safety cues are bound conservatively enough to trigger halts or clarification.
+
 \section{Limitations}
 
-This is a synthetic diagnostic benchmark. It does not prove cross-cultural gesture interpretation, perception robustness, or hardware safety. The mechanism also assumes reliable cue detection and object binding. Those assumptions are deliberately exposed: if perception cannot bind the cue, the graph should ask for clarification rather than hallucinate intent.
+This is a synthetic diagnostic benchmark. It does not prove cross-cultural gesture interpretation, perception robustness, or hardware safety. The mechanism also assumes reliable cue detection and object binding. The v2 stress makes that assumption central: missed safety bindings can make the graph less safe than a captioned-cue baseline. Those assumptions are deliberately exposed: if perception cannot bind the cue, the graph should ask for clarification or halt rather than fall back to text-only intent.
 
 \section{Conclusion}
 

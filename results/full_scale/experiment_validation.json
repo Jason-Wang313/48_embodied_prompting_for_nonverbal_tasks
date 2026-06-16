@@ -1,0 +1,22 @@
+{
+  "status": "complete",
+  "expected_condition_rows": 211680,
+  "actual_condition_rows": 211680,
+  "represented_trajectory_evaluations": 62183116800,
+  "represented_frame_decisions": 3979719475200,
+  "evals_per_condition_row": 293760,
+  "frames_per_condition_row": 18800640,
+  "figures": [
+    "policy_accuracy_utility.pdf",
+    "unsafe_clarification_tradeoff.pdf",
+    "binding_stress_curve.pdf",
+    "cue_family_utility.pdf"
+  ],
+  "tables": [
+    "table_scale.tex",
+    "table_main_performance.tex",
+    "table_binding_stress.tex",
+    "table_cue_family.tex",
+    "table_embodiment.tex"
+  ]
+}

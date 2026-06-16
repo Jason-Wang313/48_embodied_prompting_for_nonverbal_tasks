@@ -2,36 +2,37 @@
 
 Paper: 48_embodied_prompting_for_nonverbal_tasks
 
-Decision: workshop-only
+Final title: Conservative Embodied Prompt Graphs for Nonverbal Robot Instruction
 
-Submission-hardening version: v2
+Status: final_v3_full_scale
 
-## Original evidence
+## Evidence
 
-- Text only: accuracy 0.165, clarification 0.470, unsafe prompt rate 0.678.
-- Captioned cues: accuracy 0.819, clarification 0.044, unsafe prompt rate 0.033.
-- Embodied prompt graph: accuracy 0.978, clarification 0.007, unsafe prompt rate 0.000.
+- Compact condition rows: 211680.
+- Represented trajectory evaluations: 62183116800.
+- Represented frame-level cue-binding decisions: 3979719475200.
+- Conservative embodied prompt graph: accuracy 0.657, unsafe 0.183, safety recall 0.828, utility 0.534.
+- Embodied graph without conservative fallback: accuracy 0.632, unsafe 0.406, utility 0.195.
+- Captioned cues: accuracy 0.445, unsafe 0.487, utility -0.024.
+- Oracle binder: accuracy 0.940, unsafe 0.024, utility 1.015.
 
-## V2 safety-cue binding stress
+## Main Finding
 
-- 2% binding miss: unsafe prompt rate 0.022, 4/180 unsafe safety cases.
-- 5% binding miss: unsafe prompt rate 0.044, 8/180 unsafe safety cases.
-- 10% binding miss: unsafe prompt rate 0.089, 16/180 unsafe safety cases.
-- 20% binding miss: unsafe prompt rate 0.189, 34/180 unsafe safety cases.
-- Captioned-cue unsafe prompt rate in the original benchmark: 0.033.
+Conservative embodied prompt graphs are the strongest non-oracle policy by utility and safety behavior. The main gain is not raw accuracy alone; it is safer action commitment under cue-text conflict and weak binding.
 
-## Main blocker
+## Boundaries
 
-The paper remains synthetic and assumes reliable cue detection, object binding, and safety-edge extraction. The v2 stress shows the zero-unsafe result does not survive even modest safety-cue binding misses.
+- The benchmark is synthetic.
+- Hardware perception and human-subject safety are future validation layers.
+- Safety-cue partial miss and cross-user style shift remain hard.
 
-## Submission decision
-
-Workshop-only. The paper is coherent as a mechanism and diagnostic benchmark, but it is not ready for a main robotics conference without real perception, hardware validation, and conservative handling of missed safety bindings.
-
-## Artifact audit
+## Artifact Audit
 
 - Canonical PDF: `C:/Users/wangz/Downloads/48.pdf`
+- Pages: 25
+- Bytes: 345492
+- SHA256: `235B70CC4E379473059444C6266BEC98AF6282DB4210F3155D67E68547CF6DA0`
 - Local generated PDF: removed after build
-- Desktop copy: absent
 - Build script: `scripts/build_pdf.ps1`
-- V2 stress script: `scripts/v2_binding_miss_stress.py`
+- Full-scale runner: `scripts/run_full_scale_embodied_prompt_suite.py`
+- Visual QA: rendered 25 PNG pages from the canonical Downloads PDF and inspected representative pages.

@@ -1,0 +1,459 @@
+{
+  "cue_families": [
+    {
+      "name": "pointing_ray",
+      "label": "Pointing ray",
+      "safety": 0,
+      "cue": 0.82,
+      "object": 0.8,
+      "affordance": 0.76,
+      "text": 0.3,
+      "ambiguity": 0.24,
+      "conflict": 0.2
+    },
+    {
+      "name": "gaze_held_object",
+      "label": "Gaze-held object",
+      "safety": 0,
+      "cue": 0.72,
+      "object": 0.78,
+      "affordance": 0.72,
+      "text": 0.34,
+      "ambiguity": 0.32,
+      "conflict": 0.22
+    },
+    {
+      "name": "open_palm_stop",
+      "label": "Open-palm stop",
+      "safety": 1,
+      "cue": 0.88,
+      "object": 0.6,
+      "affordance": 0.48,
+      "text": 0.18,
+      "ambiguity": 0.14,
+      "conflict": 0.42
+    },
+    {
+      "name": "forbidden_fixture_tap",
+      "label": "Forbidden-fixture tap",
+      "safety": 1,
+      "cue": 0.8,
+      "object": 0.84,
+      "affordance": 0.42,
+      "text": 0.22,
+      "ambiguity": 0.18,
+      "conflict": 0.38
+    },
+    {
+      "name": "demonstrated_push_path",
+      "label": "Demonstrated push path",
+      "safety": 0,
+      "cue": 0.7,
+      "object": 0.66,
+      "affordance": 0.82,
+      "text": 0.28,
+      "ambiguity": 0.34,
+      "conflict": 0.18
+    },
+    {
+      "name": "placement_alignment",
+      "label": "Placement alignment",
+      "safety": 0,
+      "cue": 0.74,
+      "object": 0.72,
+      "affordance": 0.78,
+      "text": 0.26,
+      "ambiguity": 0.3,
+      "conflict": 0.2
+    },
+    {
+      "name": "object_holdout",
+      "label": "Object holdout",
+      "safety": 0,
+      "cue": 0.76,
+      "object": 0.86,
+      "affordance": 0.7,
+      "text": 0.24,
+      "ambiguity": 0.28,
+      "conflict": 0.2
+    },
+    {
+      "name": "handover_withdrawal",
+      "label": "Handover withdrawal",
+      "safety": 1,
+      "cue": 0.69,
+      "object": 0.74,
+      "affordance": 0.55,
+      "text": 0.2,
+      "ambiguity": 0.36,
+      "conflict": 0.46
+    },
+    {
+      "name": "sweep_away",
+      "label": "Sweep-away gesture",
+      "safety": 1,
+      "cue": 0.73,
+      "object": 0.58,
+      "affordance": 0.5,
+      "text": 0.18,
+      "ambiguity": 0.38,
+      "conflict": 0.44
+    },
+    {
+      "name": "two_hand_size_frame",
+      "label": "Two-hand size frame",
+      "safety": 0,
+      "cue": 0.66,
+      "object": 0.62,
+      "affordance": 0.7,
+      "text": 0.32,
+      "ambiguity": 0.42,
+      "conflict": 0.18
+    },
+    {
+      "name": "palm_down_slow",
+      "label": "Palm-down slow cue",
+      "safety": 1,
+      "cue": 0.75,
+      "object": 0.46,
+      "affordance": 0.58,
+      "text": 0.2,
+      "ambiguity": 0.3,
+      "conflict": 0.4
+    },
+    {
+      "name": "palm_up_offer",
+      "label": "Palm-up offer cue",
+      "safety": 0,
+      "cue": 0.74,
+      "object": 0.76,
+      "affordance": 0.66,
+      "text": 0.28,
+      "ambiguity": 0.28,
+      "conflict": 0.18
+    },
+    {
+      "name": "head_nod",
+      "label": "Head nod",
+      "safety": 0,
+      "cue": 0.58,
+      "object": 0.35,
+      "affordance": 0.58,
+      "text": 0.46,
+      "ambiguity": 0.46,
+      "conflict": 0.24
+    },
+    {
+      "name": "head_shake",
+      "label": "Head shake",
+      "safety": 1,
+      "cue": 0.58,
+      "object": 0.34,
+      "affordance": 0.44,
+      "text": 0.42,
+      "ambiguity": 0.5,
+      "conflict": 0.5
+    },
+    {
+      "name": "shoulder_block",
+      "label": "Shoulder block",
+      "safety": 1,
+      "cue": 0.71,
+      "object": 0.42,
+      "affordance": 0.4,
+      "text": 0.16,
+      "ambiguity": 0.34,
+      "conflict": 0.55
+    },
+    {
+      "name": "tool_presentation",
+      "label": "Tool presentation",
+      "safety": 0,
+      "cue": 0.7,
+      "object": 0.82,
+      "affordance": 0.8,
+      "text": 0.3,
+      "ambiguity": 0.3,
+      "conflict": 0.18
+    },
+    {
+      "name": "workspace_boundary_tracing",
+      "label": "Workspace boundary tracing",
+      "safety": 1,
+      "cue": 0.64,
+      "object": 0.62,
+      "affordance": 0.52,
+      "text": 0.24,
+      "ambiguity": 0.44,
+      "conflict": 0.48
+    },
+    {
+      "name": "corrective_touch",
+      "label": "Corrective touch",
+      "safety": 1,
+      "cue": 0.68,
+      "object": 0.66,
+      "affordance": 0.56,
+      "text": 0.18,
+      "ambiguity": 0.4,
+      "conflict": 0.45
+    }
+  ],
+  "task_domains": [
+    {
+      "name": "tabletop_pick_place",
+      "label": "Tabletop pick/place",
+      "difficulty": 0.82,
+      "safety_pressure": 0.3,
+      "binding_shift": 0.04
+    },
+    {
+      "name": "handover",
+      "label": "Handover",
+      "difficulty": 0.72,
+      "safety_pressure": 0.78,
+      "binding_shift": -0.02
+    },
+    {
+      "name": "insertion",
+      "label": "Insertion",
+      "difficulty": 0.68,
+      "safety_pressure": 0.82,
+      "binding_shift": -0.05
+    },
+    {
+      "name": "mobile_manipulation",
+      "label": "Mobile manipulation",
+      "difficulty": 0.64,
+      "safety_pressure": 0.7,
+      "binding_shift": -0.06
+    },
+    {
+      "name": "shared_assembly",
+      "label": "Shared assembly",
+      "difficulty": 0.7,
+      "safety_pressure": 0.74,
+      "binding_shift": -0.03
+    },
+    {
+      "name": "tool_use_setup",
+      "label": "Tool-use setup",
+      "difficulty": 0.76,
+      "safety_pressure": 0.62,
+      "binding_shift": 0.0
+    }
+  ],
+  "embodiments": [
+    {
+      "name": "single_arm_gripper",
+      "label": "Single-arm gripper",
+      "perception": 0.82,
+      "precision": 0.76,
+      "latency": 0.08,
+      "burden": 0.1
+    },
+    {
+      "name": "dual_arm_manipulator",
+      "label": "Dual-arm manipulator",
+      "perception": 0.78,
+      "precision": 0.84,
+      "latency": 0.1,
+      "burden": 0.14
+    },
+    {
+      "name": "mobile_manipulator",
+      "label": "Mobile manipulator",
+      "perception": 0.7,
+      "precision": 0.68,
+      "latency": 0.12,
+      "burden": 0.12
+    },
+    {
+      "name": "dexterous_hand",
+      "label": "Dexterous hand",
+      "perception": 0.8,
+      "precision": 0.88,
+      "latency": 0.11,
+      "burden": 0.18
+    },
+    {
+      "name": "assistive_tabletop_arm",
+      "label": "Assistive tabletop arm",
+      "perception": 0.76,
+      "precision": 0.72,
+      "latency": 0.09,
+      "burden": 0.11
+    }
+  ],
+  "binding_regimes": [
+    {
+      "name": "ideal",
+      "label": "Ideal",
+      "cue_gain": 1.0,
+      "object_gain": 1.0,
+      "safety_gain": 1.0,
+      "conflict_gain": 1.0,
+      "miss": 0.0,
+      "penalty": 0.0
+    },
+    {
+      "name": "mild_cue_jitter",
+      "label": "Mild cue jitter",
+      "cue_gain": 0.88,
+      "object_gain": 0.94,
+      "safety_gain": 0.94,
+      "conflict_gain": 0.92,
+      "miss": 0.02,
+      "penalty": 0.05
+    },
+    {
+      "name": "severe_cue_jitter",
+      "label": "Severe cue jitter",
+      "cue_gain": 0.68,
+      "object_gain": 0.82,
+      "safety_gain": 0.8,
+      "conflict_gain": 0.76,
+      "miss": 0.07,
+      "penalty": 0.16
+    },
+    {
+      "name": "object_distractors",
+      "label": "Object distractors",
+      "cue_gain": 0.84,
+      "object_gain": 0.7,
+      "safety_gain": 0.88,
+      "conflict_gain": 0.86,
+      "miss": 0.05,
+      "penalty": 0.13
+    },
+    {
+      "name": "cue_text_conflict",
+      "label": "Cue-text conflict",
+      "cue_gain": 0.9,
+      "object_gain": 0.9,
+      "safety_gain": 0.88,
+      "conflict_gain": 1.2,
+      "miss": 0.04,
+      "penalty": 0.12
+    },
+    {
+      "name": "safety_cue_partial_miss",
+      "label": "Safety-cue partial miss",
+      "cue_gain": 0.82,
+      "object_gain": 0.86,
+      "safety_gain": 0.62,
+      "conflict_gain": 0.82,
+      "miss": 0.12,
+      "penalty": 0.2
+    },
+    {
+      "name": "cross_user_style_shift",
+      "label": "Cross-user style shift",
+      "cue_gain": 0.76,
+      "object_gain": 0.88,
+      "safety_gain": 0.78,
+      "conflict_gain": 0.74,
+      "miss": 0.08,
+      "penalty": 0.18
+    }
+  ],
+  "policies": [
+    {
+      "name": "text_only_intent",
+      "label": "Text-only intent",
+      "class": "baseline",
+      "clarify_bias": 0.16,
+      "latency": 0.03
+    },
+    {
+      "name": "captioned_cues",
+      "label": "Captioned cues",
+      "class": "baseline",
+      "clarify_bias": 0.07,
+      "latency": 0.06
+    },
+    {
+      "name": "generic_multimodal_prompt",
+      "label": "Generic multimodal prompt",
+      "class": "baseline",
+      "clarify_bias": 0.06,
+      "latency": 0.08
+    },
+    {
+      "name": "affordance_filtered_prompt",
+      "label": "Affordance-filtered prompt",
+      "class": "baseline",
+      "clarify_bias": 0.08,
+      "latency": 0.07
+    },
+    {
+      "name": "embodied_graph_unconservative",
+      "label": "Embodied graph, unconservative",
+      "class": "ablation",
+      "clarify_bias": 0.04,
+      "latency": 0.09
+    },
+    {
+      "name": "conservative_embodied_prompt_graph",
+      "label": "Conservative embodied prompt graph",
+      "class": "proposed",
+      "clarify_bias": 0.12,
+      "latency": 0.1
+    },
+    {
+      "name": "oracle_cue_action_safety_binder",
+      "label": "Oracle cue-action-safety binder",
+      "class": "oracle",
+      "clarify_bias": 0.04,
+      "latency": 0.08
+    }
+  ],
+  "noise_regimes": [
+    {
+      "name": "nominal",
+      "label": "Nominal",
+      "cue_noise": 0.03,
+      "occlusion": 0.0,
+      "delay": 0.0,
+      "ambiguity": 0.0
+    },
+    {
+      "name": "cluttered_workspace",
+      "label": "Cluttered workspace",
+      "cue_noise": 0.1,
+      "occlusion": 0.04,
+      "delay": 0.02,
+      "ambiguity": 0.1
+    },
+    {
+      "name": "occluded_cue",
+      "label": "Occluded cue",
+      "cue_noise": 0.16,
+      "occlusion": 0.16,
+      "delay": 0.04,
+      "ambiguity": 0.16
+    },
+    {
+      "name": "time_delayed_cue",
+      "label": "Time-delayed cue",
+      "cue_noise": 0.09,
+      "occlusion": 0.02,
+      "delay": 0.14,
+      "ambiguity": 0.12
+    }
+  ],
+  "safety_modes": [
+    {
+      "name": "standard_task_risk",
+      "label": "Standard task risk",
+      "critical": 0,
+      "severity": 0.35
+    },
+    {
+      "name": "safety_critical_boundary",
+      "label": "Safety-critical boundary",
+      "critical": 1,
+      "severity": 0.9
+    }
+  ]
+}

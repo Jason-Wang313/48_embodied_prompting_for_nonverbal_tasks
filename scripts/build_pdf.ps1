@@ -9,9 +9,12 @@ New-Item -ItemType Directory -Force -Path $DataDir | Out-Null
 
 Push-Location $PaperDir
 try {
-    pdflatex -interaction=nonstopmode -halt-on-error main.tex
-    pdflatex -interaction=nonstopmode -halt-on-error main.tex
-    pdflatex -interaction=nonstopmode -halt-on-error main.tex
+    pdflatex -interaction=nonstopmode -halt-on-error main.tex | Out-Null
+    if ($LASTEXITCODE -ne 0) { throw "pdflatex pass 1 failed with exit code $LASTEXITCODE" }
+    pdflatex -interaction=nonstopmode -halt-on-error main.tex | Out-Null
+    if ($LASTEXITCODE -ne 0) { throw "pdflatex pass 2 failed with exit code $LASTEXITCODE" }
+    pdflatex -interaction=nonstopmode -halt-on-error main.tex | Out-Null
+    if ($LASTEXITCODE -ne 0) { throw "pdflatex pass 3 failed with exit code $LASTEXITCODE" }
 }
 finally {
     Pop-Location
@@ -23,12 +26,14 @@ if (-not (Test-Path $BuiltPdf)) {
 }
 
 Copy-Item -Force -Path $BuiltPdf -Destination $CanonicalPdf
+$Hash = Get-FileHash -LiteralPath $CanonicalPdf -Algorithm SHA256
 Remove-Item -Force -LiteralPath $BuiltPdf
 
 $status = [ordered]@{
     paper = 48
-    decision = "workshop-only"
+    status = "final_v3_full_scale"
     canonical_pdf = $CanonicalPdf
+    canonical_sha256 = $Hash.Hash
     local_pdf_removed = -not (Test-Path $BuiltPdf)
     built_at = Get-Date -Format "yyyy-MM-dd HH:mm:ss zzz"
 }

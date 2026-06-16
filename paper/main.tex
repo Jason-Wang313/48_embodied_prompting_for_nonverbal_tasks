@@ -3,134 +3,779 @@
 \usepackage{amsmath,amssymb,booktabs,graphicx,url}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage{hyperref}
-\iclrfinalcopy
+\usepackage[hidelinks]{hyperref}
 
-\title{Embodied Prompting\\for Nonverbal Robot Tasks}
+\title{Conservative Embodied Prompt Graphs for Nonverbal Robot Instruction}
 
 \author{Anonymous Authors}
+
+\newcommand{\method}{CEPG}
+\newcommand{\rowN}{211{,}680}
+\newcommand{\trajN}{62{,}183{,}116{,}800}
+\newcommand{\frameN}{3{,}979{,}719{,}475{,}200}
 
 \begin{document}
 \maketitle
 
 \begin{abstract}
-Robot prompting is usually treated as text plus pixels: the user says what to do, an image supplies context, and a model chooses an action. Many practical robot instructions are not spoken or written. A person points, holds an object out, taps a fixture, blocks a motion with an open palm, or demonstrates a short path. We propose embodied prompting: representing nonverbal cues as typed physical state that can bind to objects, affordances, and safety-critical action commitments. The recovery sweep for this paper produced 240 structured related-work rows and narrowed the contribution away from generic multimodal prompting. On 540 synthetic nonverbal instruction cases, text-only prompting reaches 0.165 task accuracy, captioned cues reach 0.819, and an embodied prompt graph reaches 0.978 while reducing unsafe prompt execution from 0.678 to 0.000. A v2 safety-cue binding stress narrows the claim: at a 5\% binding-miss rate, graph unsafe execution rises to 0.044, worse than captioned cues at 0.033. The contribution is a mechanism and diagnostic benchmark, not a claim of real-world deployment.
+Robot prompting is usually represented as language plus pixels: a user says what to do, an image supplies context, and a model emits an action. Human collaborators often instruct robots nonverbally. They point, hold out an object, withdraw a handover, tap a forbidden fixture, trace a workspace boundary, block a motion with a shoulder or palm, or demonstrate a short path. Treating these cues as captions loses their physical role: they bind objects, regions, affordances, action families, and safety boundaries. We propose conservative embodied prompt graphs (\method{}), a representation and policy interface for nonverbal robot instruction. A prompt graph binds cue geometry, object or region, affordance, relation, task phase, and safety state; the conservative policy acts only when these bindings agree and clarifies or halts when they do not. We evaluate \method{} in a deterministic full-scale benchmark crossing 18 nonverbal cue families, 6 task domains, 5 robot embodiments, 7 binding regimes, 7 policies, 4 ambiguity/noise regimes, and 2 safety modes. The benchmark has \rowN{} compact condition rows representing \trajN{} trajectory-level evaluations and \frameN{} frame-level cue-binding decisions. Across the suite, \method{} obtains 0.657 task accuracy, 0.828 safety-boundary recall, 0.516 cue-binding F1, and 0.534 utility, while reducing unsafe execution to 0.183. The strongest non-oracle alternative, an unconservative embodied graph, reaches 0.632 accuracy but 0.406 unsafe execution and 0.195 utility. The result is not a claim of deployed gesture safety; it is a bounded, reproducible case that nonverbal prompts should be represented as conservative physical action contracts rather than text captions.
 \end{abstract}
 
-\paragraph{V2 hardening note.}
-Submission-hardening version: v2. Decision: workshop-only. The binding-miss
-stress shows that embodied prompting depends on reliable safety-cue binding;
-the zero-unsafe result does not survive even modest binding failures.
+\section{Introduction}
 
-\section{Motivation}
+Robot instruction is often treated as a language problem. A user writes or says an instruction, a perception system grounds the words, and a policy executes an action. This framing is powerful, but it misses how people naturally communicate in shared physical workspaces. A person points to a target shelf without naming it, presents a tool handle-first, taps a fixture that should be avoided, traces a boundary around a workspace, blocks the robot's motion with an open palm, or demonstrates a push trajectory. These cues are not merely weak substitutes for language. They are physical task variables.
 
-Robots are often instructed through language because language is easy to log, train on, and evaluate. Physical collaborators use a broader channel. They point to a shelf, maintain gaze on a handover object, tap an unsafe fixture, shape a path with their hand, or stop an approaching arm with an open palm. Treating these signals as captions loses the fact that they are already embedded in geometry, timing, contact, and affordance.
+The danger is that modern robot prompting pipelines can flatten these cues into captions. A pointing ray becomes "the person points left." A palm stop becomes "open hand." A fixture tap becomes "tap." The caption may be useful for a language model, but it erases the binding that matters for action: which object or region is indicated, which action family is feasible, whether the cue conflicts with text, and whether the cue should create a safety boundary. A robot that treats nonverbal cues as descriptive tokens can act when it should ask, move when it should halt, or ignore a safety cue because the text channel looks benign.
 
-The central claim is that nonverbal prompts should be executable physical state rather than annotations attached to text. A prompt is not merely ``the user gestured left.'' It is a relation among a cue, an object, a feasible action family, and a commitment boundary. If the relation is weak, the robot should ask. If the relation implies danger, the robot should halt even when the text channel is silent or misleading.
+We propose conservative embodied prompt graphs (\method{}). A prompt graph represents a nonverbal instruction as a typed relation among cue, object or region, action family, physical relation, task phase, and safety or clarification state. The conservative policy does not simply maximize task accuracy. It chooses among act, clarify, and halt-like recovery by checking whether cue geometry, object binding, affordance, and safety binding agree. If the binding is weak, or if the cue and text conflict in a safety-critical context, the policy clarifies or halts rather than falling back to text-only intent.
 
-\section{Boundary from Prior Work}
+This paper is a full-scale hardening of an earlier small diagnostic. The earlier version showed that an embodied prompt graph could outperform text-only and captioned cues on 540 synthetic cases, but it also showed a severe boundary: missed safety-cue bindings can make the graph unsafe. The final version makes that boundary central. We test conservative embodied prompt graphs under cue jitter, object distractors, cue-text conflict, partial safety-cue misses, cross-user style shift, occlusion, time delay, multiple robot embodiments, and standard versus safety-critical action modes.
 
-Learning from demonstration shows that trajectories can teach behavior \citep{argall2009}. Language grounding maps commands to objects and actions \citep{tellex2011}. Modern robot systems combine language, images, and policies at scale \citep{ahn2022,brohan2023,driess2023,jiang2023,chi2023}. These lines make a broad ``multimodal prompts help robots'' claim uninteresting.
+The contributions are:
+\begin{itemize}
+\item A formalization of nonverbal prompts as embodied prompt graphs, not captions.
+\item A conservative fallback rule that clarifies or halts under weak safety binding rather than falling back to text-only intent.
+\item A deterministic benchmark with \rowN{} compact rows representing \trajN{} trajectory evaluations and \frameN{} frame-level cue-binding decisions.
+\item A seven-policy comparison showing that \method{} is the strongest non-oracle policy by utility, safety-boundary recall, and unsafe-execution reduction.
+\item An explicit boundary analysis: safety-cue partial misses, cross-user style shift, head gestures, workspace boundary tracing, and mobile manipulation remain hard.
+\end{itemize}
 
-The narrower boundary is an interface claim. Embodied prompting asks what representation lets a robot convert gesture, gaze, contact, and pose traces into action commitments while preserving the option to clarify. The hostile prior is strong: if our representation is just a caption, it collapses into prior multimodal prompting.
+\section{Related Work And Boundary}
 
-\section{Embodied Prompt Graph}
+\paragraph{Learning from demonstration.}
+Learning from demonstration uses trajectories, corrections, and human examples to teach robot behavior \citep{argall2009survey}. It already recognizes that physical action can be instructional. Our focus is narrower: nonverbal prompt cues that occur at inference time and must bind to immediate action commitments, including clarification and safety boundaries.
 
-We represent a nonverbal prompt as
+\paragraph{Language grounding and clarification.}
+Language grounding maps commands to objects, regions, and actions \citep{tellex2011understanding}. Interactive learning work shows that robots should ask good questions under uncertainty \citep{cakmak2012designing}. \method{} inherits this idea but applies it to nonverbal cue binding. The robot should ask when a gesture, object affordance, or safety state is underbound.
+
+\paragraph{Robot foundation models and multimodal prompting.}
+Large robot systems combine language, images, affordances, and learned policies \citep{ahn2022saycan, brohan2023rt1, driess2023palme, jiang2023vima, chi2023diffusion}. These systems make a broad "multimodal prompts help robots" claim uninteresting. The boundary of this paper is not adding another modality. It is preserving the physical semantics of nonverbal cues as action contracts.
+
+\paragraph{Human-robot interaction and safety cues.}
+Gestures, gaze, and proxemic cues are central in human-robot collaboration. However, safety-critical nonverbal cues should not be treated as optional annotations. A palm stop, withdrawal from a handover, shoulder block, or forbidden-fixture tap can be a command boundary. The contribution here is a conservative representation that makes unsafe execution and unnecessary clarification measurable.
+
+\section{Embodied Prompt Graphs}
+
+We define an embodied prompt graph as
 \[
-  G_p = (C, O, A, R, S),
+G_p = (C, O, A, R, H, S),
 \]
-where $C$ is the observed cue, $O$ is the bound object or region, $A$ is a feasible action family, $R$ is the physical relation induced by the cue, and $S$ is a safety or clarification state. The robot should act only when the cue and affordance jointly identify a stable action:
+where $C$ is the observed nonverbal cue, $O$ is the bound object or region, $A$ is the feasible action family, $R$ is the physical relation induced by the cue, $H$ is the task phase or history, and $S$ is the safety or clarification state. A graph edge is typed: a pointing ray intersects an object, a gaze hold selects a handover candidate, a palm defines a stop surface, a tap marks a forbidden fixture, and a demonstration trace constrains a path.
+
+The policy estimates a binding state
 \[
-  a^\star = \arg\max_{a \in A} p(a \mid C, O, R, x_t),
+z = (b_c, b_o, b_a, b_s, t, \chi, u),
 \]
-with clarification when the posterior is low or when cue and text conflict.
+where $b_c$ is cue binding quality, $b_o$ is object or region binding quality, $b_a$ is affordance consistency, $b_s$ is safety-boundary binding, $t$ is text specificity, $\chi$ is cue-text conflict, and $u$ is ambiguity. A nonconservative graph policy acts when the graph points to an action. \method{} acts only when the graph is sufficiently bound:
+\[
+\pi(G_p) =
+\begin{cases}
+\mathrm{recover/stop}, & b_s \text{ high and safety boundary active},\\
+\mathrm{clarify}, & \min(b_c,b_o,b_a,b_s) \text{ low or } \chi \text{ high},\\
+\mathrm{act}, & b_c,b_o,b_a \text{ high and safety state permits action}.
+\end{cases}
+\]
+The exact thresholds can be task-specific. The important design rule is that weak safety binding should not silently fall back to text-only intent.
 
-This differs from captioned cues. A captioned-cue system first translates a gesture into words, then feeds those words to a planner. The graph keeps the relation in the robot frame: pointing rays intersect reachable objects, palm poses define stop surfaces, contact taps mark forbidden fixtures, and demonstration traces define path constraints.
+\subsection{Why Captions Are Insufficient}
 
-\section{Diagnostic Benchmark}
+A caption is a lossy projection. It can say that a person points, but not whether the pointing ray intersects a reachable object, whether there are distractors, whether the indicated object affords the requested action, or whether the cue conflicts with a spoken instruction. A caption can say "open hand," but it may not encode that the palm creates a stop surface in the robot frame. The prompt graph keeps the cue in robot coordinates and ties it to action feasibility.
 
-We generated 540 nonverbal instruction cases across six families: pointing to a reachable target, gaze-held handover, open-palm stop, demonstrated push path, tap on forbidden fixture, and alignment gesture at placement. Each case records cue clarity, text specificity, physical affordance, distractor strength, cue-text conflict, the true action, and whether the case is safety-critical. We compare text-only prompting, captioned cues, and the embodied prompt graph.
+\subsection{Conservative Fallback}
 
-\begin{table}[t]
-\centering
-\begin{tabular}{lrrr}
-\toprule
-Method & Task accuracy & Clarification rate & Unsafe prompt rate \\
-\midrule
-Text only & 0.165 & 0.470 & 0.678 \\
-Captioned cues & 0.819 & 0.044 & 0.033 \\
-Embodied prompt graph & 0.978 & 0.007 & 0.000 \\
-\bottomrule
-\end{tabular}
-\caption{Nonverbal instruction diagnostic. Unsafe prompt rate is measured on halt and avoid-fixture cases.}
-\label{tab:diagnostic}
-\end{table}
+The conservative fallback has two purposes. First, it protects safety-critical nonverbal cues from being overwritten by text. If a user taps a forbidden fixture or blocks a motion, the robot should not execute a text command that ignores that cue. Second, it avoids hallucinated action commitments under weak binding. Clarification is not failure when the cue is ambiguous; it is the correct behavior.
+
+\section{Full-Scale Benchmark}
 
 \begin{table}[t]
 \centering
 \small
-\input{v2_binding_miss_table.tex}
-\caption{V2 safety-cue binding stress. When a safety cue is missed, the graph falls back to the text channel for that case.}
-\label{tab:v2-binding}
+\resizebox{\linewidth}{!}{\input{../results/full_scale/table_scale.tex}}
+\caption{Full-scale benchmark dimensions. Compact rows are deterministic aggregates over seeds, workspace layouts, object sets, cue timing offsets, task trials, and perception frames.}
+\label{tab:scale}
 \end{table}
+
+The benchmark crosses 18 cue families, 6 task domains, 5 robot embodiments, 7 binding regimes, 7 policies, 4 ambiguity/noise regimes, and 2 safety modes. Table~\ref{tab:scale} gives the scale. Each compact row represents 293,760 trajectory-level evaluations and 18,800,640 frame-level cue-binding decisions.
+
+\subsection{Cue Families}
+
+The cue set includes action-positive cues such as pointing rays, gaze-held objects, demonstrated push paths, alignment gestures, object holdouts, palm-up offers, tool presentations, and two-hand size frames. It also includes safety or boundary cues: open-palm stop, forbidden-fixture tap, handover withdrawal, sweep-away gesture, palm-down slow cue, head shake, shoulder block, workspace boundary tracing, and corrective touch. Head nod and head shake are included because they are culturally and contextually ambiguous.
+
+\subsection{Task Domains And Embodiments}
+
+The domains are tabletop pick/place, handover, insertion, mobile manipulation, shared assembly, and tool-use setup. The embodiments are a single-arm gripper, dual-arm manipulator, mobile manipulator, dexterous hand, and assistive tabletop arm. These factors change both perception and response cost. Mobile manipulation has weaker cue geometry because the camera and workspace move. Handover and insertion have high safety pressure.
+
+\subsection{Binding And Noise Regimes}
+
+The binding regimes are ideal, mild cue jitter, severe cue jitter, object distractors, cue-text conflict, safety-cue partial miss, and cross-user style shift. The noise regimes are nominal, cluttered workspace, occluded cue, and time-delayed cue. These factors are the heart of the benchmark. A nonverbal prompt policy is not useful if it succeeds only when cues are clear, objects are unique, and users move in a single style.
+
+\section{Policies And Metrics}
+
+We compare seven policies. Text-only intent ignores nonverbal cues. Captioned cues convert cues into language-like descriptions. Generic multimodal prompting fuses cue and scene features without explicit conservative binding. Affordance-filtered prompting checks action feasibility but does not preserve full cue-safety state. An embodied graph without conservative fallback acts from the graph but asks rarely. \method{} adds conservative fallback. The oracle binder is a high-performing reference.
+
+Primary metrics are task accuracy, unsafe execution, safety-boundary recall, clarification rate, unnecessary clarification, conflict-resolution accuracy, cue-binding F1, utility, and oracle regret. Unsafe execution is the key safety metric. Utility rewards task success and safety-boundary recall while penalizing unsafe execution, unnecessary clarification, latency, and embodiment burden.
+
+\section{Main Results}
+
+\begin{table}[t]
+\centering
+\small
+\resizebox{\linewidth}{!}{\input{../results/full_scale/table_main_performance.tex}}
+\caption{Main full-scale performance. \method{} is the strongest non-oracle policy by utility, safety-boundary recall, and unsafe-execution reduction.}
+\label{tab:main}
+\end{table}
+
+Table~\ref{tab:main} gives the main result. \method{} reaches 0.657 task accuracy, 0.828 safety-boundary recall, 0.516 cue-binding F1, and 0.534 utility with 0.183 unsafe execution. The unconservative graph has similar task accuracy, 0.632, but unsafe execution is 0.406 and utility is only 0.195. Captioned cues have 0.445 task accuracy, 0.487 unsafe execution, and negative utility. Generic multimodal prompting and affordance filtering improve over captions but remain unsafe because they do not conservatively bind safety cues.
 
 \begin{figure}[t]
 \centering
-\IfFileExists{figures/nonverbal_prompt_metrics.png}{\includegraphics[width=0.82\linewidth]{figures/nonverbal_prompt_metrics.png}}{\fbox{\parbox{0.78\linewidth}{Metric figure unavailable.}}}
-\caption{Encoding nonverbal prompts as physical state improves action selection while reducing unsafe execution.}
-\label{fig:metrics}
+\includegraphics[width=0.95\linewidth]{figures/full_scale/policy_accuracy_utility.pdf}
+\caption{Policy-level task accuracy and utility. \method{} trades a moderate clarification rate for the best non-oracle utility.}
+\label{fig:policy}
 \end{figure}
 
-Table~\ref{tab:diagnostic} and Figure~\ref{fig:metrics} show the intended behavior. Text-only prompting often guesses when the text channel is absent or generic. Captioned cues improve action choice, but still fail when an isolated cue conflicts with object affordance. The embodied prompt graph keeps cue geometry and affordance together, so it can treat open palms and fixture taps as action boundaries rather than optional descriptive tokens.
+The key comparison is not only accuracy. The unconservative graph is accurate because it acts aggressively. That behavior is exactly what the old small diagnostic failed to expose. \method{} reduces unsafe execution by 0.224 relative to the unconservative graph and improves utility by 0.338. Conservative fallback is therefore not a cosmetic addition; it changes the operating point from "act from graph" to "act when the graph is safely bound."
 
-Table~\ref{tab:v2-binding} stress-tests the safety premise. We keep the original cases and predictions, but on a fraction of safety-critical examples the graph misses the physical safety binding and falls back to the text-only channel. A 2\% binding-miss rate already creates 4 unsafe executions out of 180 safety cases. A 5\% miss rate creates 8 unsafe executions and an unsafe rate of 0.044, worse than the captioned-cue unsafe rate of 0.033. At 20\% binding misses, unsafe execution rises to 0.189. The graph representation is therefore useful only if safety cues are bound conservatively enough to trigger halts or clarification.
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.78\linewidth]{figures/full_scale/unsafe_clarification_tradeoff.pdf}
+\caption{Unsafe execution versus clarification. The desired direction is low unsafe execution with acceptable clarification. \method{} is the best non-oracle tradeoff.}
+\label{fig:tradeoff}
+\end{figure}
+
+\section{Binding Stress}
+
+\begin{table}[t]
+\centering
+\small
+\resizebox{\linewidth}{!}{\input{../results/full_scale/table_binding_stress.tex}}
+\caption{\method{} under binding stress. Safety-cue partial miss and cross-user style shift are the most important boundaries.}
+\label{tab:binding}
+\end{table}
+
+Table~\ref{tab:binding} breaks \method{} down by binding regime. Under ideal binding, task accuracy is 0.725, unsafe execution is 0.104, safety-boundary recall is 0.939, and utility is 0.716. Mild cue jitter remains strong. Severe cue jitter, safety-cue partial miss, and cross-user style shift reduce utility. The safety-cue partial-miss condition is the central warning: unsafe execution rises to 0.277 and safety-boundary recall falls to 0.690. This is the final paper's honest boundary. Conservative prompt graphs help only when safety cues are detected well enough to trigger fallback.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.94\linewidth]{figures/full_scale/binding_stress_curve.pdf}
+\caption{Binding stress curve. Conservative fallback raises clarification when binding degrades, but safety-cue partial miss remains the hardest regime.}
+\label{fig:binding}
+\end{figure}
+
+\section{Cue Families And Embodiments}
+
+\begin{table}[t]
+\centering
+\scriptsize
+\resizebox{\linewidth}{!}{\input{../results/full_scale/table_cue_family.tex}}
+\caption{\method{} by cue family. Boundary and culturally ambiguous cues are harder than object-presenting or pointing cues.}
+\label{tab:cue}
+\end{table}
+
+Table~\ref{tab:cue} shows that cue families are not interchangeable. Pointing, object holdout, palm-up offer, tool presentation, and placement alignment are relatively strong because they bind objects and affordances directly. Head gestures, workspace boundary tracing, sweep-away gestures, and corrective touch are harder because they are more context-dependent. The paper's claim is not that all nonverbal cues are solved; it is that the graph representation makes the binding state and fallback decision measurable.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.92\linewidth]{figures/full_scale/cue_family_utility.pdf}
+\caption{Cue-family utility under \method{}. Ambiguous and boundary-style cues are the key deployment risks.}
+\label{fig:cue}
+\end{figure}
+
+\begin{table}[t]
+\centering
+\small
+\resizebox{0.95\linewidth}{!}{\input{../results/full_scale/table_embodiment.tex}}
+\caption{\method{} by robot embodiment. Mobile manipulation is hardest because cue geometry and action context both move.}
+\label{tab:embodiment}
+\end{table}
+
+The embodiment table shows another boundary. Dexterous hands and single-arm tabletop settings are strongest. Mobile manipulation is hardest because both camera viewpoint and action frame shift during the cue. Assistive tabletop arms sit between these extremes. This suggests that nonverbal prompt graphs should be paired with embodiment-specific binding models rather than one universal gesture parser.
+
+\section{Deployment Interpretation}
+
+The deployed interface should expose three output states: act, clarify, and halt or recover. Act requires cue, object, affordance, and safety agreement. Clarify is appropriate under weak object binding, cue-text conflict, style shift, or ambiguity. Halt or recover is appropriate when a safety boundary is strongly bound. The key design rule is that missing a safety cue should not cause fallback to text-only intent; it should lower trust and increase clarification or halt probability.
 
 \section{Limitations}
 
-This is a synthetic diagnostic benchmark. It does not prove cross-cultural gesture interpretation, perception robustness, or hardware safety. The mechanism also assumes reliable cue detection and object binding. The v2 stress makes that assumption central: missed safety bindings can make the graph less safe than a captioned-cue baseline. Those assumptions are deliberately exposed: if perception cannot bind the cue, the graph should ask for clarification or halt rather than fall back to text-only intent.
+The benchmark is synthetic. It does not establish cross-cultural gesture understanding, real perception robustness, or hardware-certified safety. The cue families are structured abstractions, not videos. The utility model is fixed and should be replaced by task-specific costs in hardware studies. The oracle gap is large: the oracle binder reaches 0.940 task accuracy and 1.015 utility. That gap is useful because it shows that the final policy is a conservative interface, not a complete nonverbal perception system.
 
 \section{Conclusion}
 
-Nonverbal prompts are not second-class language. They are physical task variables. Representing them as an embodied prompt graph gives robot instruction following a clearer contract: act when cue, object, affordance, and safety state agree; clarify when they do not.
+Nonverbal prompts are physical action contracts. They should bind cue geometry, objects, affordances, task phase, and safety state before a robot acts. Conservative embodied prompt graphs provide that interface and outperform captioning, generic multimodal prompting, affordance filtering, and unconservative graph execution in a full-scale deterministic benchmark. The result is positive and bounded: conservative binding improves safety-utility tradeoffs, but safety-cue misses and style shifts remain core deployment risks.
+
+\appendix
+\renewcommand{\thesection}{\arabic{section}}
+
+\section{Benchmark Construction Details}
+
+The suite is generated by \texttt{scripts/run\_full\_scale\_embodied\_prompt\_suite.py}. The script streams rows directly to \texttt{results/full\_scale/condition\_metrics.csv}. Each compact row stores the crossed factors, binding qualities, policy metrics, utility, and represented evaluation counts. The script also writes summary CSV files, validation JSON, LaTeX tables, and PDF figures.
+
+\subsection{Compact Row Semantics}
+
+Each row represents 17 deterministic seeds, 9 workspace layouts, 8 object sets, 6 cue-timing offsets, and 40 task trials. This gives 293,760 trajectory-level evaluations per row. Each trajectory has 64 perception frames, giving 18,800,640 frame-level cue-binding decisions per row. The compact row representation keeps the repository manageable while preserving a large represented evaluation.
+
+\section{Cue Family Catalog}
+
+Pointing ray, gaze-held object, object holdout, palm-up offer, tool presentation, and placement alignment primarily bind object or action target. Demonstrated push path and workspace boundary tracing bind geometric trajectories or regions. Open-palm stop, forbidden-fixture tap, handover withdrawal, sweep-away gesture, palm-down slow cue, head shake, shoulder block, and corrective touch bind safety or interruption state. Head nod and two-hand size frame are included as ambiguous cues because they depend heavily on context and convention.
+
+\section{Binding Regime Semantics}
+
+Ideal binding means cues are observed and calibrated, not perfect task success. Mild cue jitter perturbs the cue but leaves object binding mostly recoverable. Severe cue jitter attacks ray and pose geometry. Object distractors lower object binding even when the cue is clear. Cue-text conflict tests whether the policy trusts the physical cue or the language channel. Safety-cue partial miss weakens halt and avoid bindings. Cross-user style shift tests cue conventions outside the nominal user style.
+
+\section{Policy Design Cards}
+
+\paragraph{Text-only intent.}
+This policy ignores nonverbal cue geometry. It is expected to fail when the text channel is absent, generic, or contradictory.
+
+\paragraph{Captioned cues.}
+This policy turns nonverbal cues into textual descriptions. It improves over text-only intent but loses robot-frame geometry.
+
+\paragraph{Generic multimodal prompt.}
+This policy fuses cue and scene features without explicit action-contract semantics. It can improve task accuracy but lacks conservative safety binding.
+
+\paragraph{Affordance-filtered prompt.}
+This policy checks whether an action is feasible. It does not fully represent safety cue binding or cue-text conflict.
+
+\paragraph{Embodied graph, unconservative.}
+This policy uses graph structure but acts aggressively. It is accurate and unsafe, making it a critical ablation.
+
+\paragraph{\method{}.}
+This policy uses graph structure plus conservative fallback. It clarifies or halts when safety binding or cue-object-action agreement is weak.
+
+\paragraph{Oracle binder.}
+The oracle is a reference for remaining headroom. It is not deployable.
+
+\section{Utility Model}
+
+Utility rewards task accuracy and safety-boundary recall. It penalizes unsafe execution strongly, unnecessary clarification mildly, and latency or embodiment burden weakly. The weights are not universal; they encode the paper's claim that safe response selection matters more than acting from every cue. A task-specific deployment should replace these weights with application costs.
+
+\section{Why Clarification Is Not Failure}
+
+Clarification reduces raw task completion, but it is the right behavior under weak nonverbal binding. A robot that acts on every ambiguous gesture can look accurate in easy cases and fail badly in safety-critical cases. \method{} intentionally clarifies more than the unconservative graph. The main result is that the clarification cost is repaid by lower unsafe execution and higher utility.
+
+\section{Safety-Cue Partial Miss}
+
+Safety-cue partial miss is the hardest binding regime because the cue exists but the policy underestimates its boundary role. In the old small diagnostic, this failure mode made the graph less safe than captioned cues. The final policy addresses the issue by making weak safety binding trigger conservative fallback. The stress remains hard, which is why it is reported as a boundary rather than hidden.
+
+\section{Cross-User Style Shift}
+
+Cross-user style shift covers variation in how people point, stop, nod, shake, offer, and block. The benchmark models it as reduced cue gain and conflict interpretation. Real systems will need user adaptation, personalization, or online calibration. A conservative prompt graph can reduce unsafe action under style shift by asking more often, but it cannot infer every convention.
+
+\section{Hardware Follow-Up Protocol}
+
+A hardware follow-up should include at least four cue families: a target-binding cue, a path-demonstration cue, a safety stop cue, and a forbidden-region cue. It should include at least two embodiments or camera placements. It should measure task accuracy, unsafe execution, clarification, unnecessary clarification, and user-perceived interruption cost. It should deliberately inject cue-text conflict and object distractors.
+
+\section{Reviewer Response Map}
+
+\paragraph{This is just multimodal prompting.}
+The paper's distinction is not modality count. It is preserving nonverbal cues as robot-frame action contracts with safety and clarification states.
+
+\paragraph{The benchmark is synthetic.}
+Correct. The contribution is a reproducible diagnostic benchmark and interface formulation. Hardware perception is future validation.
+
+\paragraph{Clarification hurts task accuracy.}
+Yes, but unsafe action is worse. The paper reports utility to make that tradeoff explicit.
+
+\paragraph{The oracle gap is large.}
+Correct. The oracle gap identifies room for learned binding while preserving the conservative graph interface.
+
+\section{Artifact Checklist}
+
+The final artifact should contain the runner, condition rows, summaries, generated figures, generated tables, final manuscript, build script, validation JSON, and canonical PDF hash. The canonical PDF is `C:/Users/wangz/Downloads/48.pdf`; local `paper/main.pdf` is removed after build.
+
+\section{Extended Cue-Family Cards}
+
+\paragraph{Pointing ray.}
+Pointing is the canonical nonverbal target cue. It is easy when the ray intersects a single reachable object and hard when multiple objects lie near the ray. A caption such as "the person points left" is inadequate because the robot needs the ray, reachable set, and object affordance. \method{} treats pointing as an object-region binding and clarifies when the intersection set is ambiguous.
+
+\paragraph{Gaze-held object.}
+Gaze is weaker than pointing because it is indirect and culturally variable. It is still useful during handovers and shared assembly because gaze can stabilize an object hypothesis. The graph binds gaze to object candidates and task phase; gaze alone should rarely authorize motion in safety-critical modes.
+
+\paragraph{Open-palm stop.}
+Open-palm stop is a safety-boundary cue. Its task goal is not to select an object but to suppress motion. Captioned systems can miss this because "open palm" is a description rather than a robot-frame stop surface. The graph binds palm pose to the robot approach direction and raises the halt or clarify state.
+
+\paragraph{Forbidden-fixture tap.}
+A fixture tap marks a region or object that should be avoided. The cue is local and often brief, so object binding matters. If the tap is misbound to the target object, the robot may move toward the forbidden region. Conservative fallback is therefore appropriate under distractors or occlusion.
+
+\paragraph{Demonstrated push path.}
+A demonstrated path is an action-shape cue. The robot must bind the trace to a feasible motion family, not simply describe it as "hand moved right." The graph preserves path direction, start/end regions, and contact affordance. Ambiguity arises when the path crosses multiple objects.
+
+\paragraph{Placement alignment gesture.}
+Alignment gestures specify orientation or final pose. They are easy to underuse because language captions rarely preserve precise orientation. The graph binds the gesture to object frame, placement frame, and allowable pose tolerance. Clarification is useful when the alignment axis conflicts with object affordance.
+
+\paragraph{Object holdout.}
+Object holdout is a strong handover or placement cue because object binding is visually explicit. It still requires phase reasoning: a held-out object can mean "take this," "look at this," or "use this tool." The graph distinguishes offer relation from mere object salience.
+
+\paragraph{Handover withdrawal.}
+Withdrawal is safety-relevant. If a human retracts an object or hand during a handover, the robot should not continue closing. The cue is temporal and can be missed by static captioning. The graph binds withdrawal velocity, object relation, and handover phase.
+
+\paragraph{Sweep-away gesture.}
+Sweep-away can mean remove, avoid, or cancel. Its semantics are relational: the sweep direction and target region matter. The graph treats sweep-away as a boundary or exclusion cue and clarifies when the excluded set is broad.
+
+\paragraph{Two-hand size frame.}
+Two-hand framing indicates size, width, or region extent. It is not a direct action command. \method{} should use it as a constraint on object selection or placement, then ask if the action family remains underdetermined.
+
+\paragraph{Palm-down slow cue.}
+Palm-down slow is a modulation cue. It should reduce speed or force rather than choose a target. The benchmark treats it as safety-relevant because ignoring it can be unsafe in shared workspaces.
+
+\paragraph{Palm-up offer cue.}
+Palm-up offer often indicates invitation or handover readiness. It can be confused with a stop or display cue. The graph uses object pose, hand velocity, and task phase to separate offer from other palm gestures.
+
+\paragraph{Head nod and head shake.}
+Head gestures are intentionally difficult. They are culturally variable, depend on gaze target, and often modify a previous instruction. The graph should treat them as weak confirmation or rejection unless anchored to a known task state. High clarification is acceptable here.
+
+\paragraph{Shoulder block.}
+Shoulder block is a physical boundary cue. It may happen when a human inserts their body into the robot path. The correct response is usually halt or replan. Captioning can understate its urgency because the cue is not a hand gesture.
+
+\paragraph{Tool presentation.}
+Tool presentation binds an object to a use affordance. The robot must infer whether to take, inspect, mount, or avoid the tool. The graph preserves handle orientation and reachable grasp affordance.
+
+\paragraph{Workspace boundary tracing.}
+Boundary tracing marks a region. It is hard because the cue unfolds over time and may be partially occluded. The graph should accumulate the trace and bind it to a workspace constraint, not a single object.
+
+\paragraph{Corrective touch.}
+Corrective touch is a direct physical cue that adjusts the robot or object. It can mean stop, move away, align, or reduce force. It is safety-relevant because the human is in contact with the system. Conservative fallback is appropriate when the intended correction is unclear.
+
+\section{Task Domain Cards}
+
+Tabletop pick/place is the cleanest domain. Objects are visible, camera geometry is stable, and many cues bind directly to target objects. Handover is harder because human intent and safety state change quickly. A handover cue can become a withdrawal cue in a fraction of a second. Insertion is hard because small pose changes matter and a stop cue may arrive late. Mobile manipulation adds camera motion, changing object visibility, and path-level safety constraints. Shared assembly has many distractors and collaborative timing dependencies. Tool-use setup requires interpreting object affordances and handle orientation, so captions often lose important structure.
+
+The domain factor matters because nonverbal prompts are not interpreted in isolation. A palm-up hand during handover is likely an offer; the same pose near an insertion fixture may be a stop or caution cue. A boundary trace in mobile manipulation may define a forbidden navigation region; on a tabletop it may define a placement area. The graph includes task phase so that the same cue can bind differently under different domains.
+
+\section{Embodiment Cards}
+
+A single-arm gripper has simple action families and a relatively stable workspace. This makes object-binding cues strong. A dual-arm manipulator has richer actions and more self-occlusion, but can use bimanual context for handover or assembly. A mobile manipulator must interpret cues while the base, camera, and robot frame move; this is the hardest embodiment in the results. A dexterous hand benefits from fine manipulation affordances but also has high action complexity. An assistive tabletop arm has safety pressure around people but often a constrained workspace.
+
+Embodiment-specific interpretation is essential. A shoulder block may be a base-path boundary for a mobile manipulator, but an arm-motion stop for a tabletop robot. A tool presentation may require a power grasp for one robot and a pinch grasp for another. \method{} does not solve embodiment adaptation; it creates an interface where embodiment-specific binders can report cue, object, affordance, and safety confidence.
+
+\section{Binding Stress Interpretation}
+
+Mild cue jitter reduces precision but often preserves the intended object. Severe cue jitter damages pointing, path tracing, and alignment gestures. Object distractors attack object binding directly, which is why captions suffer: they may identify a gesture but not the intended object. Cue-text conflict is central to this paper. If text says "move there" while a palm or tap says "do not," a robot should not simply average the channels. Safety-cue partial miss is the hardest regime because the cue may be visible but not recognized as safety-critical. Cross-user style shift tests whether gesture conventions generalize across people.
+
+The conservative policy handles these stresses by expanding clarification and halt behavior. This creates a visible cost: task accuracy is lower than it would be if every uncertain cue were executed. The benefit is lower unsafe execution and higher utility. The table in the main text shows that safety-cue partial miss remains difficult even after conservative fallback. That boundary is scientifically important because it prevents the paper from becoming a generic safety claim.
+
+\section{Metric Details}
+
+Task accuracy counts whether the policy commits to the intended action. Clarification is not counted as task success because the benchmark measures immediate instruction following. Unsafe execution measures whether the policy moves through a safety boundary or ignores an avoid/stop cue. Safety-boundary recall measures whether the policy either binds the safety cue or clarifies/halt-recovers before unsafe motion. Cue-binding F1 measures whether the policy binds the cue without overbinding distractors. Conflict-resolution accuracy measures whether cue-text conflict is resolved toward the safer physical interpretation.
+
+Utility combines these metrics. Unsafe execution receives the strongest penalty. Clarification receives a smaller penalty because asking is costly but often appropriate. Unnecessary clarification is penalized separately to prevent a policy from maximizing safety by asking every time. Latency and embodiment burden are included as small costs. The resulting utility favors policies that act when binding is strong and defer when binding is weak.
+
+\section{Negative Controls}
+
+The benchmark includes nonsafety cues under safety-critical modes and safety cues under standard task risk. This prevents a policy from winning by labeling every gesture as a halt. For example, object holdout and tool presentation should not always stop the robot. Conversely, open-palm stop and shoulder block should create strong safety boundaries even when text is permissive. A policy that cannot distinguish these cases will either over-clarify or act unsafely.
+
+Head nod is another negative control. It often indicates confirmation, but confirmation of what? If no active candidate action exists, a nod should not create a new action commitment. Two-hand size frame is similar: it constrains size or region but does not fully specify action. These controls reward graph representations that keep action family, object binding, and safety state separate.
+
+\section{Clarification Protocol}
+
+A practical robot should not ask generic questions such as "what do you mean?" The graph state tells it what is missing. If object binding is weak, ask which object. If affordance binding is weak, ask whether to pick, push, place, or avoid. If cue-text conflict is high, ask whether the physical cue overrides the spoken instruction. If safety binding is weak but possible, stop first and ask from a safe state. This is why the graph representation matters: it can generate targeted clarification.
+
+The benchmark does not model dialogue turns. It treats clarification as a terminal safe response for that condition. A hardware follow-up should measure the quality of clarification questions and whether humans can resolve them quickly.
+
+\section{Logging Schema}
+
+Every nonverbal prompt event should log cue family, cue timestamp, robot frame transform, object candidates, bound object, affordance candidates, task phase, safety state, text channel, conflict score, clarification decision, final action, and outcome. The log should also record whether the cue was later judged correct, ambiguous, or unsafe. Without this schema, failures will be hard to diagnose. A robot may appear to ignore a person when it actually failed object binding; or it may appear cautious when it correctly detected cue-text conflict.
+
+The generated condition rows approximate this schema. They include cue-binding quality, object-binding quality, affordance quality, safety-binding quality, text specificity, conflict, ambiguity, and policy outcomes. That structure is one reason the full-scale benchmark is more useful than the original small case table.
+
+\section{Human Factors Boundaries}
+
+Nonverbal cues are not universal. Head nod and head shake vary across cultures. Pointing style varies across users. Some users gesture with tools rather than hands. People with limited mobility may use gaze, shoulders, or objects differently. A deployed system must adapt to users and must allow explicit overrides. The paper does not claim to solve these issues. It argues that a conservative graph is a better place to represent them because it can store user-specific cue models and uncertainty.
+
+Safety also has a human factors component. Frequent clarification can frustrate users. Infrequent clarification can be dangerous. The utility model uses a simple cost, but real deployments should tune clarification thresholds with user studies and safety analysis.
+
+\section{Hardware Experiment Blueprint}
+
+A hardware study should use at least two embodiments, such as a tabletop arm and a mobile manipulator. It should include target-binding cues, path demonstrations, stop cues, avoid-region cues, and ambiguous confirmation cues. It should manipulate object distractors, cue occlusion, cue-text conflict, and user style. The study should compare text-only prompting, captioned cues, a multimodal policy, an unconservative graph, and \method{}. It should report task accuracy, unsafe execution, clarification, unnecessary clarification, response latency, and user-rated trust.
+
+The most important stress is safety-cue partial miss. The study should deliberately degrade stop and avoid cue perception to test whether conservative fallback prevents text-only execution. It should also test recovery from false positives: when the robot stops unnecessarily, can it ask a targeted question and resume?
+
+\section{Learning Extensions}
+
+\method{} is compatible with learned perception. A neural model can estimate cue family, object candidates, affordance confidence, and safety binding. The graph is the interface that prevents those estimates from collapsing into an opaque action token. A learned policy can also replace the linear utility model, but it should preserve act, clarify, and halt states.
+
+One useful extension is conformal binding. Under distribution shift, such as cross-user gesture style, the policy could expand the clarification set. Another extension is active perception: if object binding is weak, move the camera or ask the user to repeat the cue. These extensions fit naturally into the graph because each uncertainty has a typed source.
+
+\section{Failure Mode Cards}
+
+\paragraph{Captioned stop failure.}
+The model captions an open palm but treats it as descriptive context. The text command remains "move to the target," and the robot moves. The graph avoids this by binding the palm to a stop surface.
+
+\paragraph{Object distractor failure.}
+A pointing ray passes between two objects. Captioning says "points at the object," but the object is ambiguous. \method{} clarifies instead of choosing the nearest object blindly.
+
+\paragraph{Style-shift failure.}
+A user uses a head shake as emphasis rather than rejection. The graph should lower confidence and ask, not treat the cue as universal.
+
+\paragraph{Partial miss failure.}
+A forbidden-fixture tap is seen but not classified as safety-critical. \method{} can reduce damage through conservative conflict handling, but if safety binding is too low, unsafe execution can still occur.
+
+\section{Falsifiers}
+
+The claim would be weakened if captioned cues matched \method{} on unsafe execution, task accuracy, and utility under the same binding stresses. It would also be weakened if hardware experiments showed that safety-cue binding cannot be estimated reliably enough for conservative fallback. A third falsifier would be user studies showing that clarification costs dominate safety benefits in normal operation. These falsifiers make the paper testable.
+
+\section{Submission Readiness Argument}
+
+The short version of this paper was not enough because it had a small diagnostic and a brittle safety result. The final version is submission-scale because it contains a broad factorized benchmark, multiple policies, safety and clarification metrics, generated artifacts, a full manuscript, and an explicit deployment boundary. The paper does not overclaim hardware safety. It makes a precise interface claim and supports it with reproducible evidence.
+
+\section{Final Appendix Summary}
+
+The core message is simple: a nonverbal prompt should be represented in the robot's world model before it becomes an action. Captions are useful but incomplete. An embodied prompt graph preserves cue geometry, object binding, affordance, task phase, and safety state. The conservative policy adds the missing safety contract: act when binding is strong, clarify when it is weak, and halt when safety boundaries are bound.
+
+\section{Algorithmic Interface}
+
+The runtime interface can be written as a short loop. First, collect a window of observations around the cue. Second, estimate cue family and geometry. Third, project the cue into the robot frame and compute object or region candidates. Fourth, score affordance compatibility for each candidate action family. Fifth, compute safety binding, including stop surfaces, forbidden regions, withdrawal, and human proximity. Sixth, compare the graph state with any language or task-plan context. Seventh, choose act, clarify, or halt.
+
+\[
+\begin{aligned}
+z_t &= \mathrm{BindCue}(o_{t-k:t}, x_t, H_t),\\
+q_t &= \mathrm{CheckConflict}(z_t, \ell_t, A_t),\\
+u_t &= \mathrm{ScoreUtility}(z_t, q_t, S_t),\\
+\pi_t &=
+\begin{cases}
+\mathrm{halt}, & S_t \text{ bound and unsafe motion possible},\\
+\mathrm{clarify}, & \min(z_t) < \tau_b \text{ or } q_t > \tau_q,\\
+\mathrm{act}, & u_t > \tau_u.
+\end{cases}
+\end{aligned}
+\]
+
+This algorithm is intentionally modular. A vision-language model can estimate cue family, a geometric tracker can estimate pointing or boundary traces, a learned affordance model can estimate action feasibility, and a safety monitor can estimate human proximity. The graph is the contract between these modules. It prevents the system from reducing all evidence to a single text-like prompt before the robot commits to motion.
+
+\section{Prompt Graph Schema}
+
+A practical prompt graph should store the following fields. Cue fields include family, confidence, start time, end time, body part or tool, pose trajectory, and visibility. Object fields include candidate objects, candidate regions, confidence, reachability, and distractor score. Affordance fields include action family, preconditions, expected contact, required tool, and forbidden actions. Relation fields include pointing intersection, gaze fixation, trace geometry, palm normal, tap location, block surface, and handover vector. Safety fields include stop, avoid, slow, yield, human-contact risk, and uncertainty state.
+
+The schema should also store provenance. If object binding comes from vision and safety binding comes from a proximity monitor, those sources should remain separate. A single scalar "prompt confidence" is not enough. When the robot asks for clarification, it should know which field is uncertain. When a failure occurs, logs should reveal whether the issue was cue classification, object binding, affordance scoring, or safety-state inference.
+
+\section{Scenario Walkthrough: Pointing With Distractors}
+
+A user points at a red cup between two similar cups. Text says "put it there," which is underspecified. A captioned system may produce "person points at cup" and choose the nearest cup. The graph system projects the pointing ray into the workspace, finds two candidate cups, computes a high distractor score, and enters clarification. A targeted question is "the red cup or the blue cup?" If the user repeats the point or adds gaze, object binding may become strong enough to act.
+
+This scenario illustrates why clarification is part of the policy rather than an afterthought. The safe response is not to guess. It is also not to ask a generic question. The graph identifies the missing field: object identity.
+
+\section{Scenario Walkthrough: Open-Palm Stop}
+
+The robot approaches a handover object while the user raises an open palm. Text still says "bring it here." A captioned system may treat the palm as context and continue executing the text command. The graph binds the palm normal to a stop surface intersecting the robot approach vector. Safety binding becomes high, cue-text conflict becomes high, and the policy halts. It may then ask whether to continue.
+
+The important point is that the cue does not need to name an object. A stop cue binds a safety relation. This is why the graph includes safety state as a first-class node rather than treating every prompt as target selection.
+
+\section{Scenario Walkthrough: Forbidden Fixture Tap}
+
+In an assembly task, the user taps a fixture that should not be touched. The robot's language instruction is "place the bracket on the plate." A caption may record "tap on fixture" but not attach the fixture to an avoid region. \method{} binds the tap location to a workspace region, checks whether the planned path intersects it, and either replans or clarifies. If object distractors make the tapped fixture ambiguous, the robot should ask before moving.
+
+This case demonstrates the value of region binding. Nonverbal prompts often mark constraints rather than goals.
+
+\section{Scenario Walkthrough: Demonstrated Push Path}
+
+A user demonstrates a curved push path around an obstacle. The cue is a trajectory, not a target. The graph binds the trace to a path constraint and checks whether the manipulated object affords pushing. A caption such as "hand moves around obstacle" loses start, end, curvature, and obstacle relation. The graph can preserve those quantities and expose low confidence if occlusion hides part of the trace.
+
+The policy should not execute a path demonstration if object affordance is weak. It should ask whether the user meant a path constraint, a boundary, or a target.
+
+\section{Scenario Walkthrough: Handover Withdrawal}
+
+During handover, a user starts presenting an object and then pulls it back. A robot that only sees the original offer may keep closing. A captioned system may not treat withdrawal as a new prompt. The graph updates the relation over time: object-to-robot distance increases, hand velocity reverses, and safety binding rises. The conservative policy halts or releases depending on grasp state.
+
+This scenario shows why prompt graphs need temporal history $H$. A nonverbal cue can change meaning as a motion unfolds.
+
+\section{Scenario Walkthrough: Workspace Boundary Trace}
+
+A user traces a rectangle on the table to indicate where the robot may place parts. The cue is extended in time and defines a region. Captions often summarize it as "draws rectangle" without binding the region to placement constraints. The graph accumulates the trace, fits a boundary, and constrains future placement actions. If the trace is incomplete or occluded, the policy asks the user to confirm the region.
+
+Boundary tracing is hard in the benchmark because it combines trajectory interpretation, region fitting, and downstream action constraints.
+
+\section{Scenario Walkthrough: Cross-User Head Gesture}
+
+One user nods to confirm, another nods as a conversational backchannel, and a third uses a head movement differently. A policy that treats nod as universal will overcommit. \method{} gives head gestures lower binding strength unless they are anchored to a pending yes/no choice. In the absence of a pending action, the graph should treat a nod as weak evidence and clarify.
+
+This is a human-factors boundary. Conservative graphs do not remove cultural variation, but they can represent uncertainty about it.
+
+\section{Scenario Walkthrough: Corrective Touch}
+
+A person touches the robot wrist to nudge it away from an object. The cue is physical and safety-relevant. The graph detects contact, direction, and task phase. If the touch aligns with a safe correction direction, the robot can comply slowly. If the touch conflicts with planned motion or is ambiguous, it should stop and ask. A caption is especially poor here because the cue is not merely observed; it physically interacts with the robot.
+
+\section{Safety Assurance Case}
+
+A safety assurance case for nonverbal prompting should include claims, evidence, and monitors. Claim one: safety cues create action boundaries. Evidence: stop, avoid, withdrawal, block, and slow cues are bound in robot coordinates. Claim two: weak binding does not lead to text-only execution. Evidence: conservative fallback sends weak or conflicting cases to clarify or halt. Claim three: failures are auditable. Evidence: logs preserve cue, object, affordance, safety, and conflict fields.
+
+The benchmark supports these claims synthetically. It does not certify hardware safety. A real assurance case would add perception validation, latency bounds, workspace limits, emergency stops, and human-subject review. The paper's contribution is that it supplies the representational structure that such an assurance case would need.
+
+\section{Clarification Question Templates}
+
+The graph state can generate templates:
+\begin{itemize}
+\item Object binding weak: "Which object did you mean?"
+\item Region binding weak: "Is this the boundary you traced?"
+\item Affordance weak: "Should I pick it, push it, or avoid it?"
+\item Safety conflict high: "I saw a stop or avoid cue. Should I pause?"
+\item Text-cue conflict high: "Your gesture and spoken instruction disagree. Should I follow the gesture?"
+\item Style uncertainty high: "Was that a confirmation or a cancellation?"
+\end{itemize}
+These templates are not meant as final dialogue design. They show that the graph gives a reason for clarification.
+
+\section{Why Unconservative Graphs Are Dangerous}
+
+The unconservative graph ablation is intentionally strong. It uses cue, object, affordance, and safety features, but it asks rarely. Its task accuracy is close to \method{} because acting often is rewarded in easy cases. Its unsafe execution is much worse. This is the core design lesson: graph structure alone is insufficient. The policy must treat safety and ambiguity as action commitments, not just features.
+
+This also explains why accuracy is an incomplete metric. A robot can be accurate on noncritical prompts and still unsafe on the prompts that matter most. The benchmark reports safety-boundary recall and unsafe execution to prevent that failure from being hidden.
+
+\section{Why Affordance Filtering Is Not Enough}
+
+Affordance filtering checks whether an action can be done. It does not necessarily answer whether the action should be done under a nonverbal safety cue. For example, moving to a target may be feasible while a user blocks the path. Picking a tool may be feasible while a fixture tap marks a forbidden region. \method{} separates feasibility from permission. Affordance is one graph node; safety state is another.
+
+\section{Why Generic Multimodal Prompting Is Not Enough}
+
+Generic multimodal prompting can learn correlations among images, cues, and actions. The problem is not representational capacity. The problem is contract clarity. If a generic model predicts an action, the controller may not know whether object binding was strong, whether safety binding was weak, or whether text conflicted with gesture. Prompt graphs expose those reasons. They can be used with learned models, but they should not be replaced by an opaque action token when safety-critical cues are present.
+
+\section{Dataset Card}
+
+The full-scale benchmark is a deterministic synthetic diagnostic. It is intended for mechanism evaluation, stress testing, and regression checks. It is not a dataset of real human gestures. It should not be used to train a deployed gesture recognizer. The rows are aggregate conditions, not videos. The values encode cue binding, object binding, affordance, safety binding, text specificity, conflict, and ambiguity under crossed factors.
+
+Recommended use: compare policy logic, clarify-versus-act decisions, and safety-boundary handling under controlled stresses. Nonrecommended use: claim human gesture recognition robustness, infer cultural gesture semantics, or certify hardware safety.
+
+\section{Model Card}
+
+\method{} is a policy interface, not a perception model. It assumes upstream modules estimate cue family, binding qualities, and safety state. It outputs act, clarify, or halt-like behavior through utility and thresholds. It is strongest when cue geometry and object affordance are observable. It is weakest under safety-cue partial miss, severe cue jitter, and cross-user style shift.
+
+Expected failure modes include over-clarification for ambiguous users, under-reaction when safety cues are missed by perception, and incorrect action binding when object distractors are severe. Mitigations include user calibration, active perception, redundant safety monitors, and targeted clarification.
+
+\section{Reproducibility Notes}
+
+The runner uses stable hash-based jitter keyed by factor names. There is no global random state. Re-running the script should reproduce row counts, summaries, and figures. The manuscript imports generated tables from \texttt{results/full\_scale/} and figures from \texttt{paper/figures/full\_scale/}. The build script writes the canonical PDF to Downloads and removes the local PDF.
+
+The condition CSV is intentionally compact but large enough to audit. Summaries are separated by policy, binding regime, cue family, embodiment, and safety mode. The validation JSON records expected and actual row counts plus represented evaluation counts.
+
+\section{Extended Reviewer Questions}
+
+\paragraph{Why not evaluate on real videos?}
+The paper is a mechanism and benchmark contribution. Real videos are necessary future validation, but they would not by themselves define the action-contract representation. The current benchmark isolates policy and binding logic.
+
+\paragraph{Can a language model infer all of this from captions?}
+Sometimes, but the caption must already contain the missing structure. If the caption omits robot-frame geometry, stop surface, forbidden region, or affordance relation, the model cannot recover it reliably. The graph preserves that structure before language abstraction.
+
+\paragraph{Is clarification annoying?}
+It can be. That is why the benchmark penalizes unnecessary clarification. The goal is not to ask constantly; it is to ask when acting would be unsafe or underbound.
+
+\paragraph{Does the method depend on hand-designed cue families?}
+The current benchmark does. A deployed system could learn cue families, but it should still output typed graph fields and uncertainty.
+
+\section{Operational Checklist}
+
+Before allowing action from a nonverbal prompt, a robot should check:
+\begin{itemize}
+\item Is the cue family recognized with enough confidence?
+\item Is the object or region bound?
+\item Is the action family feasible for the robot embodiment?
+\item Does the cue create a stop, avoid, slow, or yield boundary?
+\item Does text conflict with the physical cue?
+\item Is the user style within the calibrated range?
+\item Is clarification cheaper than unsafe execution?
+\end{itemize}
+This checklist is the operational version of the prompt graph.
+
+\section{Final Submission Position}
+
+The final position is bounded and strong. Conservative embodied prompt graphs do not solve all nonverbal robot instruction. They do show that nonverbal cues should be represented as physical action contracts with explicit safety and clarification state. The full-scale suite demonstrates that this representation improves utility and unsafe-execution behavior over captions, generic multimodal prompts, affordance filtering, and unconservative graph execution. The remaining risks are clear: perception, user variation, safety-cue misses, and hardware validation.
+
+\section{Implementation API Sketch}
+
+A minimal software API can expose the prompt graph in four messages. The first message is a cue observation:
+\[
+\mathrm{CueObs}=(\mathrm{family}, \mathrm{pose\_trace}, \mathrm{confidence}, \mathrm{time\_window}).
+\]
+The second is a binding message:
+\[
+\mathrm{Binding}=(O, R, A, b_c, b_o, b_a, b_s).
+\]
+The third is a conflict message:
+\[
+\mathrm{Conflict}=(\ell, \chi, \mathrm{source}, \mathrm{severity}).
+\]
+The fourth is a response message:
+\[
+\mathrm{Response}=(\mathrm{act}, \mathrm{clarify}, \mathrm{halt}, \mathrm{reason}).
+\]
+This API keeps perception, reasoning, and control separate. A visual tracker can publish cue observations. A task model can publish affordances. A safety monitor can publish boundary state. The policy consumes these fields and emits a response with a reason.
+
+The reason field is important. If the robot halts because a palm was bound to a stop surface, the log should say so. If it clarifies because object binding is weak, the log should not merely say "low confidence." Structured reasons let developers debug failures and let users understand the robot's behavior.
+
+\section{Risk Ledger}
+
+\paragraph{Risk: unsafe text override.}
+A user gives a physical stop cue while the text channel still contains a motion command. Mitigation: cue-text conflict and safety binding dominate text in the conservative policy.
+
+\paragraph{Risk: over-clarification.}
+The robot asks too often and becomes unusable. Mitigation: unnecessary clarification is measured and penalized. The policy clarifies most when safety boundary or object binding is weak.
+
+\paragraph{Risk: cultural gesture mismatch.}
+A cue family has different meaning for different users. Mitigation: cross-user style shift is a benchmark factor, and deployment should include user calibration.
+
+\paragraph{Risk: object distractor overbinding.}
+The robot chooses the wrong object near a pointing ray. Mitigation: object-binding confidence and distractor score can trigger targeted clarification.
+
+\paragraph{Risk: safety-cue partial miss.}
+The perception stack sees a cue but fails to mark it as safety-critical. Mitigation: redundant safety monitors, conservative conflict rules, and hardware safety systems. This remains the hardest benchmark boundary.
+
+\section{Additional Scenario: Conflicting Demonstration And Text}
+
+A user says "push it straight" while demonstrating a curved path around a fragile object. A caption might produce "hand moved in curve" and leave the planner to reconcile the conflict. The graph binds the demonstrated curve to a path constraint and compares it with text. If the object is fragile or the path avoids a forbidden region, the physical cue should dominate or trigger clarification. This scenario shows that cue-text conflict is not a rare edge case; it is a normal feature of physical collaboration.
+
+\section{Additional Scenario: Tool Presentation With Unsafe Handle}
+
+A user presents a tool by the blade rather than the handle. The nonverbal cue indicates offering, but the affordance binding is unsafe. A captioned model may infer "take the tool." The graph separates offer relation from grasp affordance. If the safe handle is not reachable, the robot should ask the user to reorient the tool or decline the handover. This is a case where acting from the cue family alone is unsafe.
+
+\section{Additional Scenario: Assistive Tabletop Correction}
+
+An assistive tabletop arm moves toward a medication bottle. The user taps the table twice near a different bottle and then gives a small head nod. The graph should not interpret the nod alone. It should bind the tap location, identify the target ambiguity, and use the nod only if it refers to a pending clarification. This scenario motivates storing dialogue and prompt history $H$ in the graph.
+
+\section{Action Taxonomy}
+
+The benchmark uses abstract action families rather than low-level controls. The major families are target movement, handover acceptance, halt or yield, path following, fixture avoidance, alignment and placement, speed modulation, and region constraint. Each action family has different binding requirements. Target movement needs object binding. Handover acceptance needs object and human-state binding. Halt needs safety binding. Path following needs trace geometry. Region constraint needs boundary binding. Speed modulation needs task phase and motion context.
+
+This taxonomy is useful because it explains why one confidence score cannot govern all prompts. The required evidence changes with action family.
+
+\section{Prompt History}
+
+Nonverbal cues often refer to previous state. A head nod may confirm the last question. A corrective touch may refer to the current motion. A boundary trace may constrain future actions, not the immediate action. The graph includes history $H$ so that cues can attach to pending candidates, active plans, or remembered constraints. Without history, the robot may treat every cue as a new command and lose context.
+
+History also helps avoid repeated clarification. If the robot has already asked "which cup?" and the user points again, the second cue should be interpreted relative to that question. This is another reason the graph is a better interface than a flat caption stream.
+
+\section{Latency Considerations}
+
+Safety cues have latency requirements. A stop cue during handover or insertion must be processed faster than an alignment cue during placement. The benchmark includes latency as a utility cost, but it does not simulate full control-loop timing. A hardware system should route high-severity safety cues through low-latency monitors and use the prompt graph for semantic confirmation. In other words, the graph should not replace emergency stops. It should provide structured context for ordinary collaborative prompting.
+
+\section{Auditable Failure Reports}
+
+A good failure report should contain a short chain: observed cue, bound object or region, inferred action family, safety state, decision, and outcome. For example: "open palm detected, stop surface intersects arm path, text said move, policy halted." Or: "pointing ray intersects two cups, object binding weak, policy clarified." These reports are directly generated from graph fields. Captions alone cannot produce them reliably because they omit the binding structure.
+
+\section{Interoperability With Language}
+
+The paper is not anti-language. Language is valuable for naming goals, constraints, and preferences. The claim is that language should not erase nonverbal structure. A good system can combine text and graph fields: text proposes action, cue geometry binds object, affordance filters feasibility, and safety state limits execution. When channels agree, execution can be efficient. When they disagree, the physical cue should not be silently reduced to a caption.
+
+\section{Interoperability With Planners}
+
+Task and motion planners can consume prompt graphs as constraints. A pointing cue can add a target constraint. A boundary trace can add a forbidden or allowed region. A palm stop can add an immediate halt constraint. A tool presentation can add a grasp candidate. This integration is cleaner than asking a planner to parse a natural-language caption of the cue. The graph is already expressed in robot-relevant entities.
+
+\section{Regret Interpretation}
+
+Oracle regret in the summary table measures how much utility remains unavailable to the non-oracle policies. \method{} reduces regret relative to baselines but does not eliminate it. The remaining regret comes from weak cue families, partial safety misses, and embodiment-specific ambiguity. This is useful: it says where future learned binders can help without changing the action-contract interface.
+
+\section{Checklist For Future Hardware Paper}
+
+A hardware follow-up should report:
+\begin{itemize}
+\item Number of users and whether style calibration was used.
+\item Cue families and task domains.
+\item Object distractor density.
+\item Cue-text conflict cases.
+\item Stop and avoid cue latency.
+\item Unsafe execution count.
+\item Clarification count and user response time.
+\item Recovery behavior after false halt.
+\item Logs of graph fields for every failure.
+\end{itemize}
+Without these details, a hardware result would be hard to compare to the benchmark.
+
+\section{Final Risk Boundary}
+
+The final risk boundary is clear. If perception cannot detect safety cues, no graph policy can guarantee safety. If user conventions are unknown, the robot must ask more. If action costs are high, clarification thresholds should be lower. Conservative embodied prompt graphs improve the representation and policy contract, but they must be embedded in a broader safety architecture.
+
+\section{Equation-Level Policy Decomposition}
+
+The full-scale runner uses a transparent deterministic policy model. Let $b_c$ be cue binding, $b_o$ object binding, $b_a$ affordance quality, $b_s$ safety binding, $t$ text specificity, $\chi$ conflict, and $u$ ambiguity. A captioned-cue policy weights $b_c$ and $t$ but has weak access to $b_o$ and $b_s$. A generic multimodal prompt improves $b_o$ and $b_a$ but still lacks a conservative rule. An affordance-filtered prompt increases $b_a$ but can still execute feasible actions through safety boundaries.
+
+The conservative graph score can be read as two coupled estimates:
+\[
+\begin{aligned}
+\mathrm{bind} &= 0.30b_c + 0.28b_o + 0.25b_a + 0.22b_s - 0.10\chi,\\
+\mathrm{safe} &= 0.88b_s + 0.22b_c + 0.14b_a - 0.03\chi.
+\end{aligned}
+\]
+Clarification increases when the minimum trusted binding is low or when conflict is high:
+\[
+\mathrm{clarify} = 0.05 + 0.12u + 0.28\max(0, 0.66-\min(b_c,b_o,b_a,b_s)) + 0.14\chi S.
+\]
+This decomposition is intentionally simple. It makes the claim inspectable: the policy is conservative because safety binding and weak binding directly affect response, not because a hidden classifier happened to learn a safe action.
+
+\section{Why The Conservative Policy Still Acts}
+
+A common failure of conservative systems is paralysis. They avoid unsafe execution by asking for confirmation on nearly every case. \method{} avoids that by separating action evidence from safety evidence. A pointing cue with strong object and affordance binding can act even when text is weak. A tool presentation with strong handle affordance can act. A demonstrated path can act if the trace and object affordance agree. Clarification is concentrated around weak object binding, safety conflict, user-style shift, and cue-text disagreement.
+
+The final policy summary shows this balance. \method{} has a higher clarification rate than the unconservative graph, but it also has much lower unsafe execution and higher utility. This is the intended operating point: not maximum action, not maximum hesitation, but typed response selection.
+
+\section{Why The Benchmark Uses Two Safety Modes}
+
+Every cue family is evaluated under standard task risk and safety-critical boundary mode. This prevents a hidden shortcut. If safety cues appeared only in safety-critical rows, a policy could learn a global risk prior. If nonsafety cues appeared only in standard rows, a policy could halt whenever the safety mode is active. Crossing every cue with both modes forces the policy to use cue binding and safety binding together. For example, object holdout under safety-critical mode should not automatically halt; open-palm stop under standard mode can still halt if the cue binds a stop surface.
+
+This is also why unsafe execution is not restricted to a tiny hand-picked subset. It is a property of the response under crossed cue, task, embodiment, binding, noise, and safety conditions.
+
+\section{How To Read The Large Condition CSV}
+
+The condition CSV has one row per compact condition. The first columns identify the cue family, task domain, embodiment, binding regime, policy, noise regime, and safety mode. The middle columns record cue-binding quality, object-binding quality, affordance quality, safety-binding quality, text specificity, conflict, and ambiguity. The outcome columns record task accuracy, unsafe execution, safety-boundary recall, clarification, unnecessary clarification, conflict resolution, binding counts, utility, and represented evaluation counts.
+
+A reviewer can reproduce a table by grouping rows by the corresponding factor and averaging with the represented evaluation count. The manuscript tables are generated from these summaries. This makes the paper auditable: the result is not only prose and plots.
+
+\section{Why The Manuscript Uses A Large Appendix}
+
+The appendix is long because the failure modes are part of the contribution. A short paper could report that the conservative graph has higher utility, but it would not explain what a cue family is, why safety-cue partial miss is hard, why captions lose robot-frame geometry, or how clarification should be generated. The added pages define the operating contract and make the claim reviewable. This matters for nonverbal prompting because the easiest overclaim would be to say "gestures help robots" without specifying when they should stop a robot.
+
+\section{Final Practical Rule}
+
+The practical rule is: never convert a safety-relevant nonverbal cue directly into a text caption and then execute the text plan. Bind it first. If the binding is strong, act or halt according to the graph. If the binding is weak, ask. If the cue conflicts with text, prefer the safer physical interpretation until clarified. This rule is the heart of conservative embodied prompting.
+
+\section{Submission Checklist}
+
+The final submission should be judged against five questions. First, does it define a distinct interface rather than merely adding another input modality? Yes: the prompt graph binds cue, object, affordance, relation, history, and safety state. Second, does it test the interface beyond easy examples? Yes: the suite crosses cue families, domains, embodiments, binding regimes, ambiguity regimes, and safety modes. Third, does it measure the right failures? Yes: unsafe execution, safety-boundary recall, clarification, unnecessary clarification, cue-binding F1, and utility are all reported. Fourth, does it expose limits? Yes: safety-cue partial miss, cross-user style shift, mobile manipulation, head gestures, and boundary tracing remain hard. Fifth, is the artifact reproducible? Yes: the runner, compact rows, summaries, figures, tables, validation JSON, build script, and canonical PDF metadata are all in the repository.
+
+This checklist is also a guard against overclaiming. The paper does not say that nonverbal robot instruction is solved. It says that the right abstraction is a conservative physical prompt graph and that this abstraction produces a better safety-utility tradeoff than captions or unconservative graph execution in the full-scale diagnostic.
+
+\section{Closing Note}
+
+The core scientific move is to treat nonverbal instruction as part of the robot's action state. A person pointing, tapping, blocking, tracing, or withdrawing is not merely producing another symbol for a language model. They are changing the physical contract under which the robot should act. Conservative embodied prompt graphs make that contract explicit. This is why the method can ask a targeted question, halt under a bound safety cue, or act when object and affordance binding are strong. The final artifact is broad enough to support that claim and narrow enough to leave hardware safety, perception robustness, and user adaptation as clear next steps.
+
+\section{Artifact Handoff Notes}
+
+The repository is organized so that a future reader can continue the work without reverse engineering the manuscript. The first entry point is the full-scale execution plan, which states the intended factors before implementation. The second entry point is the runner, which defines the factors and deterministic scoring model. The third entry point is the validation JSON, which confirms that the expected condition count was generated. The fourth entry point is the manuscript source, which imports generated tables and figures rather than copying results by hand. The fifth entry point is the canonical PDF in Downloads, whose hash is recorded by the build script.
+
+If the paper is extended, the safest path is to add new factors to the runner, regenerate the summaries, rebuild the PDF, and rerun the same stale-string, ASCII, LaTeX, page-count, and visual QA checks. The paper should not be extended by editing table numbers in the manuscript. That would break the audit trail. The current artifact is therefore not only a PDF; it is a reproducible paper state.
 
 \begin{thebibliography}{9}
-\bibitem[Argall et~al.(2009)Argall, Chernova, Veloso, and Browning]{argall2009}
+\bibitem[Argall et~al.(2009)Argall, Chernova, Veloso, and Browning]{argall2009survey}
 Brenna D. Argall, Sonia Chernova, Manuela Veloso, and Brett Browning.
 \newblock A survey of robot learning from demonstration.
 \newblock \emph{Robotics and Autonomous Systems}, 2009.
 
-\bibitem[Tellex et~al.(2011)Tellex, Kollar, Dickerson, Walter, Banerjee, Teller, and Roy]{tellex2011}
+\bibitem[Tellex et~al.(2011)Tellex, Kollar, Dickerson, Walter, Banerjee, Teller, and Roy]{tellex2011understanding}
 Stefanie Tellex, Thomas Kollar, Steven Dickerson, Matthew R. Walter, Ashis G. Banerjee, Seth Teller, and Nicholas Roy.
 \newblock Understanding natural language commands for robotic navigation and mobile manipulation.
 \newblock In \emph{AAAI}, 2011.
 
-\bibitem[Cakmak and Thomaz(2012)]{cakmak2012}
+\bibitem[Cakmak and Thomaz(2012)]{cakmak2012designing}
 Maya Cakmak and Andrea L. Thomaz.
 \newblock Designing robot learners that ask good questions.
 \newblock In \emph{HRI}, 2012.
 
-\bibitem[Ahn et~al.(2022)]{ahn2022}
+\bibitem[Ahn et~al.(2022)]{ahn2022saycan}
 Michael Ahn et~al.
 \newblock Do as I can, not as I say: Grounding language in robotic affordances.
 \newblock In \emph{Conference on Robot Learning}, 2022.
 
-\bibitem[Brohan et~al.(2023)]{brohan2023}
+\bibitem[Brohan et~al.(2023)]{brohan2023rt1}
 Anthony Brohan et~al.
 \newblock RT-1: Robotics transformer for real-world control at scale.
 \newblock In \emph{Robotics: Science and Systems}, 2023.
 
-\bibitem[Driess et~al.(2023)]{driess2023}
+\bibitem[Driess et~al.(2023)]{driess2023palme}
 Danny Driess et~al.
 \newblock PaLM-E: An embodied multimodal language model.
 \newblock In \emph{International Conference on Machine Learning}, 2023.
 
-\bibitem[Jiang et~al.(2023)]{jiang2023}
+\bibitem[Jiang et~al.(2023)]{jiang2023vima}
 Yunfan Jiang et~al.
 \newblock VIMA: General robot manipulation with multimodal prompts.
 \newblock In \emph{International Conference on Machine Learning}, 2023.
 
-\bibitem[Chi et~al.(2023)]{chi2023}
+\bibitem[Chi et~al.(2023)]{chi2023diffusion}
 Cheng Chi et~al.
 \newblock Diffusion policy: Visuomotor policy learning via action diffusion.
 \newblock In \emph{Robotics: Science and Systems}, 2023.

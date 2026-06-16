@@ -1,20 +1,13 @@
 # Novelty Boundary Map
 
-## Inside the claim
+| Nearby line | What it already covers | Why the final thesis is distinct |
+|---|---|---|
+| Learning from demonstration | Uses trajectories as examples | Usually trains behavior, not immediate nonverbal prompt action contracts |
+| Language grounding | Maps words to objects and actions | Text is only one channel and can conflict with physical cues |
+| Multimodal prompting | Uses images, text, and examples | Often collapses cues into tokens instead of preserving robot-frame binding |
+| Affordance filtering | Checks whether actions are feasible | Feasibility is not the same as safety permission |
+| Human-robot interaction gestures | Studies communication cues | Often lacks a conservative action policy and full stress benchmark |
 
-- Nonverbal prompts represented as physical task variables.
-- Cue-object-affordance-safety binding for action commitment.
-- Clarification state when cue, text, and affordance conflict.
-- Synthetic evidence that embodied binding can reduce unsafe execution when the binding is correct.
+Final boundary:
 
-## Outside the claim
-
-- Deployed gesture or gaze perception.
-- Cross-cultural gesture interpretation.
-- Hardware safety validation.
-- Robustness to missed safety cues.
-- A general multimodal prompt architecture.
-
-## V2 boundary
-
-At a 5% safety-cue binding miss rate, the graph unsafe rate rises above the captioned-cue baseline. Any serious version must bind safety cues conservatively and halt or clarify when binding confidence is low.
+The paper is about conservative binding and response selection for nonverbal prompts, not about adding another input modality.

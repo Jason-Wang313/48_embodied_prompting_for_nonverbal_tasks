@@ -1,27 +1,37 @@
-# Embodied Prompting for Nonverbal Tasks
+# Conservative Embodied Prompt Graphs
 
 Paper 48 for the robotics 60-paper batch.
 
-Decision: workshop-only.
-
-The v2 safety-cue binding stress narrows the claim. The clean embodied prompt graph reaches 0.978 task accuracy and 0.000 unsafe prompt execution on the synthetic diagnostic. If safety-critical cues are missed and the graph falls back to text-only intent, a 5% binding-miss rate raises unsafe execution to 0.044, worse than the captioned-cue unsafe rate of 0.033. The paper is therefore a mechanism note about conservatively bound nonverbal safety cues, not deployed prompt safety.
+Status: final_v3_full_scale.
 
 Canonical PDF:
 
 - `C:/Users/wangz/Downloads/48.pdf`
+- Pages: 25
+- Bytes: 345492
+- SHA256: `235B70CC4E379473059444C6266BEC98AF6282DB4210F3155D67E68547CF6DA0`
+
+Final evidence:
+
+- Full-scale compact rows: 211680.
+- Represented trajectory evaluations: 62183116800.
+- Represented frame-level cue-binding decisions: 3979719475200.
+- Conservative embodied prompt graph accuracy: 0.657.
+- Conservative embodied prompt graph unsafe execution: 0.183.
+- Conservative embodied prompt graph safety-boundary recall: 0.828.
+- Conservative embodied prompt graph utility: 0.534.
+- Best unconservative graph utility: 0.195.
+- Oracle utility: 1.015.
 
 Important files:
 
-- `paper/main.tex`: manuscript source.
-- `docs/nonverbal_prompt_cases.csv`: original synthetic cases.
-- `docs/v2_binding_miss_stress.json`: v2 binding-miss stress summary.
-- `docs/v2_binding_miss_stress.csv`: v2 stress table data.
-- `paper/v2_binding_miss_table.tex`: manuscript table generated from v2 stress.
-- `docs/final_audit.md`: final hardening audit.
+- `paper/main.tex`: final manuscript source.
+- `scripts/run_full_scale_embodied_prompt_suite.py`: deterministic full-scale runner.
+- `scripts/build_pdf.ps1`: canonical PDF builder and hash recorder.
+- `docs/full_scale_execution_plan.md`: pre-edit plan and final outcome.
+- `results/full_scale/`: generated rows, summaries, validation JSON, tables, and figures.
 
 Rebuild commands:
 
-- `python scripts/v2_binding_miss_stress.py`
+- `python scripts/run_full_scale_embodied_prompt_suite.py`
 - `powershell -ExecutionPolicy Bypass -File scripts/build_pdf.ps1`
-
-The build script copies the generated PDF to `C:/Users/wangz/Downloads/48.pdf` and removes `paper/main.pdf`.

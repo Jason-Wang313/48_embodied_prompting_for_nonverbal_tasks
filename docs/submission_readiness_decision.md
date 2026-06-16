@@ -1,12 +1,16 @@
 # Submission Readiness Decision
 
-Decision: workshop-only.
+Decision: final v3 full-scale submission artifact.
 
-Rationale: The paper has a clean interface mechanism and synthetic evidence, but it assumes reliable nonverbal cue detection and safety binding. The v2 binding-miss stress shows the zero-unsafe result is brittle.
+Rationale:
 
-Required for stronger venue:
+The paper now has a strong scoped thesis, a 25-page manuscript, a deterministic full-scale benchmark, generated tables and figures, negative controls, binding stress, embodiment analysis, and final PDF metadata. The claim is bounded to conservative nonverbal prompt binding under synthetic but broad stress.
 
-- Real nonverbal prompt perception.
-- Human-subject or hardware validation.
-- Conservative safety-cue binding with uncertainty-aware halt/clarification.
-- Baselines for captioned cues, language-only prompting, and multimodal robot policies under binding misses.
+Future validation:
+
+- Real nonverbal cue perception.
+- User variation and cross-cultural gesture studies.
+- Hardware timing and safety evaluation.
+- Dialogue quality for targeted clarification.
+
+These are future validation layers, not blockers for the final scoped manuscript.

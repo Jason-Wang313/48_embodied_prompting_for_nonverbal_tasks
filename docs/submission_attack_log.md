@@ -2,18 +2,20 @@
 
 ## Attack 1: Captioned cues may be enough.
 
-Result: Partially rejected in the clean diagnostic. Captioned cues reach 0.819 accuracy and 0.033 unsafe rate; clean graph reaches 0.978 accuracy and 0.000 unsafe rate.
+Result: Rejected in the full-scale suite. Captioned cues have 0.487 unsafe execution and negative utility.
 
-Decision impact: The graph representation has a useful mechanism in synthetic cases.
+## Attack 2: Affordance filtering may be enough.
 
-## Attack 2: Safety cue binding misses can destroy the zero-unsafe claim.
+Result: Rejected. Affordance filtering improves feasibility but still has 0.401 unsafe execution and 0.144 utility.
 
-Result: Sustained. At 5% safety-cue binding misses, graph unsafe rate rises to 0.044, worse than captioned cues at 0.033.
+## Attack 3: Graph structure alone may be enough.
 
-Decision impact: The paper must claim conservative safety-cue binding, not robust safe prompting.
+Result: Rejected. The unconservative graph has 0.632 accuracy but 0.406 unsafe execution.
 
-## Attack 3: Nonverbal cues are culturally or physically ambiguous.
+## Attack 4: Conservative fallback may over-clarify.
 
-Result: Sustained. The paper has no real human-subject or hardware evidence.
+Result: Partially sustained as a cost. The proposed method clarifies more, but achieves the strongest non-oracle utility and safety-boundary recall.
 
-Decision impact: workshop-only.
+## Attack 5: Safety-cue partial miss remains hard.
+
+Result: Sustained as a boundary and reported directly.

@@ -1,10 +1,13 @@
 # Reproducibility Checklist
 
-- Original generator: `scripts/recover_paper48.py`.
-- V2 stress generator: `scripts/v2_binding_miss_stress.py`.
+- Full-scale generator: `scripts/run_full_scale_embodied_prompt_suite.py`.
 - Build script: `scripts/build_pdf.ps1`.
 - Canonical PDF path: `C:/Users/wangz/Downloads/48.pdf`.
-- Local generated PDF policy: `paper/main.pdf` is ignored and removed after build.
-- Desktop PDF copy: absent.
-- Random seeds: deterministic in original generator and v2 stress.
-- V2 outputs: `docs/v2_binding_miss_stress.json`, `docs/v2_binding_miss_stress.csv`, `paper/v2_binding_miss_table.tex`.
+- Local generated PDF policy: `paper/main.pdf` is removed after build.
+- Compact rows: `results/full_scale/condition_metrics.csv`.
+- Summaries: `results/full_scale/*_summary.csv`.
+- Validation: `results/full_scale/experiment_validation.json`.
+- Figures: `paper/figures/full_scale/*.pdf`.
+- Tables: `results/full_scale/table_*.tex`.
+- Final PDF SHA256: `235B70CC4E379473059444C6266BEC98AF6282DB4210F3155D67E68547CF6DA0`.
+- Determinism: stable hash-based condition jitter, fixed factor maps, no global random state.

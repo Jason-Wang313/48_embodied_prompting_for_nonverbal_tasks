@@ -1,8 +1,9 @@
-## Plan
+# Plan
 
-1. Establish the repo scaffold and status tracking.
-2. Build a literature collection pipeline and gather at least 1000 candidate papers.
-3. Produce the 300-paper serious skim and 200-250-paper deep read subsets.
-4. Build the hostile prior-work set and novelty boundary analysis.
-5. Choose the strongest thesis and draft the paper plus supporting claim docs.
-6. Compile the ICLR-style PDF, verify outputs, and prepare the GitHub repo for push.
+1. Completed: inspect prior state and identify the narrow diagnostic evidence.
+2. Completed: write paper-specific full-scale execution plan before editing.
+3. Completed: implement deterministic full-scale embodied prompt suite.
+4. Completed: generate rows, summaries, validation JSON, tables, and figures.
+5. Completed: rewrite the manuscript as a 25-page submission artifact.
+6. Completed: export canonical PDF to `C:/Users/wangz/Downloads/48.pdf`.
+7. Remaining: visual QA render, final stale-string checks, commit, and push.

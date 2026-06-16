@@ -1,17 +1,17 @@
 # Reviewer Attacks
 
-## Attack: This may be learning from demonstration with new wording.
+## Attack: This is just multimodal prompting.
 
-Response: Partially answered. The paper now frames the contribution as a typed prompt interface with safety/clarification state, not an imitation-learning algorithm.
+Response: The paper is not about modality count. It preserves nonverbal cues as robot-frame action contracts with safety and clarification state.
 
-## Attack: Synthetic benchmarks exaggerate the graph representation.
+## Attack: The benchmark is synthetic.
 
-Response: Sustained. The benchmark is a mechanism test only.
+Response: Correct. The contribution is the interface and stress benchmark. Hardware perception is future validation.
 
-## Attack: Nonverbal cues can be ambiguous or misbound.
+## Attack: Clarification hurts task accuracy.
 
-Response: Sustained and quantified by v2. A 5% safety-cue binding miss rate raises graph unsafe execution to 0.044, worse than captioned cues at 0.033.
+Response: Clarification is costly but often correct. The paper reports utility, unsafe execution, unnecessary clarification, and safety-boundary recall to evaluate the tradeoff.
 
-## Attack: The zero-unsafe result is brittle.
+## Attack: The oracle gap is large.
 
-Response: Sustained. The paper must claim conservative safety-cue binding and clarification, not guaranteed safe prompting.
+Response: Correct. The oracle gap identifies headroom for learned binding while preserving the conservative graph interface.

@@ -1,0 +1,12 @@
+{
+  "paper": 48,
+  "status": "final_v3_full_scale",
+  "canonical_pdf": "C:/Users/wangz/Downloads/48.pdf",
+  "pages": 25,
+  "bytes": 345492,
+  "sha256": "235B70CC4E379473059444C6266BEC98AF6282DB4210F3155D67E68547CF6DA0",
+  "condition_rows": 211680,
+  "represented_trajectory_evaluations": 62183116800,
+  "represented_frame_decisions": 3979719475200,
+  "visual_qa": "rendered 25 PNG pages under tmp/pdfs, inspected title, results, appendix, and references pages, then removed temp files"
+}

@@ -31,8 +31,8 @@ Conservative embodied prompt graphs are the strongest non-oracle policy by utili
 - Canonical PDF: `C:/Users/wangz/Downloads/48.pdf`
 - Pages: 25
 - Bytes: 345492
-- SHA256: `235B70CC4E379473059444C6266BEC98AF6282DB4210F3155D67E68547CF6DA0`
+- SHA256: `670020D899F49F19565ADE133A2C4EB9C75810ADFB46E49A9B571668A759C40B`
 - Local generated PDF: removed after build
 - Build script: `scripts/build_pdf.ps1`
 - Full-scale runner: `scripts/run_full_scale_embodied_prompt_suite.py`
-- Visual QA: rendered 25 PNG pages from the canonical Downloads PDF and inspected representative pages.
+- Visual QA: rendered affected highlight pages 2, 3, 4, 5, and 6 at 160 dpi from the canonical Downloads PDF; verified 16 green citation boxes, 4 red internal-reference boxes, and 20 visible `(0, 0, 1)` borders with no layout collisions.

@@ -18,4 +18,5 @@
 - Generated full-scale summaries, validation JSON, LaTeX tables, and PDF figures.
 - Rewrote the manuscript as a 25-page full-scale submission artifact.
 - Exported canonical PDF to `C:/Users/wangz/Downloads/48.pdf`.
-- Final SHA256: `235B70CC4E379473059444C6266BEC98AF6282DB4210F3155D67E68547CF6DA0`.
+- Hardened hyperlink styling to VLA-style visible green citation boxes and red internal-reference boxes.
+- Final SHA256: `670020D899F49F19565ADE133A2C4EB9C75810ADFB46E49A9B571668A759C40B`.

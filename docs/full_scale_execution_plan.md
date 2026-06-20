@@ -98,4 +98,5 @@ Secondary metrics:
 - Final PDF: `C:/Users/wangz/Downloads/48.pdf`.
 - Final page count: 25.
 - Final bytes: 345492.
-- Final SHA256: `235B70CC4E379473059444C6266BEC98AF6282DB4210F3155D67E68547CF6DA0`.
+- Final SHA256: `670020D899F49F19565ADE133A2C4EB9C75810ADFB46E49A9B571668A759C40B`.
+- VLA highlight QA: affected pages 2, 3, 4, 5, and 6 rendered at 160 dpi; green citation boxes and red internal-reference boxes are visible, thin, aligned, and readable.

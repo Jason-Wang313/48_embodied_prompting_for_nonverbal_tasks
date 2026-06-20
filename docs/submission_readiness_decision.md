@@ -4,7 +4,7 @@ Decision: final v3 full-scale submission artifact.
 
 Rationale:
 
-The paper now has a strong scoped thesis, a 25-page manuscript, a deterministic full-scale benchmark, generated tables and figures, negative controls, binding stress, embodiment analysis, and final PDF metadata. The claim is bounded to conservative nonverbal prompt binding under synthetic but broad stress.
+The paper now has a strong scoped thesis, a 25-page manuscript, a deterministic full-scale benchmark, generated tables and figures, negative controls, binding stress, embodiment analysis, final PDF metadata, and VLA-style visible green citation boxes and red internal-reference boxes. The claim is bounded to conservative nonverbal prompt binding under synthetic but broad stress.
 
 Future validation:
 
